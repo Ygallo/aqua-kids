@@ -30,7 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['aqua-kids.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['aqua-kids.herokuapp.com', 'localhost',
+                 'aqua-kids-c98054224c90.herokuapp.com']
 
 
 # Application definition
