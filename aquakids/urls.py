@@ -23,3 +23,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('swimschool.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

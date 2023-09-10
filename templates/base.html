@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     {% endblock %}
 
     {% block corejs %}
@@ -92,8 +92,13 @@
                 </ul>
             </div>
             
-           
-            <div class="row">
+        </div>
+
+        <div class="row">
+            <nav class="navbar navbar-expand-lg w-100 justify-content-center">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <ul class="nav nav-tabs nav-justify">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Home</a>
@@ -118,7 +123,8 @@
                         <a class="nav-link" href="#">Contact Us</a>
                     </li>
                 </ul>
-            </div>
+            </nav>
+            
         </div>
         
     </header>
@@ -136,6 +142,25 @@
     {% block postloadjs %}
     {% endblock %}
 
+     <!-- Footer -->
+     <footer class="nav justify-content-center border-bottom mt-auto">
+        <div class="container">
+          <ul class="social-networks nav justify-content-center list-unstyled d-flex">
+            <li>
+              <a href="http://www.facebook.com" target="_blank" aria-label="Visit our Facebook page. Opens in a new tab"><i class="fa-brands fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="http://www.instagram.com" target="_blank" aria-label="Visit our Instagram page. Opens in a new tab"><i class="fa-brands fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="http://www.twitter.com" target="_blank" aria-label="Visit our Twitter page. Opens in a new tab"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+  
+          </ul>
+          
+  
+        </div>
+      </footer>
 
     
 </body>
