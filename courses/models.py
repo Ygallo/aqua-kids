@@ -4,6 +4,10 @@ from django.db import models
 
 
 class Category(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     GROUPS = 'GR'
     INDIVIDUAL = 'IN'
     CAMPS = 'CA'
@@ -18,11 +22,12 @@ class Category(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.course_type
 
 
 class Course(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    name = models.CharField(max_length=250, default='blank')
     SEAHORSE_BEGGINERS = 'SH'
     JELLYFISH_FLOATERS = 'JF'
     TURTLE_GLIDERS = 'TG'
