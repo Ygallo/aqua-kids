@@ -8,19 +8,20 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
-    GROUPS = 'GR'
-    INDIVIDUAL = 'IN'
-    CAMPS = 'CA'
+    GROUPS = 'GROUP'
+    INDIVIDUAL = 'INDIVIDUAL'
+    CAMPS = 'CAMPS'
     COURSE_TYPE = [
         (GROUPS, 'groups'),
         (INDIVIDUAL, 'individual'),
         (CAMPS, 'camps'),
     ]
     course_type = models.CharField(
-        max_length=2,
+        max_length=15,
         choices=COURSE_TYPE,
     )
     description = models.TextField(default='blank')
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.course_type
@@ -30,11 +31,11 @@ class Course(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     name = models.CharField(max_length=250, default='blank')
     description = models.TextField(default='blank')
-    SEAHORSE_BEGGINERS = 'SH'
-    JELLYFISH_FLOATERS = 'JF'
-    TURTLE_GLIDERS = 'TG'
-    DOLPHIN_DIVERS = 'DD'
-    SHARK_SPEEDSTERS = 'SS'
+    SEAHORSE_BEGGINERS = 'SEAHORSE_BEGGINERS'
+    JELLYFISH_FLOATERS = 'JELLYFISH_FLOATER'
+    TURTLE_GLIDERS = 'TURTLE_GLIDERS'
+    DOLPHIN_DIVERS = 'DOLPHIN_DIVERS'
+    SHARK_SPEEDSTERS = 'SHARK_SPEEDSTERS'
     LEVEL = [
         (SEAHORSE_BEGGINERS, 'seahorse_begginers'),
         (JELLYFISH_FLOATERS, 'jellyfish_floaters'),
@@ -43,19 +44,19 @@ class Course(models.Model):
         (SHARK_SPEEDSTERS, 'shark_speedsters'),
     ]
     level = models.CharField(
-        max_length=2,
+        max_length=30,
         choices=LEVEL,
         default=SEAHORSE_BEGGINERS,
     )
     start_date = models.DateTimeField(auto_now=False)
     end_date = models.DateTimeField(auto_now=False)
-    MONDAY = 'MO'
-    TUESDAY = 'TU'
-    WEDNESDAY = 'WE'
-    THRUSDAY = 'TH'
-    FRIDAY = 'FR'
-    SATURDAY = 'SA'
-    SUNDAY = 'SU'
+    MONDAY = 'MONDAY'
+    TUESDAY = 'TUESDAY'
+    WEDNESDAY = 'WEDNESDAY'
+    THRUSDAY = 'THRUSDAY'
+    FRIDAY = 'FRIDAY'
+    SATURDAY = 'SATURDAY'
+    SUNDAY = 'SUNDAY'
     DAY_OF_THE_WEEK = [
         (MONDAY, 'monday'),
         (TUESDAY, 'tuesday'),
@@ -66,7 +67,7 @@ class Course(models.Model):
         (SUNDAY, 'sunday'),
     ]
     day_of_the_week = models.CharField(
-        max_length=2,
+        max_length=12,
         choices=DAY_OF_THE_WEEK,
     )
     price = models.DecimalField(max_digits=5, decimal_places=2)
