@@ -1,16 +1,16 @@
 from django.shortcuts import render
-from . models import Course
+from . models import Course, Category
 
 # Create your views here.
 
 
-def courses(request):
+def course_categories(request):
     """View to return swimschool courses, sorting and queries"""
 
-    courses = Course.objects.all()
+    course_categories = Category.objects.all()
 
     context = {
-        'courses': courses,
+        'course_categories': course_categories,
     }
 
-    return render(request, 'courses/courses.html', context)
+    return render(request, 'courses/course_categories.html', context)

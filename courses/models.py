@@ -20,6 +20,7 @@ class Category(models.Model):
         max_length=2,
         choices=COURSE_TYPE,
     )
+    description = models.TextField(default='blank')
 
     def __str__(self):
         return self.course_type
@@ -28,6 +29,7 @@ class Category(models.Model):
 class Course(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     name = models.CharField(max_length=250, default='blank')
+    description = models.TextField(default='blank')
     SEAHORSE_BEGGINERS = 'SH'
     JELLYFISH_FLOATERS = 'JF'
     TURTLE_GLIDERS = 'TG'

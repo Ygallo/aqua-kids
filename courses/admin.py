@@ -13,5 +13,12 @@ class CourseAdmin(admin.ModelAdmin):
     )
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'course_type',
+        'description',
+    )
+
+
 admin.site.register(Course, CourseAdmin)
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
