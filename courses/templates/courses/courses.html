@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h2 class="logo-font">{{request.GET.category}} Courses</h2>
+                <hr class="w-50 mb-1">
+            </div>
+        </div>
+        <div class="card-group">
+                {% for course in courses %}
+                <div class="card">
+                   
+                    <div class="col">
+                        <div class="card border-0">
+                            
+                        </div>
+                        
+                        <div class="col">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ course.category }}</h3>
+
+                                <div class="media">
+                                   
+                                    {% if course.image %}
+                                    <img class="d-flex align-self-start mr-3" src="/media/{{ course.image }}" width="100" alt="{{ course.name }}">
+                                    {% else %}
+                                     <img class="d-flex align-self-start mr-3" src="/media/placeholder.png" width="100" alt="{{ course.name }}e">
+                                     {% endif %}
+                                    <div class="media-body">
+                                      <h5 class="mt-0">{{ course.name }}</h5>
+                                      <p>{{ course.description }}</p>
+                                      <p class="card-text excerpt-height">Days: <span class="badge badge-primary">{{ course.day_of_the_week }}</span></p>
+                                      <p class="card-text excerpt-height">Price: <span class="badge badge-primary">{{ course.price}}</span></p>
+                                    </div>
+                                </div>
+                                                          
+                                    <div class="read-more"> 
+                                        <div class="text-center"><a href="{% url 'course_detail' course.id %}" class="btn btn-readmore btn-primary">Read More</a></div>
+                                    </div>
+                            </div>    
+                        </div>
+                    </div>     
+                </div>
+                {% endfor %}
+        </div>
+        
+    </div>
+
+{% endblock %}
+

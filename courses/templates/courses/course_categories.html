@@ -27,7 +27,7 @@
                                 <h3 class="card-title">{{ category.course_type }}</h3>
                                 <p class="card-text excerpt-height">{{ category.description }}</p>
                                     <div class="read-more"> 
-                                        <div class="text-center"><a href="#" class="btn btn-readmore btn-primary">Read More</a></div>
+                                        <div class="text-center"><a href="/courses/?category={{ category.course_type }}" class="btn btn-readmore btn-primary">Read More</a></div>
                                     </div>
                             </div>    
                         </div>
@@ -39,4 +39,3 @@
     </div>
 
 {% endblock %}
-
