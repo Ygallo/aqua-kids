@@ -31,13 +31,13 @@
     <header class="">
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                <a class="navbar-brand" href="#">
-                    <img src="/media/aquakids-logo1.png" width="350px" class="d-inline-block align-top" alt="aquakids-logo">
+                <a class="navbar-brand" href="/">
+                    <img src="/media/aquakids-logo1.png" width="250px" class="d-inline-block align-top" alt="aquakids-logo">
                 </a>
             </div>
         
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <form method="GET" action="#" class="form-inline">
+                <form method="GET" action="{% url 'courses'%}" class="form-inline">
                     <div class="input-group w-100">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search" name="q" aria-label="Search">
                         <div class="input-group-append">
@@ -101,7 +101,7 @@
                 </button>
                 <ul class="nav nav-tabs nav-justify">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">About Us</a>

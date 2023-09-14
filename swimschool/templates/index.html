@@ -2,24 +2,55 @@
 {% load static %}
 
 {% block content %}
-<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-    <div class="text-center text-white overflow-hidden">
-        <div class="container h-100" style="background-color: #5775E7;">
-            <div class="row h-100">
-                <div class="col-5">
-                    <h1>Learn to swim with us</h1>
-                    <div class="my-5">
-                        <h4>
-                            <a href="#" class="shop-courses-btn btn btn-lg text-uppercase rounded-0 py-3">Courses</a>
-                        </h4>
-                    </div>
-                </div>
-            </div>
+
+<div class="container col-xxl-8">
+    <div class="row flex-lg-row-reverse align-items-center ">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="/media/boy-underwater.png" class="d-block mx-lg-auto img-fluid" alt="Aqua Kids" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Dive into a World of Aquatic Adventures and Learning!</h1>
+        <p class="lead">At Ocean Waves Kids Swimming School, we are passionate about introducing children to the joys and benefits of swimming. Catering exclusively to our younger swimmers, our marine-themed skill levels guide every child on a magical aquatic journey, from splashing beginners to confident young swimmers.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <div class="btn-group">
+                        
+                <a href="courses/categories/" class="btn btn-lg btnx-blue" role="button">Courses</a>
+                <a href="courses/categories/" class="btn btn-lg btnx-white" role="button">Contact us</a>
+                
+            </div>   
         </div>
+      </div>
     </div>
-    <div class="overflow-hidden" style="background-color: #5775E7">
-      <img src="/media/boy-underwater.png">
-    </div>
-    
-</div>
+
+    <hr class="hr hr-blurry" />
+
+    <div class="card-group">
+      {% for category in course_categories %}
+      <div class="card">
+         
+          <div class="col">
+              <div class="card border-0">
+                  {% if category.image %}
+                  <img class="card-img-top img-fluid rounded-start" src="/media/{{ category.image }}" alt="#">
+                  {% else %}
+                  <img class="card-img-top img-fluid rounded-start" src="#" alt="#">
+                  {% endif %}
+              </div>
+              
+              <div class="col">
+                  <div class="card-body">
+                      <h3 class="card-title">{{ category.course_type }}</h3>
+                      <p class="card-text excerpt-height">{{ category.description }}</p>
+                          <div class="read-more"> 
+                              <div class="text-center"><a href="/courses/?category={{ category.course_type }}" class="btn btn-readmore btn-primary">Read More</a></div>
+                          </div>
+                  </div>    
+              </div>
+          </div>     
+      </div>
+      {% endfor %}
+   </div>
+
+
+  </div>
 {% endblock %}

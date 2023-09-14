@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.db.models import Q
+from django.contrib import messages
 from . models import Course, Category
 
 # Create your views here.
@@ -30,8 +32,18 @@ def all_courses(request):
         courses = courses.filter(category__course_type__in=categories)
         # categories = Category.objects.filter(name__in=categories)
 
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(request, "You didn't enter any search criteria!")
+            return redirect(reverse('course'))
+          
+        queries = Q(level__icontains=query) | Q(description__icontains=query)
+        courses = courses.filter(queries)
+
     context = {
         'courses': courses,
+        'search_term': query,
     }
 
     return render(request, 'courses/courses.html', context)

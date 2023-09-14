@@ -30,19 +30,6 @@
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0">{{ course.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">${{ course.price }}</p>
-                    {% if course.category %}
-                    <p class="small mt-1 mb-0">
-                        <a class="text-muted" href="{% url 'course' %?category={{ course.category.name }}}">
-                            <i class="fas fa-tag mr-1"></i>{{course.category.friendly_name}}
-                        </a>
-                    </p>
-                    {% endif %}
-                    {% if course.rating %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ course.rating }} / 5</small>
-                    {% else %}
-                        <small class="text-muted">No Rating</small>
-                    {% endif %}
-                    
                     <p class="mt-3">{{ course.description }}</p>
                     
                 </div>

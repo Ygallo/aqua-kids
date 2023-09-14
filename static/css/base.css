@@ -1,19 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
 
 .fas {
     color: #5775e7;
 }
-
-html {
-    height: 100%
+html, body {
+	background-color: #fcfcfc;
+	color: #131313;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
 }
 
-body {
-    background: url('/media/aquakids-logo.png') no-repeat center center fixed;
-    background-size: cover;
-    height: calc(100vh - 164px);
-    color: #555;
-    font-family: 'Montserrat';
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Lato', sans-serif;
+    font-weight: 700;
 }
+
+header, section, footer, aside, nav, main, article, figure {
+    display: block; 
+}
+
+p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+}
+
+
+.btnx-white:hover,
+.btnx-white:focus,
+.btnx-white:active,
+.btnx-white:visited {
+    background-color: #D0D3D4;
+    color: #131313;
+}
+
+
+
+
 
 /* from Bulma */
 .icon {
