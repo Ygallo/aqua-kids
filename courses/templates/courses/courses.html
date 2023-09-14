@@ -21,9 +21,8 @@
                         
                         <div class="col">
                             <div class="card-body">
-                                <h3 class="card-title">{{ course.category }}</h3>
-
-                                <div class="media">
+                                <h3 class="card-title">{{ course.name }}</h3>
+                                    <div class="media">
                                    
                                     {% if course.image %}
                                     <img class="d-flex align-self-start mr-3" src="/media/{{ course.image }}" width="100" alt="{{ course.name }}">
@@ -31,9 +30,12 @@
                                      <img class="d-flex align-self-start mr-3" src="/media/placeholder.png" width="100" alt="{{ course.name }}e">
                                      {% endif %}
                                     <div class="media-body">
-                                      <h5 class="mt-0">{{ course.name }}</h5>
-                                      <p>{{ course.description }}</p>
-                                      <p class="card-text excerpt-height">Days: <span class="badge badge-primary">{{ course.day_of_the_week }}</span></p>
+                                        <h5>Who's it for?</h5>
+                                        <p>{{ course.level.who_for }}</p> 
+                                      <h5>Skills Learned:</h5>
+                                      <p>{{ course.level.skills }}</p>
+                                      <h5>Duration:</h5>
+                                      <p>{{ course.duration }}</p>
                                       <p class="card-text excerpt-height">Price: <span class="badge badge-primary">{{ course.price}}</span></p>
                                     </div>
                                 </div>

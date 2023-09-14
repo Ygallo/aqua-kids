@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Course
+from .models import Category, Course, Levels
 
 # Register your models here.
 
@@ -7,8 +7,8 @@ from .models import Category, Course
 class CourseAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'category',
         'level',
+        'category',
         'start_date',
     )
 
@@ -20,5 +20,13 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
+class LevelsAdmin(admin.ModelAdmin):
+    list_display = (
+        'level',
+        'who_for',
+        'skills',
+    )
+
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Levels, LevelsAdmin)

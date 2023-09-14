@@ -27,10 +27,7 @@ class Category(models.Model):
         return self.course_type
 
 
-class Course(models.Model):
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    name = models.CharField(max_length=250, default='blank')
-    description = models.TextField(default='blank')
+class Levels(models.Model):
     SEAHORSE_BEGGINERS = 'SEAHORSE_BEGGINERS'
     JELLYFISH_FLOATERS = 'JELLYFISH_FLOATER'
     TURTLE_GLIDERS = 'TURTLE_GLIDERS'
@@ -48,6 +45,19 @@ class Course(models.Model):
         choices=LEVEL,
         default=SEAHORSE_BEGGINERS,
     )
+    who_for = models.TextField(default='blank')
+    skills = models.TextField(default='blank')
+
+    def __str__(self):
+        return self.level
+
+
+class Course(models.Model):
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    level = models.ForeignKey('Levels', on_delete=models.CASCADE)
+    name = models.CharField(max_length=250, default='blank')
+    description = models.TextField(default='blank')
+    duration = models.TextField(default='blank')
     start_date = models.DateTimeField(auto_now=False)
     end_date = models.DateTimeField(auto_now=False)
     MONDAY = 'MONDAY'
