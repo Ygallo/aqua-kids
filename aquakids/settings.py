@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['aqua-kids.herokuapp.com', 'localhost',
-                 '8000-ygallo-aquakids-2xdydj324e6.ws-eu104.gitpod.io']
+                 '8000-ygallo-aquakids-2xdydj324e6.ws-us104.gitpod.io']
 
 
 # Application definition
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'courses',
+    'bag',
 ]
 
 MIDDLEWARE = [
