@@ -10,8 +10,8 @@
         $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
     }
 
-     // Ensure proper enabling/disabling of all inputs on page load
-     var allQtyInputs = $('.qty_input');
+    // Ensure proper enabling/disabling of all inputs on page load
+    var allQtyInputs = $('.qty_input');
     for(var i = 0; i < allQtyInputs.length; i++){
         var itemId = $(allQtyInputs[i]).data('course_id');
         handleEnableDisable(itemId);
