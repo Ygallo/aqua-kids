@@ -69,7 +69,7 @@
                                     <p class="my-0">€{{ item.course.price }}</p>
                                 </td>
                                 <td class="py-3">
-                                    <p class="my-0">${{ item.course.price | calc_subtotal:item.quantity }}</p>
+                                    <p class="my-0">€{{ item.course.price | calc_subtotal:item.quantity }}</p>
                                 </td>
                             </tr>
                         {% endfor %}

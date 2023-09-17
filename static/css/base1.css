@@ -67,6 +67,18 @@ p {
     cursor: pointer;
 }
 
+.messages-container {
+    position:fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+
+.toast-capper {
+    height: 2px;;
+}
+
 /* Footer */
 
 footer {
