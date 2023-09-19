@@ -1,5 +1,11 @@
 from django.http import HttpResponse
 
+from .models import Order, OrderLineItem
+from courses.models import Course
+
+import json
+import time
+
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -27,36 +33,47 @@ class StripeWH_Handler:
             intent.latest_charge
         )
 
-        billing_details = stripe_charge.billing_details # updated
-        grand_total = round(stripe_charge.amount / 100, 2) # updated
+        billing_details = stripe_charge.billing_details
+        grand_total = round(stripe_charge.amount / 100, 2)
 
         # Clean data in the shipping details
-        for field, value in shipping_details.address.items():
+        for field, value in eircode.items():
             if value == "":
-                shipping_details.address[field] = None
+                eircode[field] = None
 
         order_exists = False
-        try:
-            order = Order.objects.get(
-                full_name__iexact=shipping_details.name,
-                email__iexact=billing_details.email,
-                phone_number__iexact=shipping_details.phone,
-                eircode__iexact=shipping_details.eircode,
-                grand_total=grand_total,
-                original_cart=cart,
-                stripe_pid=pid,
-            )        
-            order_exists = True
+        attempt = 1
+        while attempt <= 5:
+            try:
+                order = Order.objects.get(
+                    full_name__iexact=billing_details.name,
+                    email__iexact=billing_details.email,
+                    phone_number__iexact=billing_details.phone,
+                    eircode__iexact=billing_details.eircode,
+                    grand_total=grand_total,
+                    original_cart=cart,
+                    stripe_pid=pid,
+                )     
+                order_exists = True
+                break
+
+            except Order.DoesNotExist:
+                attempt += 1
+                time.sleep(1)
+        if order_exists: 
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
-        except Order.DoesNotExist:
+        else:
+            order = None
             try:
                 order = Order.objects.create(
-                    full_name__iexact=shipping_details.name,
+                    full_name__iexact=billing_details.name,
                     email__iexact=billing_details.email,
-                    phone_number__iexact=shipping_details.phone,
-                    eircode__iexact=shipping_details.eircode, 
+                    phone_number__iexact=billing_details.phone,
+                    eircode__iexact=billing_details.eircode,
+                    original_cart=cart,
+                    stripe_pid=pid,
                 )
                 for item_id, item_data in json.loads(cart).items():
                     course = Course.objects.get(id=item_id)
@@ -70,22 +87,22 @@ class StripeWH_Handler:
                     else:
                         for quantity in items():
                             order_line_item = OrderLineItem(
-                                order=order,
-                                course=course,
-                                quantity=quantity,
+                                    order=order,
+                                    course=course,
+                                    quantity=quantity,
                             )
-                            order_line_item.save()
+                            order_line_item.save()                            
             except Exception as e:
                 if order:
                     order.delete()
                 return HttpResponse(
-                    content=f'Webhook received: {event["type"]} | ERROR: {e}',
-                    status=500)
-        # self._send_confirmation_email(order)
+                        content=f'Webhook received: {event["type"]} | ERROR: {e}',
+                        status=500)
+            # self._send_confirmation_email(order)
 
-        return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
-            status=200)
+            return HttpResponse(
+                content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+                status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """
