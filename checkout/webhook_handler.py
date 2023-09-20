@@ -2,6 +2,7 @@ from django.http import HttpResponse
 
 from .models import Order, OrderLineItem
 from courses.models import Course
+from profiles.models import UserProfile
 
 import json
 import time
@@ -40,6 +41,16 @@ class StripeWH_Handler:
         for field, value in eircode.items():
             if value == "":
                 eircode[field] = None
+        
+        #Update profile information if save_info was checked
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+            if save_info:
+                profile.default_phone_number = billing_details.phone
+                profile.default_eircode = billing_details.eircode
+                profile.save()
 
         order_exists = False
         attempt = 1
@@ -69,6 +80,7 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.create(
                     full_name__iexact=billing_details.name,
+                    user_profile=profile,
                     email__iexact=billing_details.email,
                     phone_number__iexact=billing_details.phone,
                     eircode__iexact=billing_details.eircode,

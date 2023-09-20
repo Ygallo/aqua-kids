@@ -99,14 +99,12 @@ def checkout(request):
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
-                    'eircode': profile.default_eircode,
                 })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
 
-        order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
