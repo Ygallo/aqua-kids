@@ -14,6 +14,7 @@ import stripe
 import json
 # Create your views here.
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -75,14 +76,14 @@ def checkout(request):
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
-                Please double check your information.')    
+                Please double check your information.')
 
     else:
         cart = request.session.get('cart', {})
         if not cart:
             messages.error(request, "Your cart is empty")
             return redirect(reverse('courses'))
-            
+
         current_cart = cart_contents(request)
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
@@ -91,7 +92,7 @@ def checkout(request):
                 amount=stripe_total,
                 currency=settings.STRIPE_CURRENCY,
             )
-       
+
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -104,7 +105,6 @@ def checkout(request):
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
-
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \

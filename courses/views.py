@@ -3,6 +3,8 @@ from django.db.models import Q
 from django.contrib import messages
 from . models import Course, Category
 
+from .forms import CourseForm
+
 # Create your views here.
 
 
@@ -59,3 +61,14 @@ def course_detail(request, course_id):
     }
 
     return render(request, 'courses/course_detail.html', context)
+
+
+def add_course(request):
+    """ Admin can add a course to the swim school"""
+    form = CourseForm()
+    template = 'courses/add_course.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
