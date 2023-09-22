@@ -65,7 +65,17 @@ def course_detail(request, course_id):
 
 def add_course(request):
     """ Admin can add a course to the swim school"""
-    form = CourseForm()
+    if request.method == 'POST':
+        form = CourseForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Course added successfully!')
+            return redirect(reverse('add_course'))
+        else:
+            messages.error(request, 'Failed to add the course. Please make sure the form is valid.')
+    else:
+        form = CourseForm()
+
     template = 'courses/add_course.html'
     context = {
         'form': form,

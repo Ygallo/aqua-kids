@@ -35,25 +35,25 @@
                                     <p class="my-0"><strong>{{ item.course.name }}</strong></p>
                                 </td>
                                 <td class="py-3">
-                                    <form class="form update-form" method="POST" action="#">
+                                    <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.course.id %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <button class="decrement-qty btn btn-sm btn-black rounded-0" 
-                                                        data-item_id="{{ item.course.course_id }}" id="decrement-qty_{{ item.course.course_id }}">
+                                                        data-item_id="{{ item.course.id }}" id="decrement-qty_{{ item.course.id }}">
                                                         <span>
                                                             <i class="fas fa-minus fa-sm"></i>
                                                         </span>
                                                     </button>
                                                 </div>
                                                 <input class="form-control form-control-sm qty_input" type="number"
-                                                    name="quantity" value="{{ item.course.quantity }}" min="1" max="6"
-                                                    data-item_id="{{ item.course.course_id }}"
-                                                    id="id_qty_{{ item.course.course_id}}">
+                                                    name="quantity" value="{{ item.quantity }}" min="1" max="6"
+                                                    data-item_id="{{ item.course.id }}"
+                                                    id="id_qty_{{ item.course.id}}">
                                                 <div class="input-group-append">
                                                     <button class="increment-qty btn btn-sm btn-black rounded-0"
-                                                        data-item_id="{{ item.course.course_id }}" id="increment-qty_{{ item.course.course_id }}">
+                                                        data-item_id="{{ item.course.id }}" id="increment-qty_{{ item.course.id }}">
                                                         <span>
                                                             <i class="fas fa-plus fa-sm"></i>
                                                         </span>
@@ -63,7 +63,7 @@
                                         </div>
                                     </form>
                                     <a class="update-link text-info"><small>Update</small></a>
-                                    <a class="remove-item text-danger float-right" id="remove_{{ item.course.course_id }}"><small>Remove</small></a>
+                                    <a class="remove-item text-danger float-right" id="remove_{{ item.course.id }}"><small>Remove</small></a>
                                 </td>
                                 <td class="py-3 w-25">
                                     <p class="my-0">€{{ item.course.price }}</p>

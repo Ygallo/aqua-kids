@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course, Category, Levels 
+from .models import Course, Category, Levels
 
 
 class CourseForm(forms.ModelForm):
@@ -14,6 +14,6 @@ class CourseForm(forms.ModelForm):
         # levels = Levels.objects.all()
 
         # self.fields['category'].choices = categories
-        
+
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
