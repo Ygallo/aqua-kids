@@ -10,10 +10,19 @@ class CourseForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # categories = Category.objects.all()
-        # levels = Levels.objects.all()
+        self.fields['start_date'].widget = forms.widgets.DateInput(
+            attrs={
+                'type': 'date', 'placeholder': 'dd-mm-yyyy',
+                'class': 'form-control'
+                }
+            )
+        self.fields['end_date'].widget = forms.widgets.DateInput(
+            attrs={
+                'type': 'date', 'placeholder': 'dd-mm-yyyy',
+                'class': 'form-control'
+                }
+            )
 
-        # self.fields['category'].choices = categories
 
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
