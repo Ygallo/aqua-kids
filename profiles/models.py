@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from courses.models import Levels
 
 # Create your models here.
 
@@ -28,3 +29,30 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # Existing users: just save the profile
     instance.userprofile.save()
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=50, default='blank')
+    surname = models.CharField(max_length=50, default='blank')
+    dob = models.DateField()
+
+    MALE = 'MALE'
+    FEMALE = 'FEMALE'
+    NON_BINARY = 'NON_BINARY'
+    PREFER_NOT_TO_RESPOND = 'PREFER_NOT_TO_RESPOND'
+    GENDER = [
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+        (NON_BINARY, 'Non Binary'),
+        (PREFER_NOT_TO_RESPOND, 'Prefer not to respond'),
+    ]
+    gender = models.CharField(
+        max_length=25,
+        choices=GENDER,
+    )
+    level = models.ForeignKey(Levels, on_delete=models.CASCADE)
+    guardian = models.ForeignKey(User, on_delete=models.CASCADE)
+    special_requirements = models.TextField(max_length=200, default='blank')
+
+    def __str__(self):
+        return self.name

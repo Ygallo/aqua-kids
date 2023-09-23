@@ -68,13 +68,13 @@ class Course(models.Model):
     SATURDAY = 'SATURDAY'
     SUNDAY = 'SUNDAY'
     DAY_OF_THE_WEEK = [
-        (MONDAY, 'monday'),
-        (TUESDAY, 'tuesday'),
-        (WEDNESDAY, 'wednesday'),
-        (THRUSDAY, 'thrusday'),
-        (FRIDAY, 'friday'),
-        (SATURDAY, 'saturday'),
-        (SUNDAY, 'sunday'),
+        (MONDAY, 'Monday'),
+        (TUESDAY, 'Tuesday'),
+        (WEDNESDAY, 'Wednesday'),
+        (THRUSDAY, 'Thrusday'),
+        (FRIDAY, 'Friday'),
+        (SATURDAY, 'Saturday'),
+        (SUNDAY, 'Sunday'),
     ]
     day_of_the_week = models.CharField(
         max_length=12,

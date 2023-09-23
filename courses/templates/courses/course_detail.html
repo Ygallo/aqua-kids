@@ -31,8 +31,8 @@
                     <h3 class="mb-0">{{ course.name }}</h3>
                     {% if request.user.is_superuser %}
                         <small class="ml-3">
-                            <a href="{% url 'edit_course' course.id %}">Edit</a>
-                            <a class="text-danger" href="{% url 'delete_course' course.id %}">Delete</a>
+                            <a href="{% url 'edit_course' course.id %}"><i class="fa-solid fa-pen"></i> Edit</a> &nbsp; &nbsp;
+                            <a class="text-danger" href="{% url 'delete_course' course.id %}"><i class="fa-solid fa-trash"></i> Delete</a>
                         </small>
                     {% endif %}
                     
@@ -46,19 +46,7 @@
                     <form class="form" action="{% url 'add_to_cart' course.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
-                            <!-- {% with course.has_sizes as s %}
-                            {% if s %}
-                            <div class="col-12">
-                                <p><strong>Size:</strong></p>
-                                <select class="form-control rounded-0 w-50" name="product_size" id="id_product_size">
-                                    <option value="xs">XS</option>
-                                    <option value="s">S</option>
-                                    <option value="m" selected>M</option>
-                                    <option value="l">L</option>
-                                    <option value="xl">XL</option>
-                                </select>
-                            </div> -->
-                            <!-- {% endif %} -->
+                            
                             <div class="col-12">
                                 <hr class="mt-1 mb-3">
                                 <span class="strong mb-5">Start Date: </span><span>{{ course.start_date }}</span><br/>
@@ -101,7 +89,7 @@
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
-                        {% endwith %}
+                        
                     </form>
                 </div>
             </div> 
