@@ -10,46 +10,49 @@
                 <hr class="w-50 mb-1">
             </div>
         </div>
-        <div class="card-group">
-                {% for course in courses %}
-                <div class="card">
-                   
-                    <div class="col">
-                        <div class="card border-0">
-                            
-                        </div>
-                        
-                        <div class="col">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ course.name }}</h3>
-                                    <div class="media">
-                                   
-                                    {% if course.image %}
-                                    <img class="d-flex align-self-start mr-3" src="/media/{{ course.image }}" width="100" alt="{{ course.name }}">
-                                    {% else %}
-                                     <img class="d-flex align-self-start mr-3" src="/media/placeholder.png" width="100" alt="{{ course.name }}e">
-                                     {% endif %}
-                                    <div class="media-body">
-                                        <h5>Who's it for?</h5>
-                                        <p>{{ course.level.who_for }}</p> 
-                                      <h5>Skills Learned:</h5>
-                                      <p>{{ course.level.skills }}</p>
-                                      <h5>Duration:</h5>
-                                      <p>{{ course.duration }}</p>
-                                      <p class="card-text excerpt-height">Price: <span class="badge badge-primary">{{ course.price}}</span></p>
-                                    </div>
-                                </div>
-                                                          
-                                    <div class="read-more"> 
-                                        <div class="text-center"><a href="{% url 'course_detail' course.id %}" class="btn btn-readmore btn-primary">Read More</a></div>
-                                    </div>
-                            </div>    
-                        </div>
-                    </div>     
-                </div>
-                {% endfor %}
-        </div>
-        
+        <div class="container mt-5 mb-5">
+			<div class="d-flex justify-content-center row">
+				<div class="col-md-10">
+
+					{% for course in courses %}
+					<div class="row p-2 bg-white border rounded mb-3">
+						<div class="col-md-3 mt-1">
+							{% if course.image %}
+										<img class="img-fluid img-responsive rounded product-image" src="/media/{{ course.image }}" alt="{{ course.name }}">
+										{% else %}
+										<img class="img-fluid img-responsive rounded product-image" src="/media/placeholder.jpg" alt="{{ course.name }}">
+										{% endif %}
+						
+						</div>
+						<div class="col-md-6 mt-1">
+							<h3>{{ course.name }}</h3>
+							<div class="mt-1 mb-3 spec-1"><span class="dot"></span><span class="strong">Who is it for? </span><span>{{ course.level.who_for }}</span></div>
+							<div class="mt-1 mb-3 spec-1"><span class="dot"></span><span class="strong">Skills Learned: </span><span>{{ course.level.skills }}</span></div>
+							<div class="mt-1 mb-3 spec-1"><span class="dot"></span><span class="strong">Duration: </span><span>{{ course.duration }}</span></div>
+							
+						</div>	
+						<div class="align-items-center align-content-center col-md-3 border-left mt-1">
+							<div class="d-flex flex-row align-items-center">
+								<h4 class="mr-1">€{{ course.price}}</h4>
+							</div>
+							<span class="text-success">{{ course.places }}</span><span class="strike-text"> places available</span>
+							<div class="d-flex flex-column mt-4">
+								<div class="read-more"> 
+									<div class="text-center"><a href="{% url 'course_detail' course.id %}" class="btn btn-readmore btn-primary">Read More</a></div>
+								</div>
+							</div>
+							{% if request.user.is_superuser %}
+								<small class="ml-3">
+									<a href="{% url 'edit_course' course.id %}">Edit</a>
+										<a class="text-danger" href="{% url 'delete_course' course.id %}">Delete</a>
+								</small>
+                        	{% endif %}
+						</div>
+					</div>                                                  
+                	{% endfor %}
+        		</div>
+			</div>
+		</div>	
     </div>
 <!-- Testimonials-->
 <div class="container-xl carousel-container">

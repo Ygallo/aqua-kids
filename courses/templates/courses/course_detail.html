@@ -21,16 +21,27 @@
                     </a>
                     {% else %}
                     <a href="">
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ course.name }}">
+                        <img class="card-img-top img-fluid" src="/media/placeholder.jpg" alt="{{ course.name }}">
                     </a>
                     {% endif %}
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
-                    <p class="mb-0">{{ course.name }}</p>
-                    <p class="lead mb-0 text-left font-weight-bold">${{ course.price }}</p>
+                    <h3 class="mb-0">{{ course.name }}</h3>
+                    {% if request.user.is_superuser %}
+                        <small class="ml-3">
+                            <a href="{% url 'edit_course' course.id %}">Edit</a>
+                            <a class="text-danger" href="{% url 'delete_course' course.id %}">Delete</a>
+                        </small>
+                    {% endif %}
+                    
                     <p class="mt-3">{{ course.description }}</p>
+                    <div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong">Who is it for? </span><span>{{ course.level.who_for }}</span></div>
+					<div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong">Skills Learned: </span><span>{{ course.level.skills }}</span></div>
+					<div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong">Duration: </span><span>{{ course.duration }}</span></div>
+
+                    
 
                     <form class="form" action="{% url 'add_to_cart' course.id %}" method="POST">
                         {% csrf_token %}
@@ -49,7 +60,10 @@
                             </div> -->
                             <!-- {% endif %} -->
                             <div class="col-12">
-                                <p class="mt-3"><strong>Quantity:</strong></p>
+                                <hr class="mt-1 mb-3">
+                                <span class="strong mb-5">Start Date: </span><span>{{ course.start_date }}</span><br/>
+                                <span class="strong mb-5">Cost: </span><span> €{{ course.price }}</span><br/>
+                                <span class="strong mb-5">Quantity:</span>
                                 <div class="form-group w-50">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -77,13 +91,13 @@
                             </div>
 
                             <div class="col{% if s %}-12 mt-2{% endif %}">
-                                <a href="{% url 'courses' %}" class="btn btn-outline-black rounded-0 mt-5">
+                                <a href="{% url 'courses' %}" class="btn btn-readmore ">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
-                                <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Cart">
+                                <input type="submit" class="btn btn-readmore btn-primary" value="Add to Cart">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>

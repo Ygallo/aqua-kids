@@ -68,9 +68,9 @@ def add_course(request):
     if request.method == 'POST':
         form = CourseForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            course = form.save()
             messages.success(request, 'Course added successfully!')
-            return redirect(reverse('add_course'))
+            return redirect(reverse('course_detail', args=[course.id]))
         else:
             messages.error(request, 'Failed to add the course. Please make sure the form is valid.')
     else:
@@ -82,3 +82,35 @@ def add_course(request):
     }
 
     return render(request, template, context)
+
+
+def edit_course(request, course_id):
+    """ Admin can edit a course to the swim school"""
+    course = get_object_or_404(Course, pk=course_id)
+    if request.method == 'POST':
+        form = CourseForm(request.POST, request.FILES, instance=course)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Course updated successfully!')
+            return redirect(reverse('course_detail', args=[course_id]))
+        else:
+            messages.error(request, 'Failed to update the course. Please make sure the form is valid.')
+    else:
+        form = CourseForm(instance=course)
+        messages.info(request, f'You are editing {course.name}')
+
+    template = 'courses/edit_course.html'
+    context = {
+        'form': form,
+        'course': course,
+    }
+
+    return render(request, template, context)
+
+
+def delete_course(request, course_id):
+    """ Admin can delete a course to the swim school"""
+    course = get_object_or_404(Course, pk=course_id)
+    course.delete()
+    messages.success(request, 'The course has been deleted')
+    return redirect(reverse('courses'))
