@@ -15,3 +15,13 @@ def Home(request):
     }
 
     return render(request, 'index.html', context)
+
+
+def timetable(request):
+    """View to return the timetable"""
+    return render(request, 'timetable.html')
+
+
+def about_us(request):
+    """View to return the timetable"""
+    return render(request, 'about_us.html')

@@ -37,7 +37,8 @@ def profile(request):
         form = UserProfileForm(instance=profile)
         student_form = StudentForm(instance=profile)
 
-    students = profile.students.all()    
+   # students = profile.students.all() 
+    students = profile.students.filter(id=request.user.id)  
     
     orders = profile.orders.all()
 
