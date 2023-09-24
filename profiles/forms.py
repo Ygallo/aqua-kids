@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserProfile
+from .models import UserProfile, Student
 
 
 class UserProfileForm(forms.ModelForm):
@@ -19,11 +19,20 @@ class UserProfileForm(forms.ModelForm):
         }
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
-        # for field in self.fields:         
-            # if self.fields[field].required:
-            #     placeholder = f'{placeholders[field]} *'
-            # # else:
-            # # placeholder = placeholders[field]
-            # self.fields[field].widget.attrs['placeholder'] = placeholder
-            # self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
-            # self.fields[field].label = False
+
+
+class StudentForm(forms.ModelForm):
+
+    class Meta:
+        model = Student
+        fields = '__all__'
+        exclude = ('guardian',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['dob'].widget = forms.widgets.DateInput(
+            attrs={
+                'type': 'date', 'placeholder': 'dd-mm-yyyy',
+                'class': 'form-control'
+                }
+            )

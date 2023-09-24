@@ -51,8 +51,10 @@ class Student(models.Model):
         choices=GENDER,
     )
     level = models.ForeignKey(Levels, on_delete=models.CASCADE)
-    guardian = models.ForeignKey(User, on_delete=models.CASCADE)
     special_requirements = models.TextField(max_length=200, default='blank')
+    guardian = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
+                                     null=True, blank=True,
+                                     related_name='students')
 
     def __str__(self):
         return self.name
