@@ -25,3 +25,8 @@ def timetable(request):
 def about_us(request):
     """View to return the timetable"""
     return render(request, 'about_us.html')
+
+
+def contact_us(request):
+    """View to return the timetable"""
+    return render(request, 'contact_us.html')
