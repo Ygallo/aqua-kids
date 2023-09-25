@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -68,7 +69,7 @@ class Course(models.Model):
     FRIDAY = 'FRIDAY'
     SATURDAY = 'SATURDAY'
     SUNDAY = 'SUNDAY'
-    WEEKLY = 'WEEKLY'
+    WEEKLY = 'MON-FRI'
     DAY_OF_THE_WEEK = [
         (MONDAY, 'Monday'),
         (TUESDAY, 'Tuesday'),
@@ -84,7 +85,7 @@ class Course(models.Model):
         choices=DAY_OF_THE_WEEK,
     )
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    image = models.ImageField(null=True, blank=True)
+    image = CloudinaryField('image', default='placeholder')
     places = models.PositiveIntegerField(default=6)
 
     def __str__(self):

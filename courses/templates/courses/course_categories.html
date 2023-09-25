@@ -16,9 +16,9 @@
                     <div class="col">
                         <div class="card border-0">
                             {% if category.image %}
-                            <img class="card-img-top img-fluid rounded-start" src="/media/{{ category.image }}" alt="#">
+                            <img class="card-img-top img-fluid rounded-start" src="{{ category.image.url }}" alt="{{ category.name }}">
                             {% else %}
-                            <img class="card-img-top img-fluid rounded-start" src="#" alt="#">
+                            <img class="card-img-top img-fluid rounded-start" src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="{{ category.name }}">
                             {% endif %}
                         </div>
                         

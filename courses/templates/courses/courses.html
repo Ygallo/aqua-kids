@@ -22,9 +22,9 @@
 					<div class="row p-2 bg-white border rounded mb-3">
 						<div class="col-md-3 mt-1">
 							{% if course.image %}
-										<img class="img-fluid img-responsive rounded product-image" src="/media/{{ course.image }}" alt="{{ course.name }}">
+										<img class="img-fluid img-responsive rounded product-image" src="{{ course.image.url }}" alt="{{ course.name }}">
 										{% else %}
-										<img class="img-fluid img-responsive rounded product-image" src="/media/placeholder.jpg" alt="{{ course.name }}">
+										<img class="img-fluid img-responsive rounded product-image" src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="{{ course.name }}">
 										{% endif %}
 						
 						</div>

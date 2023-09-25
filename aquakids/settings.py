@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['aqua-kids.herokuapp.com', 'localhost',
-                 '8000-ygallo-aquakids-2xdydj324e6.ws-eu104.gitpod.io']
+                 '8000-ygallo-aquakids-2xdydj324e6.ws-us104.gitpod.io']
 
 
 # Application definition
@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'cloudinary',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -170,10 +172,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 
 # Stripe

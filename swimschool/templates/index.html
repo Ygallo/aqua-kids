@@ -6,7 +6,7 @@
 <div class="container col-xxl-8">
     <div class="row flex-lg-row-reverse align-items-center ">
       <div class="col-10 col-sm-8 col-lg-6">
-        <img src="/media/boy-underwater.png" class="d-block mx-lg-auto img-fluid" alt="Aqua Kids" width="700" height="500" loading="lazy">
+        <img src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654488/AquaKids/boy-underwater_s1lrsu.png" class="d-block mx-lg-auto img-fluid" alt="Aqua Kids" width="700" height="500" loading="lazy">
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">Dive into a World of Aquatic Adventures and Learning!</h1>
@@ -31,9 +31,9 @@
           <div class="col">
               <div class="card border-0">
                   {% if category.image %}
-                  <img class="card-img-top img-fluid rounded-start" src="/media/{{ category.image }}" alt="{{ category.image }}" style="height:235px; overflow: hidden">
+                  <img class="card-img-top img-fluid rounded-start" src="{{ category.image.url }}" alt="{{ category.image }}" style="height:235px; overflow: hidden">
                   {% else %}
-                  <img class="card-img-top img-fluid rounded-start" src="/media/placeholder.jpg"  alt="{{ category.image }}">
+                  <img class="card-img-top img-fluid rounded-start" src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg"  alt="{{ category.image }}">
                   {% endif %}
               </div>
               
