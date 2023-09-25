@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/about-us.css?{% now "U" %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-white py-5">
+    <div class="container py-5">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6 order-2 order-lg-1">
+          <h2 class="font-weight-light">Our Coaching Philosophy</h2>
+          <p class="font-italic text-muted mb-4">Individualized Attention: We believe every swimmer is unique. Our coaches ensure that each student receives personalized feedback and instruction tailored to their needs.
+            Safety First: Ensuring the well-being of our students is paramount. Our coaches are certified in aquatic safety protocols and continuously updated on the latest guidelines.
+            Nurturing Environment: We aim to create a supportive atmosphere where students feel encouraged to push their boundaries and celebrate their achievements.
+            .</p>
+        </div>
+        <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="/media/about-us.png" alt="About AquaKids" class="img-fluid mb-4 mb-lg-0"></div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-5 px-5 mx-auto"><img src="/media/aquakids-swimming-coaches.png" alt="AquaKids Training Coaches" class="img-fluid mb-4 mb-lg-0"></div>
+        <div class="col-lg-6">
+          <h2 class="font-weight-light">Continued Training for Our Coaches</h2>
+          <p class="font-italic text-muted mb-4">At AquaKids, the learning never stops. We invest in regular training programs, workshops, and certifications for our coaches to ensure they are up-to-date with the latest methodologies, techniques, and safety protocols. Our commitment is to provide the best learning experience for our students, and this begins with our instructors' continual growth.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-light py-5">
+    <div class="container py-5">
+      <div class="row mb-4">
+        <div class="col-lg-5">
+          <h2 class="display-4 font-weight-light">Our team</h2>
+          <p class="font-italic text-muted">We invite you to meet our team, observe a session, or even have a chat with our coaches to understand the AquaKids difference. Join us in crafting a wonderful swimming journey tailored just for you!</p>
+        </div>
+      </div>
+  
+      <div class="row text-center">
+        <!-- Team item-->
+        <div class="col-xl-3 col-sm-6 mb-5">
+          <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/media/coach-1.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+            <h5 class="mb-0">Jessica Mulvey</h5><span class="small text-uppercase text-muted">Coach</span>
+            <p>
+                <strong>Credentials:</strong> 12 years as a professional coach, Certified Swim School Administrator, former Olympic trial participant.
+                <strong>Specialty:</strong> Competitive strokes and high-performance training.
+                <strong>Philosophy: </strong>"To swim is to embrace the water, to work with it. I teach my students to become one with the water for maximum performance."
+
+            </p>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End-->
+  
+        <!-- Team item-->
+        <div class="col-xl-3 col-sm-6 mb-5">
+          <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/media/coach-2.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+            <h5 class="mb-0">Lisa Harte</h5><span class="small text-uppercase text-muted">Coach</span>
+            <p><strong>Credentials:</strong> 6 years in adaptive swimming coaching, Certified in Therapeutic Aquatics.
+                <strong>Specialty:</strong>  Working with students with disabilities and special needs.
+                <strong>Philosophy:</strong>  "Water is a great equalizer. I'm passionate about making swimming accessible and enjoyable for everyone."
+                </p>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End-->
+  
+        <!-- Team item-->
+        <div class="col-xl-3 col-sm-6 mb-5">
+          <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/media/coach-4.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+            <h5 class="mb-0">Mia Kelly</h5><span class="small text-uppercase text-muted">Coach</span>
+            <p><strong>Credentials:</strong> 8 years of coaching experience, Lifeguard Certified, Diploma in Sports Nutrition.
+                <strong>Specialty:</strong> Breathing techniques and endurance training.
+                <strong>Philosophy:</strong> "The right technique can transform your swimming experience. It's about efficiency, not just effort."
+            </p>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End-->
+  
+        <!-- Team item-->
+        <div class="col-xl-3 col-sm-6 mb-5">
+          <div class="bg-white rounded shadow-sm py-5 px-4"><img src="/media/coach-5.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+            <h5 class="mb-0">Liam Mooney</h5><span class="small text-uppercase text-muted">Coach</span>
+            <p><strong>Credentials:</strong> Over 10 years of professional coaching, Certified Aquatic Trainer, former national-level swimmer.
+                <strong>Specialty:</strong> Expert in Butterfly stroke and competitive training.
+            <strong>Philosophy:</strong> "Swimming is as much about mental strength as it is about physical agility. I aim to foster both in my students."
+                </p>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End-->
+  
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock %}
