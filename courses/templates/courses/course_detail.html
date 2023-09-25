@@ -17,11 +17,11 @@
                 <div class="image-container my-5">
                     {% if course.image %}
                     <a href="{{ course.image.url }}" target="_blank">
-                        <img class="card-img-top img-fluid" src="{{ course.image.url }}" alt="{{ course.name }}">
+                        <img class="card-img-top img-fluid rounded" src="{{ course.image.url }}" alt="{{ course.name }}">
                     </a>
                     {% else %}
                     <a href="">
-                        <img class="card-img-top img-fluid" src="/media/placeholder.jpg" alt="{{ course.name }}">
+                        <img class="card-img-top img-fluid rounded" src="/media/placeholder.jpg" alt="{{ course.name }}">
                     </a>
                     {% endif %}
                 </div>
@@ -37,9 +37,9 @@
                     {% endif %}
                     
                     <p class="mt-3">{{ course.description }}</p>
-                    <div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong">Who is it for? </span><span>{{ course.level.who_for }}</span></div>
-					<div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong">Skills Learned: </span><span>{{ course.level.skills }}</span></div>
-					<div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong">Duration: </span><span>{{ course.duration }}</span></div>
+                    <div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong"><strong>Who is it for?</strong> </span><span>{{ course.level.who_for }}</span></div>
+					<div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong"><strong>Skills Learned:</strong> </span><span>{{ course.level.skills }}</span></div>
+					<div class="mt-1 mb-1 spec-1"><span class="dot"></span><span class="strong"><strong>Duration:</strong> </span><span>{{ course.duration }}</span></div>
 
                     
 
@@ -49,9 +49,21 @@
                             
                             <div class="col-12">
                                 <hr class="mt-1 mb-3">
-                                <span class="strong mb-5">Start Date: </span><span>{{ course.start_date }}</span><br/>
-                                <span class="strong mb-5">Cost: </span><span> €{{ course.price }}</span><br/>
-                                <span class="strong mb-5">Quantity:</span>
+                                <span class="strong mb-5"><strong>Start Date:</strong> </span><span>{{ course.start_date }}</span><br/>
+                                <span class="strong mb-5"><strong>Day:</strong>  </span><span>{{ course.day_of_the_week }}</span><br/>
+                                <span class="strong mb-5"><strong>Time: </strong> </span><span>{{ course.start_time }}</span><br/>
+                                <span class="strong mb-5"><strong>Cost:</strong>  </span><span> €{{ course.price }}</span><br/>
+                                
+                                {% if course.places < 1 %}
+                                <span class="badge badge-danger rounded-pill d-inline">Full</span>
+                                {% elif course.places < 4 %}
+                                <span class="badge badge-warning rounded-pill d-inline">{{ course.places }} places available</span>
+                                {% else %}
+                                <span class="badge badge-success rounded-pill d-inline">{{ course.places }} places available</span>
+                                {% endif %}
+
+                                <hr class="mt-3 mb-3">
+                                <span class="strong mb-5"><strong>Quantity:</strong> </span>
                                 <div class="form-group w-50">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
