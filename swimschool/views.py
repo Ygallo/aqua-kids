@@ -19,7 +19,12 @@ def Home(request):
 
 def timetable(request):
     """View to return the timetable"""
-    return render(request, 'timetable.html')
+    courses = Course.objects.all()
+    context = {
+        'courses': courses
+    }
+
+    return render(request, 'timetable.html', context)
 
 
 def about_us(request):

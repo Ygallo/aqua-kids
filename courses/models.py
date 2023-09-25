@@ -58,8 +58,9 @@ class Course(models.Model):
     name = models.CharField(max_length=250, default='blank')
     description = models.TextField(default='blank')
     duration = models.TextField(default='blank')
-    start_date = models.DateTimeField(auto_now=False)
-    end_date = models.DateTimeField(auto_now=False)
+    start_date = models.DateField(auto_now=False)
+    start_time = models.TextField(default='blank')
+    end_date = models.DateField(auto_now=False)
     MONDAY = 'MONDAY'
     TUESDAY = 'TUESDAY'
     WEDNESDAY = 'WEDNESDAY'

@@ -31,9 +31,9 @@
           <div class="col">
               <div class="card border-0">
                   {% if category.image %}
-                  <img class="card-img-top img-fluid rounded-start" src="/media/{{ category.image }}" alt="#">
+                  <img class="card-img-top img-fluid rounded-start" src="/media/{{ category.image }}" alt="{{ category.image }}" style="height:235px; overflow: hidden">
                   {% else %}
-                  <img class="card-img-top img-fluid rounded-start" src="#" alt="#">
+                  <img class="card-img-top img-fluid rounded-start" src="/media/placeholder.jpg"  alt="{{ category.image }}">
                   {% endif %}
               </div>
               
