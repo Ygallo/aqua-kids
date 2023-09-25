@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/course-list.css?{% now "U" %}"/>
+{% endblock %}
+
 {% block content %}
 
     <div class="container">
@@ -35,7 +39,16 @@
 							<div class="d-flex flex-row align-items-center">
 								<h4 class="mr-1">€{{ course.price}}</h4>
 							</div>
-							<span class="text-success">{{ course.places }}</span><span class="strike-text"> places available</span>
+
+							{% if course.places < 1 %}
+							<span class="badge badge-danger rounded-pill d-inline">Full</span>
+							{% elif course.places < 4 %}
+							<span class="badge badge-warning rounded-pill d-inline">{{ course.places }} places available</span>
+							{% else %}
+							<span class="badge badge-success rounded-pill d-inline">{{ course.places }} places available</span>
+							{% endif %}
+													
+							
 							<div class="d-flex flex-column mt-4">
 								<div class="read-more"> 
 									<div class="text-center"><a href="{% url 'course_detail' course.id %}" class="btn btn-readmore btn-primary">Read More</a></div>
@@ -55,93 +68,10 @@
 			</div>
 		</div>	
     </div>
-<!-- Testimonials-->
-<div class="container-xl carousel-container">
-	<div class="row">
-		<div class="col-sm-12">
-			<h2 class="testimonials-header">What <b>our customers</b> are saying</h2>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-				<!-- Carousel indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-				</ol>   
-				<!-- Wrapper for carousel items -->
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="media">
-									<img src="https://www.tutorialrepublic.com/examples/images/clients/1.jpg" class="mr-3" alt="">
-									<div class="media-body">
-										<div class="testimonial">
-											<p>Starting at AquaKids was one of the best decisions I've made for my son. He used to be so fearful of water, but under Coach Mia's guidance, he's now confidently diving into the deep end! The transformation has been incredible to witness</p>
-											<p class="overview"><b>Aiden R.</b>, Parent</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="media">
-									<img src="https://www.tutorialrepublic.com/examples/images/clients/2.jpg" class="mr-3" alt="">
-									<div class="media-body">
-										<div class="testimonial">
-											<p>As a late bloomer in the world of swimming, I was initially hesitant to join any school. However, the environment at AquaKids is so welcoming and non-judgmental. Coach David's techniques and patience have made me fall in love with swimming. Better late than never!</p>
-											<p class="overview"><b>Sophie H</b>, Student</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>			
-					</div>
-					<div class="carousel-item">
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="media">
-									<img src="https://www.tutorialrepublic.com/examples/images/clients/3.jpg" class="mr-3" alt="">
-									<div class="media-body">
-										<div class="testimonial">
-											<p>My two daughters attended Ocean Waves and not only did they learn to swim proficiently, but they also developed a deep love for water sports. They recently joined a synchronized swimming team, and the foundation laid by their coaches at AquaKids has been invaluable. A big thank you to the entire team!</p>
-											<p class="overview"><b>Carlos M.</b>, Parent</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="media">
-									<img src="https://www.tutorialrepublic.com/examples/images/clients/4.jpg" class="mr-3" alt="">
-									<div class="media-body">
-										<div class="testimonial">
-											<p>My daughter started at Seahorse Beginners and now she's confidently gliding as a Turtle! The transformation is amazing!</p>
-											<p class="overview"><b>Emma L.</b>, Parent</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>			
-					</div>
-					<div class="carousel-item">
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="media">
-									<img src="https://www.tutorialrepublic.com/examples/images/clients/5.jpg" class="mr-3" alt="">
-									<div class="media-body">
-										<div class="testimonial">
-											<p>The instructors at Ocean Waves are patient and dedicated. I joined as an adult learner and they made the experience less intimidating for me.</p>
-											<p class="overview"><b>Raj P.</b>, Student</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-						</div>			
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+{% block testimonials %}
+{% include "includes/testimonials.html" %}
+{% endblock %}
 
 {% endblock %}
 

@@ -24,7 +24,7 @@
 
     <hr class="hr hr-blurry" />
 
-    <div class="card-group">
+    <div class="card-group mb-5">
       {% for category in course_categories %}
       <div class="card">
          
@@ -50,7 +50,10 @@
       </div>
       {% endfor %}
    </div>
-
-
   </div>
+
+  {% block testimonials %}
+    {% include "includes/testimonials.html" %}
+  {% endblock %}
+
 {% endblock %}

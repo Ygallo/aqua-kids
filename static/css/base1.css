@@ -93,16 +93,19 @@ p {
 /* Footer */
 
 footer {
-    background-color: white;
+    background-color: #5775e7;;
     /* bottom: 0;
     position: absolute; */
     width: 100%;
+    min-height: 100px;
     margin: 20px 0 0 0 ;
     padding: 25px;   
+    color: #fff;
 }
 
-li i{
-    color: #5775e7;
+footer li i{
+    color: #ffffff;
+    margin: 10px 20px;
 }
 
 .social-networks {
