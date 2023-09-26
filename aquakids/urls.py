@@ -33,4 +33,3 @@ urlpatterns = [
 handler400 = 'aquakids.views.handler400'
 handler403 = 'aquakids.views.handler403'
 handler404 = 'aquakids.views.handler404'
-
