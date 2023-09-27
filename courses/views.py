@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.views import generic, View
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 from django.contrib import messages
 from . models import Course, Category
 
@@ -119,14 +124,18 @@ def edit_course(request, course_id):
     return render(request, template, context)
 
 
-@login_required
-def delete_course(request, course_id):
-    """ Admin can delete a course to the swim school"""
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only Admin user allowed.')
-        return redirect(reverse('home'))
+class DeleteCourse(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
+    """
+    View that allows Admin users to delete a course
+    """
+    model = Course
+    template_name = 'courses/delete_course.html'
+    success_url = reverse_lazy('courses')
+    success_message = "The course was deleted successfully"
 
-    course = get_object_or_404(Course, pk=course_id)
-    course.delete()
-    messages.success(request, 'The course has been deleted')
-    return redirect(reverse('courses'))
+    def delete(self, request, *args, **kwargs):
+        """
+        Code for success message take from python tutorial and stackoverflow
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeleteCourse, self).delete(request, *args, **kwargs)

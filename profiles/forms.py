@@ -30,7 +30,7 @@ class StudentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['dob'].widget = forms.widgets.DateInput(
+        self.fields['date_of_birth'].widget = forms.widgets.DateInput(
             attrs={
                 'type': 'date', 'placeholder': 'dd-mm-yyyy',
                 'class': 'form-control'

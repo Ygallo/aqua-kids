@@ -6,13 +6,13 @@ Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
 Enrollment
-Student:	Joaquin Arguello Pitt
-Class:	Spring Term 2023 Tallaght - Seals
-Startdate:	18/04/2023
-Dropdate:	02/07/2023
-Status:	Active
-Schedule:	Tuesday: 3:30pm-4:00pm
+Student Name:	{{ student.name }}
+Student Surname:	{{ student.surname }}
+Date of Birth {{student.date_of_birth }}
 
+Level:	{{student.level}}
+Startdate:	{{ course.start_date }}
+Schedule:	{{ course.day_of_the_week }} at {{ course.start_time }}
 
 Grand Total: ${{ order.grand_total }}
 

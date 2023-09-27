@@ -27,6 +27,16 @@
         </div>
         <div class="row">
             <div class="col">
+            {% if user.is_authenticated %}
+                <h5>Welcome, {{ user.username }}. Thanks for logging in.</h5>
+            {% else %}
+                <h5>Welcome, new user. Please log in.</h5>
+            {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
                 <p>Account Information</p>
                 <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}

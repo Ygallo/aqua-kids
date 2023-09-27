@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mb-4">School Courses Management</h2>
+                <h5 class="text-muted">Delete a Course</h5>
+                <hr>
+            </div>
+        </div>
+        <!-- Delete Course -->
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {% for course in courses %}
+					<div class="row p-2 bg-white border rounded mb-3">
+						<div class="col-md-3 mt-1">
+							{% if course.image %}
+								<img class="img-fluid img-responsive rounded product-image" src="{{ course.image.url }}" alt="{{ course.name }}">
+							{% else %}
+								<img class="img-fluid img-responsive rounded product-image" src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="{{ course.name }}">
+							{% endif %}
+						</div>
+						<div class="col-md-6 mt-1">
+							<h3>{{ course.name }}</h3>
+							<div class="mt-1 mb-3 spec-1"><span class="dot"></span><span class="strong">Who is it for? </span><span>{{ course.level.who_for }}</span></div>
+							<div class="mt-1 mb-3 spec-1"><span class="dot"></span><span class="strong">Skills Learned: </span><span>{{ course.level.skills }}</span></div>
+							<div class="mt-1 mb-3 spec-1"><span class="dot"></span><span class="strong">Duration: </span><span>{{ course.duration }}</span></div>
+						</div>	
+						<div class="align-items-center align-content-center col-md-3 border-left mt-1">
+							<div class="d-flex flex-row align-items-center">
+								<h4 class="mr-1">€{{ course.price}}</h4>
+							</div>
+                        </div>
+                    </div>
+                {% endfor %} 
+
+                <p class="text-center mt-3">Are you sure you want to delete this {{ course.name }}?</p>
+							
+
+                <form method="POST" action="{% url 'delete_course'  course.id %}" class="form mb-2">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div>
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                        <a class="btn btn-outline" href="{%  url 'courses' %}">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}

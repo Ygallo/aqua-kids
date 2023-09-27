@@ -34,7 +34,7 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 class Student(models.Model):
     name = models.CharField(max_length=50, default='blank')
     surname = models.CharField(max_length=50, default='blank')
-    dob = models.DateField()
+    date_of_birth = models.DateField()
 
     MALE = 'MALE'
     FEMALE = 'FEMALE'

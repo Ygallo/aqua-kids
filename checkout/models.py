@@ -69,8 +69,8 @@ class OrderLineItem(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Override the original save method to set the lineitem toal
-        amd update the order total
+        Override the original save method to set the lineitem total
+        and update the order total
         """
         self.lineitem_total = self.course.price * self.quantity
         super().save(*args, **kwargs)
