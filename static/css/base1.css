@@ -39,6 +39,10 @@ p {
     border: solid 2px #178fe1;
 }
 
+.navbar {
+    background-color: #5775e7;
+
+}
 
 /* from Bulma */
 .icon {
@@ -61,8 +65,16 @@ p {
 }
 
 .nav-style {
-    font-weight: 500;
+    font-weight: 300;
     font-size: 20px;
+}
+
+.white-nav {
+    color: #fff;
+}
+
+a.white-nav:hover {
+    color: #172f5f;
 }
 
 .btt-link,.update-link,.remove-item{
