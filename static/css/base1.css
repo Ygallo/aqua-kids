@@ -262,4 +262,9 @@ ul li.icon-white {
         padding: 0;
     }
 }
-    
+
+@media screen and (min-width: 620px){
+    /* Hamburger menu styles */
+   
+
+}

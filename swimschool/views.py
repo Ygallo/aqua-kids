@@ -23,7 +23,6 @@ def timetable(request):
     context = {
         'courses': courses
     }
-
     return render(request, 'timetable.html', context)
 
 

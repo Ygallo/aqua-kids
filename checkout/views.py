@@ -62,6 +62,9 @@ def checkout(request):
                             course=course,
                             quantity=item_data,
                         )
+                        places_left = course.places - item_data
+                        course.places = places_left
+                        course.save()
                         order_line_item.save()
 
                 except Course.DoesNotExist:
