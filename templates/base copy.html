@@ -110,7 +110,35 @@
             
         </div>
         {% include 'includes/mobile-top-header.html' %}
-        
+        <div class="row">
+            <nav class="navbar justify-content-center navbar-collapse" >
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav"   aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <ul class="nav nav-justify nav-style" >
+                    <li class="nav-item ">
+                        <a class="nav-link active white-nav" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active white-nav" href="{% url 'about_us' %}">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle white-nav" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Courses</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/courses?category=GROUP">Group</a>
+                            <a class="dropdown-item" href="/courses?category=INDIVIDUAL">Invididual</a>
+                            <a class="dropdown-item" href="/courses?category=CAMPS">Camps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link white-nav" href="{% url 'timetable' %}">Timetable</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link white-nav" href="{% url 'contact_us' %}">Contact Us</a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </div>
         
     </header>
         
@@ -143,24 +171,6 @@
     {% block postloadjs %}
      <script type="text/javascript">
         $('.toast').toast('show');
-
-        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-        if (!$(this).next().hasClass('show')) {
-            $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-        }
-        var $subMenu = $(this).next(".dropdown-menu");
-        $subMenu.toggleClass('show');
-
-
-        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-            $('.dropdown-submenu .show').removeClass("show");
-        });
-
-
-            return false;
-         });
-
-
      </script>   
     {% endblock %}
     

@@ -44,6 +44,26 @@ p {
 
 }
 
+/* navigation */
+
+.dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu a::after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em;
+  }
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+  }
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -55,6 +75,7 @@ p {
 
 .blue {
     background-color: #5775e7 ;
+    color: #fff;
 }
 
 .shop-courses-btn:hover,
@@ -81,6 +102,9 @@ a.white-nav:hover {
     cursor: pointer;
 }
 
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
 
 
 .message-container {
@@ -261,10 +285,13 @@ ul li.icon-white {
     .map-container iframe {
         padding: 0;
     }
+    .desktop-nav{
+        visibility: hidden;
+       }
+    
 }
 
 @media screen and (min-width: 620px){
     /* Hamburger menu styles */
-   
-
+  
 }
