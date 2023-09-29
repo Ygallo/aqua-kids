@@ -11,6 +11,8 @@ class CourseAdmin(admin.ModelAdmin):
         'category',
         'start_date',
     )
+    search_fields=['name','level','category']
+    ordering = ('name',)
 
 
 class CategoryAdmin(admin.ModelAdmin):

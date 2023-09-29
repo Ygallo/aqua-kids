@@ -21,8 +21,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="{% static 'css/base.css' %}" /> -->
-    <link rel="stylesheet" href="/static/css/base1.css?{% now "U" %}"/>
+ 
+    <link rel="stylesheet" href="/static/css/base.css?{% now "U" %}"/>
     <link rel="stylesheet" href="/static/css/testimonials.css?{% now "U" %}"/>
     {% endblock %}
 
@@ -114,56 +114,18 @@
         
     </header>
         
-    {% if messages %}
-        <div class="message-container" style="position:fixed; top: 100px; right: 20px;z-index: 99999999999;">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-                
-            {% endfor %}
-        </div>
-    {% endif %}
+    
 
     {% block page_header %}
     {% endblock %}
 
+    <span id="_pageName" style="display:none">{% block pagename %}{% endblock %}</span>
+
+   
+
     {% block content %}
     {% endblock %}
 
-    
-    {% block postloadjs %}
-     <script type="text/javascript">
-        $('.toast').toast('show');
-
-        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-        if (!$(this).next().hasClass('show')) {
-            $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-        }
-        var $subMenu = $(this).next(".dropdown-menu");
-        $subMenu.toggleClass('show');
-
-
-        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-            $('.dropdown-submenu .show').removeClass("show");
-        });
-
-
-            return false;
-         });
-
-
-     </script>   
-    {% endblock %}
-    
 
     <!-- Footer -->
     <footer class="nav justify-content-center border-bottom mt-auto">
@@ -185,6 +147,59 @@
         </div>
     </footer>
 
+     
+    {% if messages %}
+    <div class="message-container" style="position:fixed; top: 100px; right: 20px;z-index: 99999999999;">
+        {% for message in messages %}
+            
+            {% with message.level as level %}
+                {% if level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% elif level == 30 %}
+                    {% include 'includes/toasts/toast_warning.html' %}
+                {% elif level == 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% elif level == 20  %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endwith %}
+            
+        {% endfor %}
+    </div>
+    {% endif %}
     
+    {% block postloadjs %}
+
+    <script type="text/javascript">
+       $('.toast').toast('show');
+
+       // drop down
+       $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+       if (!$(this).next().hasClass('show')) {
+           $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+       }
+       var $subMenu = $(this).next(".dropdown-menu");
+       $subMenu.toggleClass('show');
+
+
+       $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+           $('.dropdown-submenu .show').removeClass("show");
+       });
+
+           return false;
+        });
+
+
+        // add active class to current link
+        $(function() {
+               var pageName = document.getElementById('_pageName');
+               if (pageName != null) { pageName = pageName.innerHTML; }
+               else { pageName = ''; }
+               if (pageName.length > 0) {
+                   $("li[data-link-name='" + pageName + "']").addClass('active');
+               }
+           });
+    </script>   
+   {% endblock %}
 </body>
 </html>

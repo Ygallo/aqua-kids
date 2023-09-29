@@ -44,9 +44,9 @@ def all_courses(request):
         query = request.GET['q']
         if not query:
             messages.error(request, "You didn't enter any search criteria!")
-            return redirect(reverse('course'))
-          
-        queries = Q(level__icontains=query) | Q(description__icontains=query)
+            return redirect(reverse('courses'))
+
+        queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(day_of_the_week__icontains=query)
         courses = courses.filter(queries)
 
     context = {
