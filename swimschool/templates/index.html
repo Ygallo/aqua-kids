@@ -19,8 +19,8 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
             <div class="btn-group">
                         
-                <a href="courses/categories/" class="btn btn-lg btnx-blue" role="button">Courses</a>
-                <a href="courses/categories/" class="btn btn-lg btnx-white" role="button">Contact us</a>
+                <a href="courses/categories/" class="btn btn-lg btn-outline-primary" role="button">Courses</a>
+                <a href="contact_us/" class="btn btn-lg btn-outline-dark" role="button">Contact us</a>
                 
             </div>   
         </div>
@@ -32,11 +32,8 @@
     <div class="card-group mb-5">
       {% for category in course_categories %}
       <div class="card">
-         
-         
-              
-              
-              <div class="col-sm-12 ">
+             
+              <div class="col ">
                   <div class="card-body">
                     {% if category.image %}
                     <img class="card-img-top img-fluid rounded-start" src="{{ category.image.url }}" alt="{{ category.image }}" style="height:235px; overflow: hidden">
