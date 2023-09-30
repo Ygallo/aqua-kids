@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
-from .forms import OrderForm
+from .forms import OrderForm, StudentForm
 from .models import Order, OrderLineItem
 from courses.models import Course
 from profiles.forms import UserProfileForm
@@ -46,6 +46,7 @@ def checkout(request):
             'eircode': request.POST['eircode'],
         }
         order_form = OrderForm(form_data)
+       
 
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -53,6 +54,7 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
             order.save()
+           
             for item_id, item_data in cart.items():
                 try:
                     course = Course.objects.get(id=item_id)
@@ -104,10 +106,15 @@ def checkout(request):
                     'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
                 })
+
+                
+
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
+                
         else:
             order_form = OrderForm()
+           
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \

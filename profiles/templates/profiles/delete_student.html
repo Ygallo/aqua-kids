@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+<!-- for active navigation-->
+{% block pagename %}courses{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="logo-font mb-4">School Student Management</h2>
+                <h5 class="text-muted">Delete a Student</h5>
+                <hr>
+            </div>
+        </div>
+        <!-- Delete Course -->
+        <div class="row">
+          
+                <p class="text-center mt-3">Are you sure you want to delete this Student {{ student.name }}?</p>
+							
+
+                <form method="POST" action="{% url 'delete_student'  student.id %}" class="form mb-2">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div>
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                        <a class="btn btn-outline" href="{%  url 'students' %}">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}

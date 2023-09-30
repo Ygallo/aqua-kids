@@ -54,7 +54,6 @@
                     </div>
                 </div>
             </div>
-            {% if user.is_authenticated %}
             <div class="col-12 col-lg-6">
                 <p>Please fill the form below to complete your order</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
@@ -68,19 +67,18 @@
                         {{ order_form.email | as_crispy_field }}
                         {{ order_form.phone_number | as_crispy_field }}
                         {{ order_form.eircode | as_crispy_field }}
-
                         <div class="form-check form-check-inline float-right mr-0">
-							
-                            <label class="form-check-label" for="id-save-info">Save this contact information to my profile</label>
-                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
-                        
-                    </div>
-                        
+							{% if user.is_authenticated %}
+								<label class="form-check-label" for="id-save-info">Save this contact information to my profile</label>
+                                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+							{% else %}
+								<label class="form-check-label" for="id-save-info">
+                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
+							{% endif %}
+						</div>
                     </fieldset>
-
-               
-
-
                     <fieldset class="px-3">
                         <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                         <!-- A Stripe card element will go here -->
@@ -113,16 +111,6 @@
 					</div>
                 </form>
             </div>
-            {% else %}
-            <div class="col-12 col-lg-6">
-                <p>To complete the order please:</p>
-                <label class="form-check-label" for="id-save-info">
-                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
-                    <a class="text-info" href="{% url 'account_login' %}">login</a>
-                </label>
-
-            </div>			
-			{% endif %}
         </div>
     </div>
     <div id="loading-overlay">

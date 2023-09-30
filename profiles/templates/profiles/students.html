@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                
+                <h2 class="logo-font mb-4">Students</h2>
+                <div class="edit-container quarter mb-4"><a href="{% url 'add_student' %}" class="btn btn-success">Add a Student</a></div>
+                <p> Students registered for <strong>{{ user.username }}</strong>: </p>
+                <table class="table align-middle mb-0 bg-white" >
+                    <thead class="bg-light">
+                      <tr>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>DoB</th>
+                        <th>Gender</th>
+                        <th>Level</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in students %}
+                      <tr>
+                        <td>
+                          <p class="fw-normal mb-1">{{ student.name }}</p>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">{{ student.surname }}</p>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">{{ student.date_of_birth }}</p>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">{{ student.gender }}</p>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">{{ student.level }}</p>
+                        </td>
+                               
+                        <td>
+                          <button type="button" class="btn btn-link btn-sm btn-rounded">
+                          <a href="/profile/student/edit/{{ student.id }}/">Edit</a> 
+                          </button>
+                          <button type="button" class="btn btn-link btn-sm btn-rounded text-danger">
+                            <a href="/profile/student/delete/{{ student.id }}/" class="text-danger" >Delete</a> 
+                            </button>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                
+                   
+                    
+                
+                <hr>
+                
+            </div>
+        </div>             
+{% endblock %}

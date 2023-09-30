@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+               <h2 class="logo-font mb-4">Add a Student</h2>  
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            <div class="col">
+                <p>Student/s Information</p>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <form method="POST" action="{% url 'add_student' %}" class="form mb-2">
+                            {% csrf_token %}
+                            {{ form | crispy }}
+                            <!-- <input type="hidden" name="form_type" value="formS"> -->
+                            <button class="btn btn-blue rounded-0 text-uppercase float-right mb-4">Add Student to my Profile</button>
+                            <a class="btn btn-outline" href="{% url 'profile' %}">Cancel</a>
+                                
+                        </form>
+                    </div>
+             
+            </div>        
+           
+        </div>                    
+{% endblock %}
+
+{% block postloadjs %}
+    <script type="text/javascript">
+        // profile guardian dropwdown
+        $("#id_guardian").val("{{ current_user.id }}");
+    </script> 
+{% endblock %}

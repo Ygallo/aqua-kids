@@ -1,5 +1,7 @@
 from django import forms
 from .models import Order
+from profiles.models import Student
+
 
 class OrderForm(forms.ModelForm):
     class Meta:
@@ -29,3 +31,20 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
+            
+
+class StudentForm(forms.ModelForm):
+
+    class Meta:
+        model = Student
+        fields = '__all__'
+        exclude = ('guardian',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['date_of_birth'].widget = forms.widgets.DateInput(
+            attrs={
+                'type': 'date', 'placeholder': 'dd-mm-yyyy',
+                'class': 'form-control'
+                }
+            )

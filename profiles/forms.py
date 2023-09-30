@@ -26,7 +26,8 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = '__all__'
-        exclude = ('guardian',)
+       # exclude = ('guardian',)
+        widgets = {'guardian': forms.HiddenInput()}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -36,3 +37,4 @@ class StudentForm(forms.ModelForm):
                 'class': 'form-control'
                 }
             )
+        self.fields['guardian'].widget = forms.HiddenInput()
