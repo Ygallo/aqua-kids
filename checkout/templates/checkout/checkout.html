@@ -3,7 +3,7 @@
 {% load cart_tools %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout1.css' %}">
+<link rel="stylesheet" href="/static/checkout/css/checkout.css?{% now "U" %}"/>
 {% endblock %}
 
 {% block content %}
@@ -28,29 +28,36 @@
                         <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                     </div>
                 </div>
-                {% for item in cart_items %}
-                    <div class="row">
-                        <div class="col-2 mb-4">
-                            <a href="{% url 'course_detail' item.course.id %}">{{ item.course.name }}</a>
-                        </div>
-                        <div class="col-2">
-                            <p class="my-0"><strong>{{ item.course.category }}</strong></p>
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                        </div>
-                        <div class="col-6">
-                            <label for="cars">Choose a student for this course:</label>
-                            <select name="cars" id="cars">
-                            {% for student in students %}     
-                                <option value="{{ student.id }}">{{ student.name }}</option>
-                            {%endfor%}
-                            </select>                         
-                        </div>
+                <div id="cart_item_list">
+                    {% for item in cart_items %}
+                        <div class="row">
+                            <div class="col-2 mb-4">
+                                <a href="{% url 'course_detail' item.course.id %}">{{ item.course.name }}</a>
+                            </div>
+                            <div class="col-2">
+                                <p class="my-0"><strong>{{ item.course.category }}</strong></p>
+                                <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                            </div>
+                            <div class="col-6">
+                                <label for="students_select_{{item.course.id}}">Choose a student for this course:</label>
+                               <div class="selectdiv">
+                                <label>
+                                    <select name="students_select_{{item.course.id}}" id="{{item.course.id}}" >
+                                        <option value="none">Select...</option>
+                                    {% for student in students %}     
+                                        <option value="{{ student.id }}">{{ student.name }}</option>
+                                    {%endfor%}
+                                    </select>
+                                </label>
+                                </div>                        
+                            </div>
 
-                        <div class="col-2 text-right">
-                            <p class="my-0 small text-muted">€{{ item.course.price | calc_subtotal:item.quantity }}</p>
+                            <div class="col-2 text-right">
+                                <p class="my-0 small text-muted">€{{ item.course.price | calc_subtotal:item.quantity }}</p>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>    
                 <hr class="my-0 mt-4">
                 <div class="row text-black text-right">
                     <div class="col-7 offset-2">
@@ -78,6 +85,9 @@
                         {{ order_form.phone_number | as_crispy_field }}
                         {{ order_form.eircode | as_crispy_field }}
 
+                        {% for item in cart_items %}
+                        <input type="hidden" value="" name="student_{{item.course.id}}" id="student_for_course_{{item.course.id}}" />
+                        {% endfor %}
                         <div class="form-check form-check-inline float-right mr-0">
 							
                             <label class="form-check-label" for="id-save-info">Save this contact information to my profile</label>
@@ -145,4 +155,25 @@
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+
+    <script type="text/javascript">
+        // assign students to items for processing form
+        $('#cart_item_list').find('select').each(function(i,box){
+            var select= $(box);
+           var name = $(box).attr('name');
+           var id = $(box).attr('id');
+           console.log("name: "+select);
+            console.log("name: "+name);
+            console.log("id: "+id);
+
+           $(select).change(function(){
+            var value = $(select).find(':selected')[0].value;
+            $('#student_for_course_'+id).val(value);
+         });
+     
+
+        });
+
+        
+    </script>
 {% endblock %}

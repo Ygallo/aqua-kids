@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col">
                             <small class="text-muted">Order Details:</small>
                         </div>
@@ -51,18 +51,18 @@
 
                     {% for item in order.lineitems.all %}
                     <div class="row">
-                        <div class="col-12 col-md-4">
-                            <p class="small mb-0 text-black font-weight-bold">
-                                {{ item.course.name }}
+                        <div class="col-12 col-md-6">
+                            <p class="small mb-0 text-black ">
+                                Course: <span class="font-weight-bold">{{ item.course.name }}</span> bought for <span class="font-weight-bold">{{item.student.name}}</span>
                             </p>
                         </div>
-                        <div class="col-12 col-md-8 text-md-right">
+                        <div class="col-12 col-md-6 text-md-right">
                             <p class="small mb-0">{{ item.quantity }}@ ${{ item.course.price }} each</p>
                         </div>
                     </div>
                     {% endfor %}
 
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col">
                             <small class="text-muted">Order Contact Details:</small>
                         </div>
@@ -104,7 +104,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col">
                             <small class="text-muted">Billing Info</small>
                         </div>

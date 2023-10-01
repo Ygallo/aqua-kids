@@ -39,14 +39,19 @@ def checkout(request):
     if request.method == 'POST':
         cart = request.session.get('cart', {})
 
-        form_data = {
-            'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
-            'phone_number': request.POST['phone_number'],
-            'eircode': request.POST['eircode'],
-        }
+       # form_data = {
+       #     'full_name': request.POST['full_name'],
+       #     'email': request.POST['email'],
+       #     'phone_number': request.POST['phone_number'],
+       #     'eircode': request.POST['eircode'],
+       # }
+
+        form_data = {}
+        for key, value in request.POST.items():
+            form_data[key] = value
+
+       # print(form_data2)
         order_form = OrderForm(form_data)
-       
 
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -54,15 +59,21 @@ def checkout(request):
             order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
             order.save()
-           
+
             for item_id, item_data in cart.items():
+                # print(item_id)
+                # print(item_data)
+                current_student = form_data.get("student_"+item_id)
+                # print(current_student)
                 try:
                     course = Course.objects.get(id=item_id)
+                    student = Student.objects.get(id=current_student)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
                             course=course,
                             quantity=item_data,
+                            student=student
                         )
                         places_left = course.places - item_data
                         course.places = places_left
@@ -108,14 +119,12 @@ def checkout(request):
                 })
                 queryset = Student.objects.all()
                 students = queryset.filter(guardian=profile.id)
-                
-           
+
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
-                              
+
         else:
             order_form = OrderForm()
-           
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \

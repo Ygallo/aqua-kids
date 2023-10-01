@@ -11,3 +11,8 @@
 #profile-update-form input::placeholder {
     color: #aab7c4;
 }
+
+.student-buttons-div{
+    position: relative;
+    margin-top: 30px;
+}
