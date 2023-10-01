@@ -7,7 +7,7 @@ from .forms import OrderForm, StudentForm
 from .models import Order, OrderLineItem
 from courses.models import Course
 from profiles.forms import UserProfileForm
-from profiles.models import UserProfile
+from profiles.models import UserProfile, Student
 from cart.contexts import cart_contents
 
 import stripe
@@ -106,12 +106,13 @@ def checkout(request):
                     'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
                 })
-
+                queryset = Student.objects.all()
+                students = queryset.filter(guardian=profile.id)
                 
-
+           
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
-                
+                              
         else:
             order_form = OrderForm()
            
@@ -125,6 +126,7 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+        'students': students,
     }
 
     return render(request, template, context)

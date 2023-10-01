@@ -29,17 +29,19 @@ class Category(models.Model):
 
 
 class Levels(models.Model):
-    SEAHORSE_BEGGINERS = 'SEAHORSE_BEGGINERS'
-    JELLYFISH_FLOATERS = 'JELLYFISH_FLOATER'
-    TURTLE_GLIDERS = 'TURTLE_GLIDERS'
-    DOLPHIN_DIVERS = 'DOLPHIN_DIVERS'
-    SHARK_SPEEDSTERS = 'SHARK_SPEEDSTERS'
+    SEAHORSE_BEGGINERS = 'Seahorse_Begginers'
+    JELLYFISH_FLOATERS = 'Jellyfish_Floater'
+    TURTLE_GLIDERS = 'Turtle_Gliders'
+    DOLPHIN_DIVERS = 'Dolphins_Divers'
+    SHARK_SPEEDSTERS = 'Shark_Speedster'
+    PERSONALISED = 'Personalised'
     LEVEL = [
-        (SEAHORSE_BEGGINERS, 'seahorse_begginers'),
-        (JELLYFISH_FLOATERS, 'jellyfish_floaters'),
-        (TURTLE_GLIDERS, 'turtle_gliders'),
-        (DOLPHIN_DIVERS, 'dolphin_divers'),
-        (SHARK_SPEEDSTERS, 'shark_speedsters'),
+        (SEAHORSE_BEGGINERS, 'Seahorse_Begginers'),
+        (JELLYFISH_FLOATERS, 'Jellyfish_Floaters'),
+        (TURTLE_GLIDERS, 'turtle_Gliders'),
+        (DOLPHIN_DIVERS, 'Dolphin_Divers'),
+        (SHARK_SPEEDSTERS, 'Shark_Speedsters'),
+        (PERSONALISED, 'Personalised')
     ]
     level = models.CharField(
         max_length=30,
@@ -62,14 +64,14 @@ class Course(models.Model):
     start_date = models.DateField(auto_now=False)
     start_time = models.TextField(default='blank')
     end_date = models.DateField(auto_now=False)
-    MONDAY = 'MONDAY'
-    TUESDAY = 'TUESDAY'
-    WEDNESDAY = 'WEDNESDAY'
-    THRUSDAY = 'THRUSDAY'
-    FRIDAY = 'FRIDAY'
-    SATURDAY = 'SATURDAY'
-    SUNDAY = 'SUNDAY'
-    WEEKLY = 'MON-FRI'
+    MONDAY = 'Monday'
+    TUESDAY = 'Tuesday'
+    WEDNESDAY = 'Wednesday'
+    THRUSDAY = 'Thursday'
+    FRIDAY = 'Friday'
+    SATURDAY = 'Saturday'
+    SUNDAY = 'Sunday'
+    WEEKLY = 'Mon-Fri'
     DAY_OF_THE_WEEK = [
         (MONDAY, 'Monday'),
         (TUESDAY, 'Tuesday'),
