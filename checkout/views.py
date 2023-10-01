@@ -35,6 +35,12 @@ def cache_checkout_data(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    context = {
+        "order_form": "",
+        "client_secret": "",
+        "stripe_public_key": "",
+        "students": "",
+    }
 
     if request.method == 'POST':
         cart = request.session.get('cart', {})
@@ -45,7 +51,7 @@ def checkout(request):
        #     'phone_number': request.POST['phone_number'],
        #     'eircode': request.POST['eircode'],
        # }
-
+        
         form_data = {}
         for key, value in request.POST.items():
             form_data[key] = value
@@ -73,7 +79,7 @@ def checkout(request):
                             order=order,
                             course=course,
                             quantity=item_data,
-                            student=student
+                           student=student,
                         )
                         places_left = course.places - item_data
                         course.places = places_left
@@ -112,32 +118,32 @@ def checkout(request):
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
+                queryset = Student.objects.all()
+                students = queryset.filter(guardian=profile.id)
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
                 })
-                queryset = Student.objects.all()
-                students = queryset.filter(guardian=profile.id)
+                context["students"] = students
+                
+               
 
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
 
         else:
             order_form = OrderForm()
+            
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
 
+    context['order_form'] = order_form
+    context["stripe_public_key"] = stripe_public_key
+    context["client_secret"] = intent.client_secret                
     template = 'checkout/checkout.html'
-    context = {
-        'order_form': order_form,
-        'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
-        'students': students,
-    }
-
     return render(request, template, context)
 
 

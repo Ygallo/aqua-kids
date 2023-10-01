@@ -6,7 +6,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
-from .models import UserProfile, Student
+from .models import UserProfile, Student, User
 from .forms import UserProfileForm, StudentForm
 from checkout.models import Order
 
@@ -25,33 +25,25 @@ def profile(request):
         if request.POST.get("form_type") == 'formP':
             # Handle Elements from first Form
             form = UserProfileForm(request.POST, instance=profile)
-            student_form = StudentForm()
+           # student_form = StudentForm()
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Profile updated successfully')
             else:
                 messages.error(request, 'Error on update. Make sure the form is valid.')
-        elif request.POST.get("form_type") == 'formS':
-            # Handle Elements from second Form
-            student_form = StudentForm(request.POST)
-            form = UserProfileForm(instance=profile)
-            if student_form.is_valid():
-                student_form.save()
-                messages.success(request, 'Student updated successfully')
-            else:
-                messages.error(request, 'Error on update. Make sure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
-        student_form = StudentForm()
+        form = UserProfileForm()
+       # student_form = StudentForm()
 
     # students = profile.students.all() 
 
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
+  
     context = {
         'form': form,
-        'student_form': student_form,
         'orders': orders,
         'students': students,
         'current_user': profile,
@@ -99,7 +91,7 @@ def add_student(request):
         if form.is_valid():
             student = form.save()
             messages.success(request, 'Student added successfully!')
-            return redirect(reverse('student'))
+            return redirect(reverse('students'))
         else:
             messages.error(request, 'Failed to add the student. Please make sure the form is valid.')
     else:

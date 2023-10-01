@@ -39,17 +39,21 @@
                                 <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                             </div>
                             <div class="col-6">
-                                <label for="students_select_{{item.course.id}}">Choose a student for this course:</label>
-                               <div class="selectdiv">
-                                <label>
-                                    <select name="students_select_{{item.course.id}}" id="{{item.course.id}}" >
-                                        <option value="none">Select...</option>
-                                    {% for student in students %}     
-                                        <option value="{{ student.id }}">{{ student.name }}</option>
-                                    {%endfor%}
-                                    </select>
-                                </label>
-                                </div>                        
+                                    {% if not students  %}
+                                        <span class="text-danger"><a href="/profile/students/" class="text-danger">Click here</a> to create a student first!</span>
+                                    {% else %}
+                                    <label for="students_select_{{item.course.id}}">Choose a student for this course:</label>
+                                    <div class="selectdiv">
+                                     <label>
+                                         <select name="students_select_{{item.course.id}}" id="{{item.course.id}}" >
+                                             <option value="none">Select...</option>
+                                            {% for student in students %}     
+                                             <option value="{{ student.id }}">{{ student.name }}</option>
+                                             {%endfor%}
+                                        </select>
+                                     </label>
+                                    </div>          
+                                    {% endif %}                    
                             </div>
 
                             <div class="col-2 text-right">
@@ -158,21 +162,27 @@
 
     <script type="text/javascript">
         // assign students to items for processing form
+        var ready_for_submit = false;
         $('#cart_item_list').find('select').each(function(i,box){
-            var select= $(box);
+           var select= $(box);
            var name = $(box).attr('name');
            var id = $(box).attr('id');
-           console.log("name: "+select);
-            console.log("name: "+name);
-            console.log("id: "+id);
-
-           $(select).change(function(){
-            var value = $(select).find(':selected')[0].value;
-            $('#student_for_course_'+id).val(value);
-         });
-     
-
+            $(select).change(function(){
+                var value = $(select).find(':selected')[0].value;
+                $('#student_for_course_'+id).val(value);
+                if(value!="Select"){
+                    ready_for_submit = true;
+                }
+            });
         });
+
+        $("#submit-button").each(function () {
+            $(this).click(function () {
+                if (!ready_for_submit) {
+                    alert("Please Select a Student before completing the order");
+                }
+            })
+        })
 
         
     </script>
