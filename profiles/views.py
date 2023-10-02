@@ -117,7 +117,7 @@ def edit_student(request, student_id):
             form.save()
             messages.success(request, 'Student updated successfully!')
             # return redirect(reverse('student', args=[student_id]))
-            return redirect(reverse('student'))
+            return redirect(reverse('students'))
         else:
             messages.error(request, 'Failed to update the student. Please make sure the form is valid.')
     else:
@@ -134,17 +134,21 @@ def edit_student(request, student_id):
     return render(request, template, context)
 
 
-@login_required
-def delete_student(request, student_id):
-    """ Delete a student from your profile """
+class DeleteStudent(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
+    """
+    View that allows loggged in users to delete a student on their account
+    """
+    model = Student
+    template_name = 'profiles/delete_student.html'
+    success_url = reverse_lazy('students')
+    success_message = "The student was deleted!"
 
-    student = get_object_or_404(Student, pk=student_id)
-    student.delete()
-    messages.success(request, 'The student was deleted!')
-
-    template = 'profiles/delete_student.html'
-
-    return redirect(reverse('student'))
+    def delete(self, request, *args, **kwargs):
+        """
+        Code for success message take from python tutorial and stackoverflow
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeleteStudent, self).delete(request, *args, **kwargs)
 
 
 def order_history(request, order_number):

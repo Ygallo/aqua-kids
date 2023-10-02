@@ -163,7 +163,6 @@
 
     <script type="text/javascript">
         // assign students to items for processing form
-        var ready_for_submit = false;
         var charge_info = "Your card will be charged <strong>${{ grand_total|floatformat:2 }}";
         let dropdown_selected = [];
 
@@ -177,7 +176,7 @@
             $('#cart_item_list').find('select').each(function(i,box){
                 var select= $(box);
                 var value = $(select).find(':selected')[0].value;
-                console.log("value: "+value);
+               
                 if(value!="none"){
                     dropdown_selected[i]=true;         
                    if(allAreTrue(dropdown_selected)){
@@ -198,7 +197,7 @@
 
             $(select).change(function(){
                 var value = $(select).find(':selected')[0].value;
-                $('#student_for_course_'+id).val(value);
+                $('#student_for_course_'+id).val(value); // change the value if the hidden input for checkout form
                 check_if_all_selected();
             });
         });
