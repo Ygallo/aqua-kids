@@ -14,10 +14,12 @@ class UserProfile(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_email = models.EmailField(max_length=254, null=False, blank=False)
-    default_phone_number = models.CharField(max_length=20, null=False, blank=False)
+    default_phone_number = models.CharField(max_length=20, null=False,
+                                            blank=False)
 
     def __str__(self):
         return self.user.username
+
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
@@ -26,8 +28,9 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
     if created:
         UserProfile.objects.create(user=instance)
-        #Existing users: just savethe profile
+        # Existing users: just savethe profile
     instance.userprofile.save()
+
 
 class Student(models.Model):
     name = models.CharField(max_length=50, default='blank')
@@ -51,8 +54,8 @@ class Student(models.Model):
     level = models.ForeignKey(Levels, on_delete=models.CASCADE)
     special_requirements = models.TextField(max_length=200, default='blank')
     guardian = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
-                                     null=True, blank=True,
-                                     related_name='students')
+                                 null=True, blank=True,
+                                 related_name='students')
 
     def __str__(self):
         return self.name

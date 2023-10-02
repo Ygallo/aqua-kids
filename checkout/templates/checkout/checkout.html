@@ -31,16 +31,16 @@
                 <div id="cart_item_list">
                     {% for item in cart_items %}
                         <div class="row">
-                            <div class="col-2 mb-4">
+                            <div class="col-4 mb-4">
                                 <a href="{% url 'course_detail' item.course.id %}">{{ item.course.name }}</a>
                             </div>
                             <div class="col-2">
                                 <p class="my-0"><strong>{{ item.course.category }}</strong></p>
                                 <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-4">
                                     {% if not students  %}
-                                        <span class="text-danger"><a href="/profile/students/" class="text-danger">Click here</a> to create a student first!</span>
+                                        <span class="text-danger"><a href="/profile/students/" class="text-danger">Click here to create a student first!</a> </span>
                                     {% else %}
                                     <label for="students_select_{{item.course.id}}">Choose a student for this course:</label>
                                     <div class="selectdiv">
@@ -117,17 +117,18 @@
 							</span>
 							<span class="font-weight-bold">Adjust Cart</span>
 						</a>
-						<button id="submit-button" class="btn btn-black rounded-0">
+						<button id="submit-button" class="btn btn-black rounded-0" disabled>
 							<span class="font-weight-bold btn-blue">Complete Order</span>
 							<span class="icon">
 								<i class="fas fa-lock"></i>
 							</span>
 						</button>
-						<p class="small text-danger my-0">
+						<p class="small text-danger my-0 purchase_info">
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                            
+							<span id="charge_info"><strong>Please select a student first</strong></span>
 						</p>
 					</div>
                 </form>
@@ -163,27 +164,44 @@
     <script type="text/javascript">
         // assign students to items for processing form
         var ready_for_submit = false;
+        var charge_info = "Your card will be charged <strong>${{ grand_total|floatformat:2 }}";
+        let dropdown_selected = [];
+
+        //check if all select have been selected
+        function allAreTrue(arr) {
+            return arr.every(element => element === true);
+        }
+        
+        //check if a choice has been selected and check if all the selects haven been chosen, then renable the submit button
+        function check_if_all_selected (){
+            $('#cart_item_list').find('select').each(function(i,box){
+                var select= $(box);
+                var value = $(select).find(':selected')[0].value;
+                console.log("value: "+value);
+                if(value!="none"){
+                    dropdown_selected[i]=true;         
+                   if(allAreTrue(dropdown_selected)){
+                    $("#charge_info").html(charge_info);
+                    $('#submit-button').removeAttr('disabled');
+                   }
+                }
+            });
+        }
+
+        //grab all the select objects and assign a change function to each also add the value to the hidden intpu on the form when change
         $('#cart_item_list').find('select').each(function(i,box){
            var select= $(box);
            var name = $(box).attr('name');
            var id = $(box).attr('id');
+
+           dropdown_selected[i]=false;
+
             $(select).change(function(){
                 var value = $(select).find(':selected')[0].value;
                 $('#student_for_course_'+id).val(value);
-                if(value!="Select"){
-                    ready_for_submit = true;
-                }
+                check_if_all_selected();
             });
         });
-
-        $("#submit-button").each(function () {
-            $(this).click(function () {
-                if (!ready_for_submit) {
-                    alert("Please Select a Student before completing the order");
-                }
-            })
-        })
-
         
     </script>
 {% endblock %}

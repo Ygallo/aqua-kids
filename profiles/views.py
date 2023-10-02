@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse    
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views import generic, View
@@ -25,7 +25,7 @@ def profile(request):
         if request.POST.get("form_type") == 'formP':
             # Handle Elements from first Form
             form = UserProfileForm(request.POST, instance=profile)
-           # student_form = StudentForm()
+            # student_form = StudentForm()
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Profile updated successfully')
@@ -34,14 +34,14 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
         form = UserProfileForm()
-       # student_form = StudentForm()
+        # student_form = StudentForm()
 
-    # students = profile.students.all() 
+    # students = profile.students.all()
 
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
-  
+
     context = {
         'form': form,
         'orders': orders,
@@ -145,7 +145,6 @@ def delete_student(request, student_id):
     template = 'profiles/delete_student.html'
 
     return redirect(reverse('student'))
-
 
 
 def order_history(request, order_number):

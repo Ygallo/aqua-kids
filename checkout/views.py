@@ -45,18 +45,10 @@ def checkout(request):
     if request.method == 'POST':
         cart = request.session.get('cart', {})
 
-       # form_data = {
-       #     'full_name': request.POST['full_name'],
-       #     'email': request.POST['email'],
-       #     'phone_number': request.POST['phone_number'],
-       #     'eircode': request.POST['eircode'],
-       # }
-        
         form_data = {}
         for key, value in request.POST.items():
             form_data[key] = value
 
-       # print(form_data2)
         order_form = OrderForm(form_data)
 
         if order_form.is_valid():
@@ -67,10 +59,7 @@ def checkout(request):
             order.save()
 
             for item_id, item_data in cart.items():
-                # print(item_id)
-                # print(item_data)
                 current_student = form_data.get("student_"+item_id)
-                # print(current_student)
                 try:
                     course = Course.objects.get(id=item_id)
                     student = Student.objects.get(id=current_student)
@@ -79,7 +68,7 @@ def checkout(request):
                             order=order,
                             course=course,
                             quantity=item_data,
-                           student=student,
+                            student=student,
                         )
                         places_left = course.places - item_data
                         course.places = places_left
@@ -95,7 +84,8 @@ def checkout(request):
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                            args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -126,15 +116,12 @@ def checkout(request):
                     'phone_number': profile.default_phone_number,
                 })
                 context["students"] = students
-                
-               
 
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
 
         else:
             order_form = OrderForm()
-            
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -142,7 +129,7 @@ def checkout(request):
 
     context['order_form'] = order_form
     context["stripe_public_key"] = stripe_public_key
-    context["client_secret"] = intent.client_secret                
+    context["client_secret"] = intent.client_secret
     template = 'checkout/checkout.html'
     return render(request, template, context)
 
