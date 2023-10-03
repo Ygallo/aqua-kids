@@ -18,10 +18,10 @@
                    
                     <div class="col">
                         <div class="card border-0">
-                            {% if category.image %}
-                            <img class="card-img-top img-fluid rounded-start" src="{{ category.image.url }}" alt="{{ category.name }}">
-                            {% else %}
+                            {% if "placeholder" in category.image.url %}
                             <img class="card-img-top img-fluid rounded-start" src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="{{ category.name }}">
+                            {% else %}
+                            <img class="card-img-top img-fluid rounded-start" src="{{ category.image.url }}" alt="{{ category.name }}">
                             {% endif %}
                         </div>
                         

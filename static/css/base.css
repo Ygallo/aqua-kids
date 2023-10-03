@@ -34,9 +34,16 @@ p {
     color: #131313;
 }
 
+.lookup {
+    background-color:#7b7475;
+}
 
 .btn-outline {
-    border: solid 2px #178fe1;
+    border: solid 2px #5775e7;
+}
+
+.blue-lock {
+    color: #5775e7;
 }
 
 .navbar {
@@ -227,8 +234,8 @@ footer li i{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #178FE1;
-    border: 1px solid #178fe1;
+    background-color: #5775e7;
+    border: 1px solid #5775e7;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;

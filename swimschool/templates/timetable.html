@@ -23,15 +23,15 @@
         <tr>
           <td>
             <div class="d-flex align-items-center">
-              {% if course.image %}
+              {% if "placeholder" in course.image.url %}
               <img
-              src="{{ course.image.url }}" alt="{{ course.name }}"
+              src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="{{ course.name }}"
                   style="width: 45px; height: 45px"
                   class="rounded-circle"
                   />
               {% else %}
               <img
-              src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="{{ course.name }}"
+              src="{{ course.image.url }}" alt="{{ course.name }}"
                   style="width: 45px; height: 45px"
                   class="rounded-circle"
                   />
