@@ -20,7 +20,7 @@
                         <thead class="text-black">
                             <tr>
                                 <th scope="col">Course Info</th>
-                                <th scope="col"></th>
+                                <th scope="col" class="cart-item-img"></th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Subtotal</th>
@@ -29,17 +29,17 @@
                         {% for item in cart_items %}
                             <tr>
                             {% if "placeholder" in item.course.image.url %}
-                                <td class="p-3 w-25">
+                                <td class="p-3 w-25 cart-item-img">
                                     <img class="rounded-circle" style="width: 45px; height: 45px"
                                     src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="placeholder image">
                                 </td>
                             {% else %}
-                                <td class="p-3 w-25">
+                                <td class="p-3 w-25 cart-item-img">
                                     <img class="rounded-circle" style="width: 45px; height: 45px" src="{{ item.course.image.url }}">
                                 </td>
                             {% endif %}
                                 <td class="py-3">
-                                    <p class="my-0"><strong>{{ item.course.name }}</strong></p>
+                                    <p class="my-0"><strong>{{ item.course.name|truncatechars:20 }}</strong></p>
                                 </td>
                                 <td class="py-3">
                                     <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.course.id %}">
@@ -55,7 +55,7 @@
                                                     </button>
                                                 </div>
                                                 <input class="form-control form-control-sm qty_input" type="number"
-                                                    name="quantity" value="{{ item.quantity }}" min="1" max="6"
+                                                    name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.course.places }}"
                                                     data-item_id="{{ item.course.id }}"
                                                     id="id_qty_{{ item.course.id}}">
                                                 <div class="input-group-append">
