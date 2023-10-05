@@ -497,8 +497,8 @@ The site is now live and operational.
 - [Code Institute - Boutique Ado](https://github.com/Code-Institute-Solutions/boutique_ado_v1)
 - [Page Turner Book Club](https://page-turner-bookclub.herokuapp.com/mybooks/)
 - [Red Frog](http://www.redfrog.ie/)- Swim school website
-- [Splashtic](https://splashtastic.ie/) - Swim school website
-- []
+- [Splashtastic](https://splashtastic.ie/) - Swim school website
+- [iswim](https://iswim.ie/)
 - [Products list page](https://bbbootstrap.com/snippets/bootstrap-ecommerce-category-product-list-page-93685579)
 
 ## Acknowledgments
