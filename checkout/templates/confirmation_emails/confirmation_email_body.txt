@@ -11,7 +11,7 @@ Student Surname:	{{ student.surname }}
 Date of Birth {{student.date_of_birth }}
 
 Level:	{{student.level}}
-Startdate:	{{ course.start_date }}
+Start date:	{{ course.start_date }}
 Schedule:	{{ course.day_of_the_week }} at {{ course.start_time }}
 
 Grand Total: ${{ order.grand_total }}

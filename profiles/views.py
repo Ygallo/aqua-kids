@@ -22,10 +22,8 @@ def profile(request):
     students = queryset.filter(guardian=profile.id)
 
     if request.method == 'POST':
-        if request.POST.get("form_type") == 'formP':
-            # Handle Elements from first Form
             form = UserProfileForm(request.POST, instance=profile)
-            # student_form = StudentForm()
+            
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Profile updated successfully')
@@ -34,9 +32,6 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
         form = UserProfileForm()
-        # student_form = StudentForm()
-
-    # students = profile.students.all()
 
     orders = profile.orders.all()
 
