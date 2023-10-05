@@ -30,7 +30,7 @@ def profile(request):
                 form.save()
                 messages.success(request, 'Profile updated successfully')
             else:
-                messages.error(request, 'Error on update. Make sure the form is valid.')
+                messages.error(request, 'Error on update. Please check the form.')
     else:
         form = UserProfileForm(instance=profile)
         form = UserProfileForm()
@@ -134,7 +134,8 @@ def edit_student(request, student_id):
     return render(request, template, context)
 
 
-class DeleteStudent(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
+class DeleteStudent(LoginRequiredMixin, SuccessMessageMixin,
+                    generic.DeleteView):
     """
     View that allows loggged in users to delete a student on their account
     """

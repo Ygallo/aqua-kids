@@ -11,7 +11,7 @@ class CourseAdmin(admin.ModelAdmin):
         'category',
         'start_date',
     )
-    search_fields=['name','level','category']
+    search_fields = ['name', 'level', 'category']
     ordering = ('name',)
 
 
@@ -28,6 +28,7 @@ class LevelsAdmin(admin.ModelAdmin):
         'who_for',
         'skills',
     )
+
 
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Category, CategoryAdmin)

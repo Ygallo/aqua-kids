@@ -83,7 +83,7 @@ def add_course(request):
             messages.success(request, 'Course added successfully!')
             return redirect(reverse('course_detail', args=[course.id]))
         else:
-            messages.error(request, 'Failed to add the course. Please make sure the form is valid.')
+            messages.error(request, 'Failed to add the course. Please check the form.')
     else:
         form = CourseForm()
 
@@ -110,7 +110,7 @@ def edit_course(request, course_id):
             messages.success(request, 'Course updated successfully!')
             return redirect(reverse('course_detail', args=[course_id]))
         else:
-            messages.error(request, 'Failed to update the course. Please make sure the form is valid.')
+            messages.error(request, 'Failed to update the course. Please check the form.')
     else:
         form = CourseForm(instance=course)
         messages.info(request, f'You are editing {course.name}')
@@ -124,7 +124,8 @@ def edit_course(request, course_id):
     return render(request, template, context)
 
 
-class DeleteCourse(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
+class DeleteCourse(LoginRequiredMixin, SuccessMessageMixin,
+                   generic.DeleteView):
     """
     View that allows Admin users to delete a course
     """
