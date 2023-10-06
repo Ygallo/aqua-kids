@@ -289,11 +289,16 @@ ul li.icon-white {
   
 /* -----Mail Chimp---------*/
 
-#mc_embed_signup {
-    background:#fff; false;
+#mc_embed_signup form {
+    background:#5775e7; false;
     clear:left; 
     font:14px Helvetica,Arial,sans-serif; 
     width: 350px;
+}
+
+#mc-embedded-subscribe {
+    color: #000;
+    background-color: #fff;
 }
 
 
