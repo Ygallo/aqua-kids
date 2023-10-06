@@ -2,207 +2,262 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {% block meta %}
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description"
-        content="At AquaKids Swimming School, we are passionate about introducing children to the joys and benefits of swimming. 
-        Catering exclusively to our younger swimmers">
-    <meta name="Keywords"
-        content="swim school, learn to swim, kids swimming lessons, life skill, water safety, indoor swim, child-friendly lessons, 
-        summer swim camps, private swimming lessons, ireland, dublin">
-    {% endblock %}
-    
-    {% block corecss %}
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
- 
-    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
-    
-    {% endblock %}
-
-    {% block extra_css %}
-    {% endblock %}
-
-    {% block corejs %}
-    <script src="https://kit.fontawesome.com/b03bc5fab6.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
-    {% endblock %}
-    
-    <title>AquaKids</title>
-</head>
-<body>
-    <header>
-        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                <a class="navbar-brand" href="/">
-                    <img src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654635/AquaKids/aquakids-logo1_zb4ozo.png" href="{% url 'home' %}"  width="250px" class="d-inline-block align-top" alt="aquakids-logo">
-                </a>
-            </div>
+    <head>
+        {% block meta %}
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta name="description"
+            content="At AquaKids Swimming School, we are passionate about introducing children to the joys and benefits of swimming. 
+            Catering exclusively to our younger swimmers">
+        <meta name="Keywords"
+            content="swim school, learn to swim, kids swimming lessons, life skill, water safety, indoor swim, child-friendly lessons, 
+            summer swim camps, private swimming lessons, ireland, dublin">
+        {% endblock %}
         
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <form method="GET" action="{% url 'courses'%}" class="form-inline">
-                    <div class="input-group w-100">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" name="q" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="form-control btn my-2 my-sm-0 lookup" type="submit">
-                                <span class="icon">
-                                    <i class="fa-solid fa-magnifying-glass" style="color: #fff;"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        {% block corecss %}
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <!-- Mail Chimp -->
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+           
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        
+        {% endblock %}
 
-         
+        {% block extra_css %}
+        {% endblock %}
 
-            <!--From CI Boutique ADO-->
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                    <li class="list-inline-item dropdown">
-                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <div class="text-center">
-                                <div><i class="fas fa-user fa-lg"></i></div>
-                                <p class="my-0">My Account</p>
+        {% block corejs %}
+        <script src="https://kit.fontawesome.com/b03bc5fab6.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <!-- Stripe -->
+        <script src="https://js.stripe.com/v3/"></script>
+        {% endblock %}
+        
+        <title>AquaKids</title>
+    </head>
+
+    <body>
+        <header>
+            <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+                    <a class="navbar-brand" href="/">
+                        <img src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654635/AquaKids/aquakids-logo1_zb4ozo.png" href="{% url 'home' %}"  width="250px" class="d-inline-block align-top" alt="aquakids-logo">
+                    </a>
+                </div>
+            
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <form method="GET" action="{% url 'courses'%}" class="form-inline">
+                        <div class="input-group w-100">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="q" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="form-control btn my-2 my-sm-0 lookup" aria-label="Search icon" type="submit">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-magnifying-glass" style="color: #fff;"></i>
+                                    </span>
+                                </button>
                             </div>
-                        </a>
-                   
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                            {% if user.is_authenticated %}
-                                {% if user.is_superuser %}
-                                    <a href="{% url 'add_course' %}" class="dropdown-item">School Management</a>
-                                {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
-                                <a href="{% url 'students' %}" class="dropdown-item">Students</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                            {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                            {% endif %}
                         </div>
-                     </li>
-                    <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
-                            <div class="text-center">
-                                <div><i class="fas fa-solid fa-cart-shopping fa-lg"></i></div>    
-                                <p class="my-0">
-                                    {% if grand_total %}
-                                        €{{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                        €0.00
+                    </form>
+                </div>        
+
+                <!--From CI Boutique ADO-->
+                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                    <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                        <li class="list-inline-item dropdown">
+                            <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center">
+                                    <div><i class="fas fa-user fa-lg"></i></div>
+                                    <p class="my-0">My Account</p>
+                                </div>
+                            </a>
+                    
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                {% if user.is_authenticated %}
+                                    {% if user.is_superuser %}
+                                        <a href="{% url 'add_course' %}" class="dropdown-item">School Management</a>
                                     {% endif %}
-                                </p>
+                                    <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                                    <a href="{% url 'students' %}" class="dropdown-item">Students</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                {% else %}
+                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                {% endif %}
                             </div>
-                        </a>
-                    </li>
-                    </li>
-                </ul>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
+                                <div class="text-center">
+                                    <div><i class="fas fa-solid fa-cart-shopping fa-lg"></i></div>    
+                                    <p class="my-0">
+                                        {% if grand_total %}
+                                            €{{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                            €0.00
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        </li>
+                    </ul>
+                </div>    
             </div>
+            {% include 'includes/mobile-top-header.html' %}   
+        </header>
             
-        </div>
-        {% include 'includes/mobile-top-header.html' %}
-        
-        
-    </header>
-        
+        {% block page_header %}
+        {% endblock %}
+
+        <span id="_pageName" style="display:none">{% block pagename %}{% endblock %}</span>
     
+        {% block content %}
+        {% endblock %}
 
-    {% block page_header %}
-    {% endblock %}
-
-    <span id="_pageName" style="display:none">{% block pagename %}{% endblock %}</span>
-
-   
-
-    {% block content %}
-    {% endblock %}
-
-
-    <!-- Footer -->
-    <footer class="nav justify-content-center border-bottom mt-auto">
-        <div class="container col-6">
-          <ul class="social-networks nav justify-content-center list-unstyled d-flex">
-            <li>
-              <a href="http://www.facebook.com" target="_blank" aria-label="Visit our Facebook page. Opens in a new tab"><i class="fa-brands fa-facebook"></i></a>
-            </li>
-            <li>
-              <a href="http://www.instagram.com" target="_blank" aria-label="Visit our Instagram page. Opens in a new tab"><i class="fa-brands fa-instagram"></i></a>
-            </li>
-            <li>
-              <a href="http://www.twitter.com" target="_blank" aria-label="Visit our Twitter page. Opens in a new tab"><i class="fa-brands fa-twitter"></i></a>
-            </li>
-  
-          </ul>
-        </div>
-        <div class="col-6">
-            <p>mailchimp</p>
-        </div>
-    </footer>
-
-     
-    {% if messages %}
-    <div class="message-container" style="position:fixed; top: 100px; right: 20px;z-index: 99999999999;">
-        {% for message in messages %}
-            
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% elif level == 20  %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% endif %}
-            {% endwith %}
-            
-        {% endfor %}
-    </div>
-    {% endif %}
+        <!-- Footer -->
+        <footer class="nav justify-content-center border-bottom mt-auto">
+            <div class="container col-6">
+            <ul class="social-networks nav justify-content-center list-unstyled d-flex">
+                <li>
+                <a href="http://www.facebook.com" target="_blank" aria-label="Visit our Facebook page. Opens in a new tab"><i class="fa-brands fa-facebook"></i></a>
+                </li>
+                <li>
+                <a href="http://www.instagram.com" target="_blank" aria-label="Visit our Instagram page. Opens in a new tab"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                <a href="http://www.twitter.com" target="_blank" aria-label="Visit our Twitter page. Opens in a new tab"><i class="fa-brands fa-twitter"></i></a>
+                </li>
     
-    {% block postloadjs %}
+            </ul>
+            </div>
+            <!-- Mail Chimp newsletter form -->
+            <div class="col-6">
+                <div id="mc_embed_shell">
+                    <div id="mc_embed_signup">
+                        <form
+                            action="https://github.us21.list-manage.com/subscribe/post?u=9822994785169293407119fad&amp;id=ebc9096129&amp;f_id=004059e1f0"
+                            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                            class="validate" target="_blank">
+                            <div id="mc_embed_signup_scroll">
+                                <h2>Subscribe</h2>
+                                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                                <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span
+                                            class="asterisk">*</span></label><input type="email" name="EMAIL"
+                                        class="required email" id="mce-EMAIL" required="" value=""></div>
+                                <div id="mce-responses" class="clear foot">
+                                    <div class="response" id="mce-error-response" style="display: none;"></div>
+                                    <div class="response" id="mce-success-response" style="display: none;"></div>
+                                </div>
+                                <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                    /* real people should not fill this in and expect good things - do not remove this
+                                    or risk form bot signups */
+                                    <input type="text" name="b_9822994785169293407119fad_ebc9096129" tabindex="-1"
+                                        value="">
+                                </div>
+                                <div class="optionalParent">
+                                    <div class="clear foot">
+                                        <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"
+                                            value="Subscribe">
+                                        <p style="margin: 0px auto;">
+                                            <a href="http://eepurl.com/iuPcQo"title="Mailchimp - email marketing made easy and fun">
+                                                <span style="display: inline-block; background-color: transparent; border-radius: 4px;">
+                                                    <img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg"
+                                                    alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;">
+                                                </span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </footer>
+        
+        {% if messages %}
+        <div class="message-container" style="position:fixed; top: 100px; right: 20px;z-index: 99999999999;">
+            {% for message in messages %}
+                
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% elif level == 20  %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+                
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% block postloadjs %}
+        <script type="text/javascript">
+        //toast
+        $('.toast').toast('show');
 
-    <script type="text/javascript">
-       //toast
-       $('.toast').toast('show');
+        // drop down
+        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
 
-       // drop down
-       $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-       if (!$(this).next().hasClass('show')) {
-           $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-       }
-       var $subMenu = $(this).next(".dropdown-menu");
-       $subMenu.toggleClass('show');
-
-
-       $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-           $('.dropdown-submenu .show').removeClass("show");
-       });
-
-           return false;
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+            $('.dropdown-submenu .show').removeClass("show");
         });
+            return false;
+            });
 
+            // add active class to current link
+            $(function() {
+                var pageName = document.getElementById('_pageName');
+                if (pageName != null) { pageName = pageName.innerHTML; }
+                else { pageName = ''; }
+                if (pageName.length > 0) {
+                    $("li[data-link-name='" + pageName + "']").addClass('active');
+                }
+            });
+        </script>
+        <!-- Mail Chimp-->
+        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js">
+        </script>
+        <script type="text/javascript">
+            (function ($) {
+                window.fnames = new Array();
+                window.ftypes = new Array();
+                fnames[0] = 'EMAIL';
+                ftypes[0] = 'email';
+                fnames[1] = 'FNAME';
+                ftypes[1] = 'text';
+                fnames[2] = 'LNAME';
+                ftypes[2] = 'text';
+                fnames[3] = 'ADDRESS';
+                ftypes[3] = 'address';
+                fnames[4] = 'PHONE';
+                ftypes[4] = 'phone';
+                fnames[5] = 'BIRTHDAY';
+                ftypes[5] = 'birthday';
+            }(jQuery));
+            var $mcj = jQuery.noConflict(true);
+        </script>
 
-        // add active class to current link
-        $(function() {
-               var pageName = document.getElementById('_pageName');
-               if (pageName != null) { pageName = pageName.innerHTML; }
-               else { pageName = ''; }
-               if (pageName.length > 0) {
-                   $("li[data-link-name='" + pageName + "']").addClass('active');
-               }
-           });
-    </script>   
-   {% endblock %}
-</body>
+    {% endblock %}
+    </body>
 </html>
