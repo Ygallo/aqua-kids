@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
 
 .fas {
-    color: #5775e7;
+    color: #5467F7;
 }
 html, body {
 	background-color: #fcfcfc;
@@ -39,15 +39,15 @@ p {
 }
 
 .btn-outline {
-    border: solid 2px #5775e7;
+    border: solid 2px #5467F7;
 }
 
 .blue-lock {
-    color: #5775e7;
+    color: #5467F7;
 }
 
 .navbar {
-    background-color: #5775e7;
+    background-color: #5467F7;
 
 }
 
@@ -81,7 +81,7 @@ p {
 }
 
 .blue {
-    background-color: #5775e7 ;
+    background-color: #5467F7 ;
     color: #fff;
 }
 
@@ -137,7 +137,7 @@ a.white-nav:hover {
 /* Footer */
 
 footer {
-    background-color: #5775e7;;
+    background-color: #5467F7;;
     /* bottom: 0;
     position: absolute; */
     width: 100%;
@@ -234,8 +234,8 @@ footer li i{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #5775e7;
-    border: 1px solid #5775e7;
+    background-color: #5467F7;
+    border: 1px solid #5467F7;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -290,7 +290,7 @@ ul li.icon-white {
 /* -----Mail Chimp---------*/
 
 #mc_embed_signup form {
-    background:#5775e7; false;
+    background:#5467F7; false;
     clear:left; 
     font:14px Helvetica,Arial,sans-serif; 
     width: 350px;
