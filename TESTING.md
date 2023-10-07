@@ -15,3 +15,7 @@
 ### HTML
 
 All HTML pages were run through the [W3C HTML Validator](https://validator.w3.org/). See results in below table.
+
+
+
+Duplicate attribute class: As this attribute in within a for loop is multiplied with each student added on the table

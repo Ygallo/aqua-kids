@@ -24,17 +24,11 @@
           <td>
             <div class="d-flex align-items-center">
               {% if "placeholder" in course.image.url %}
-              <img
-              src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="{{ course.name }}"
-                  style="width: 45px; height: 45px"
-                  class="rounded-circle"
-                  />
+                <img src="https://res.cloudinary.com/dne60wscn/image/upload/v1695654768/AquaKids/placeholder_qkyuwm.jpg" alt="{{ course.name }}"
+                  style="width: 45px; height: 45px" class="rounded-circle">
               {% else %}
-              <img
-              src="{{ course.image.url }}" alt="{{ course.name }}"
-                  style="width: 45px; height: 45px"
-                  class="rounded-circle"
-                  />
+                <img src="{{ course.image.url }}" alt="{{ course.name }}"
+                  style="width: 45px; height: 45px" class="rounded-circle">
               {% endif %}
               <div class="ms-3">
                 <p class="fw-bold mb-1 ml-2">{{ course.name }}</p>
@@ -46,19 +40,17 @@
           </td>
           <td>
             {% if course.places < 1 %}
-            <span class="badge badge-danger rounded-pill d-inline">Full</span>
+              <span class="badge badge-danger rounded-pill d-inline">Full</span>
             {% elif course.places < 4 %}
-            <span class="badge badge-warning rounded-pill d-inline">{{ course.places }} places</span>
+              <span class="badge badge-warning rounded-pill d-inline">{{ course.places }} places</span>
             {% else %}
-            <span class="badge badge-success rounded-pill d-inline">{{ course.places }} places</span>
+              <span class="badge badge-success rounded-pill d-inline">{{ course.places }} places</span>
             {% endif %}
           </td>
           <td>{{ course.day_of_the_week }}</td>
           <td>{{ course.start_time }}</td>
           <td>
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
-            <a href="/courses/{{ course.id }}/">Read More</a> 
-            </button>
+            <a  class="btn btn-link btn-sm btn-rounded" href="/courses/{{ course.id }}/">Read More</a> 
           </td>
         </tr>
         {% endfor %}

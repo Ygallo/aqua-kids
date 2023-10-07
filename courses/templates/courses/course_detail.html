@@ -53,10 +53,10 @@
                             
                             <div class="col-12">
                                 <hr class="mt-1 mb-3">
-                                <span class="strong mb-5"><strong>Start Date:</strong> </span><span>{{ course.start_date }}</span><br/>
-                                <span class="strong mb-5"><strong>Day:</strong>  </span><span>{{ course.day_of_the_week }}</span><br/>
-                                <span class="strong mb-5"><strong>Time: </strong> </span><span>{{ course.start_time }}</span><br/>
-                                <span class="strong mb-5"><strong>Cost:</strong>  </span><span> €{{ course.price }}</span><br/>
+                                <span class="strong mb-5"><strong>Start Date:</strong> </span><span>{{ course.start_date }}</span><br>
+                                <span class="strong mb-5"><strong>Day:</strong>  </span><span>{{ course.day_of_the_week }}</span><br>
+                                <span class="strong mb-5"><strong>Time: </strong> </span><span>{{ course.start_time }}</span><br>
+                                <span class="strong mb-5"><strong>Cost:</strong>  </span><span> €{{ course.price }}</span><br>
                                 
                                 {% if course.places < 1 %}
                                 <span class="badge badge-danger rounded-pill d-inline">Full</span>

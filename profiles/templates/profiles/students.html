@@ -48,12 +48,8 @@
                         </td>
                                
                         <td>
-                          <button type="button" class="btn btn-link btn-sm btn-rounded">
-                          <a href="/profile/student/edit/{{ student.id }}/">Edit</a> 
-                          </button>
-                          <button type="button" class="btn btn-link btn-sm btn-rounded text-danger">
-                            <a href="/profile/student/delete/{{ student.id }}/" class="text-danger" >Delete</a> 
-                            </button>
+                          <a class="btn btn-link btn-sm btn-rounded" href="/profile/student/edit/{{ student.id }}/">Edit</a> 
+                          <a class="btn btn-link btn-sm btn-rounded text-danger" href="/profile/student/delete/{{ student.id }}/" class="text-danger red" >Delete</a> 
                         </td>
                       </tr>
                       {% endfor %}

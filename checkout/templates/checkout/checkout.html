@@ -90,7 +90,7 @@
                         {{ order_form.eircode | as_crispy_field }}
 
                         {% for item in cart_items %}
-                        <input type="hidden" value="" name="student_{{item.course.id}}" id="student_for_course_{{item.course.id}}" />
+                        <input type="hidden" value="" name="student_{{item.course.id}}" id="student_for_course_{{item.course.id}}">
                         {% endfor %}
                         <div class="form-check form-check-inline float-right mr-0">
 							
