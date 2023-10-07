@@ -12,14 +12,16 @@ class CourseForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['start_date'].widget = forms.widgets.DateInput(
             attrs={
-                'type': 'date', 'placeholder': 'dd-mm-yyyy',
-                'class': 'form-control'
+                'type': 'text', 'placeholder': 'dd-mm-yyyy',
+                'class': 'form-control',
+                'onfocus': "(this.type='date')",
                 }
             )
         self.fields['end_date'].widget = forms.widgets.DateInput(
             attrs={
-                'type': 'date', 'placeholder': 'dd-mm-yyyy',
-                'class': 'form-control'
+                'type': 'text', 'placeholder': 'dd-mm-yyyy',
+                'class': 'form-control', 
+                'onfocus': "(this.type='date')",
                 }
             )
 

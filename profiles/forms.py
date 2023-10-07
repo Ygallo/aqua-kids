@@ -33,8 +33,9 @@ class StudentForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['date_of_birth'].widget = forms.widgets.DateInput(
             attrs={
-                'type': 'date', 'placeholder': 'dd-mm-yyyy',
-                'class': 'form-control'
+                'type': 'text', 'placeholder': 'dd-mm-yyyy',
+                'class': 'form-control',
+                'onfocus': "(this.type='date')",
                 }
             )
         self.fields['guardian'].widget = forms.HiddenInput()
