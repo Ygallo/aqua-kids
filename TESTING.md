@@ -32,7 +32,7 @@ All HTML pages were run through the [W3C HTML Validator](https://validator.w3.or
 | Contact Us       	| No errors  	| No errors  	|
 | Cart             	| No error   	| No errors  	|
 | Checkout         	| No errors  	| No errors  	|
-| Checkout Success  | No errors  	| No errors  	|
+| Checkout Success  | N/A       	| No errors  	|
 | login            	| No errors  	| N/A        	|
 | logout           	| N/A        	| No errors  	|
 | signup           	| No errors  	| N/A        	|
@@ -68,3 +68,30 @@ Webhook Handler
 Attemps to 
 
 ## Lighthouse
+
+| Page             	| Performance 	| Accessibility 	| Best Practises 	| SEO 	|
+|------------------	|-------------	|---------------	|----------------	|-----	|
+| Home             	|             	| 97            	|                	| 90  	|
+| About Us         	| 95          	| 96            	| 92             	| 100 	|
+| Courses          	|             	| 98            	| 92             	| 90  	|
+| Groups           	| 95          	| 98            	|                	| 90  	|
+| Individual       	|             	|               	|                	|     	|
+| Camps            	| 97          	| 98            	| 92             	| 90  	|
+| Course Detail    	| 96          	|               	| 92             	| 100 	|
+| Add a Course     	| 98          	| 96            	| 100            	| 100 	|
+| Edit a Course    	| 97          	| 96            	| 92             	| 100 	|
+| Delete a Course  	| 97          	| 96            	| 92             	| 100 	|
+| Timetable        	| 95          	| 98            	| 83             	| 90  	|
+| Contact Us       	| 97          	| 98            	| 92             	| 90  	|
+| Cart             	|             	|               	|                	|     	|
+| Checkout         	| 90          	| 96            	| 92             	| 100 	|
+| Checkout success 	| 97          	| 98            	| 83             	| 100 	|
+| login            	| 98          	| 98            	| 92             	| 100 	|
+| logout           	| 97          	| 98            	| 92             	| 100 	|
+| signup           	| 98          	| 98            	| 92             	| 100 	|
+| Profile          	| 99          	| 96            	| 92             	| 100 	|
+| Students         	| 97          	| 98            	| 92             	| 100 	|
+| Add a Student    	| 98          	| 98            	| 92             	| 100 	|
+| Edit a Students  	| 98          	| 96            	| 92             	| 100 	|
+| Delete a Student 	| 96          	| 96            	| 92             	| 100 	|
+| 404              	|             	|               	|                	|     	|
