@@ -35,7 +35,7 @@
                                 </td>
                             {% else %}
                                 <td class="p-3 w-25 cart-item-img">
-                                    <img class="rounded-circle" style="width: 45px; height: 45px" src="{{ item.course.image.url }}">
+                                    <img class="rounded-circle" style="width: 45px; height: 45px" src="{{ item.course.image.url }}" alt="{{ item.course.name }}">
                                 </td>
                             {% endif %}
                                 <td class="py-3">
@@ -54,6 +54,7 @@
                                                         </span>
                                                     </button>
                                                 </div>
+                                                <label for="quantity"></label>
                                                 <input class="form-control form-control-sm qty_input" type="number"
                                                     name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.course.places }}"
                                                     data-item_id="{{ item.course.id }}"

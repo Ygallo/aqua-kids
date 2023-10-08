@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-4">
                                     {% if not students  %}
-                                        <span class="text-danger"><a href="/profile/students/" class="text-danger">Click here to create a student first!</a> </span>
+                                        <span class="text-danger"><a href="/profile/students/">Click here to create a student first!</a> </span>
                                     {% else %}
                                     <label for="students_select_{{item.course.id}}">Choose a student for this course:</label>
                                     <div class="selectdiv">
@@ -94,8 +94,8 @@
                         {% endfor %}
                         <div class="form-check form-check-inline float-right mr-0">
 							
-                            <label class="form-check-label" for="id-save-info">Save this contact information to my profile</label>
-                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                            <label for="id-save-info" class="form-check-label" >Save this contact information to my profile
+                            <input id="id-save-info" class="form-check-input ml-2 mr-0" type="checkbox"  name="save-info" checked></label>
                         
                         </div>
                     </fieldset>

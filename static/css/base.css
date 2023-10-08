@@ -51,6 +51,10 @@ p {
 
 }
 
+.dark-blue {
+    color:#172f5f
+}
+
 /* navigation */
 
 .dropdown-submenu {
@@ -315,7 +319,7 @@ ul li.icon-white {
     margin-bottom: 50px;
 }
 .carousel .carousel-item {
-	color: #7b7475;
+	color: #b3bee5;
 	overflow: hidden;
 	min-height: 120px;
 	font-size: 13px;
@@ -361,8 +365,12 @@ ul li.icon-white {
 }
 .carousel-indicators li.active {
 	color: #fff;
-	background: #1c47e3;    
+	background: #b3bee5;    
 	border: 5px double;    
+}
+
+.testimonial p {
+    color:#000;
 }
 
 /* ------------------------- Media Queries ------------------*/
