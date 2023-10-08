@@ -13,9 +13,6 @@
             <div class="col">
                 <hr>
                 <h2 class="logo-font mb-4">My Account Profile</h2>
-                <h2>test</h2>
-                
-                    <h3> allauth {{ current_user.id }}</h3>
                     {% for student in students %}
                     <p><span> student name {{ student.name }}</span> <span> <a href="/profile/student/{{ student.id }}/">Edit</a> </span></p>
                     {% endfor %}

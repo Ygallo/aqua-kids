@@ -297,12 +297,15 @@ ul li.icon-white {
     background:#5467F7; 
     clear:left; 
     font:14px Helvetica,Arial,sans-serif; 
-    width: 350px;
 }
 
 #mc-embedded-subscribe {
     color: #000;
     background-color: #fff;
+}
+
+#mc_embed_signup .button {
+     background-color: #495057;
 }
 
 

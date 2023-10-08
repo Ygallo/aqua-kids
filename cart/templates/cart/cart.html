@@ -54,11 +54,11 @@
                                                         </span>
                                                     </button>
                                                 </div>
-                                                <label for="quantity"></label>
+                                                <label for="id_qty_{{ item.course.id}}">
                                                 <input class="form-control form-control-sm qty_input" type="number"
                                                     name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.course.places }}"
                                                     data-item_id="{{ item.course.id }}"
-                                                    id="id_qty_{{ item.course.id}}">
+                                                    id="id_qty_{{ item.course.id}}"></label>
                                                 <div class="input-group-append">
                                                     <button class="increment-qty btn btn-sm btn-black rounded-0" aria-label="plus button"
                                                         data-item_id="{{ item.course.id }}" id="increment-qty_{{ item.course.id }}">
@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <a class="update-link text-info"><small>Update</small></a>
+                                    <a class="update-link dark-blue"><small>Update</small></a>
                                     <a class="remove-item text-danger float-right" id="remove_{{ item.course.id }}"><small>Remove</small></a>
                                 </td>
                                 <td class="py-3 w-25">
@@ -81,6 +81,8 @@
                                 </td>
                             </tr>
                         {% endfor %}
+                    </table>
+                    <table>
                             <tr>
                                 <td colspan="5" class="pt-5 text-right">
                                     <h6><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>

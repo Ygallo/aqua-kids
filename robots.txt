@@ -1,5 +1,5 @@
-User-agent: *
-Disallow: /accounts/
-Disallow: /checkout/
-Disallow: /cart/
-Sitemap: https://aqua-kids-c98054224c90.herokuapp.com/sitemap.xml
+user-agent: *
+disallow: /accounts/
+disallow: /checkout/
+disallow: /cart/
+sitemap: https://aqua-kids-c98054224c90.herokuapp.com/sitemap.xml
