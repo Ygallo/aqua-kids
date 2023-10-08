@@ -46,7 +46,9 @@ def all_courses(request):
             messages.error(request, "You didn't enter any search criteria!")
             return redirect(reverse('courses'))
 
-        queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(day_of_the_week__icontains=query)
+        queries = Q(name__icontains=query) \
+            | Q(description__icontains=query) \
+            | Q(day_of_the_week__icontains=query)
         courses = courses.filter(queries)
 
     context = {
@@ -83,7 +85,8 @@ def add_course(request):
             messages.success(request, 'Course added successfully!')
             return redirect(reverse('course_detail', args=[course.id]))
         else:
-            messages.error(request, 'Failed to add the course. Please check the form.')
+            messages.error(request,
+                           'Failed to add the course. Please check the form.')
     else:
         form = CourseForm()
 
@@ -110,7 +113,8 @@ def edit_course(request, course_id):
             messages.success(request, 'Course updated successfully!')
             return redirect(reverse('course_detail', args=[course_id]))
         else:
-            messages.error(request, 'Failed to update the course. Please check the form.')
+            messages.error(request,
+                           'Failed to update course. Please check the form.')
     else:
         form = CourseForm(instance=course)
         messages.info(request, f'You are editing {course.name}')

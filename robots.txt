@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /accounts/
 Disallow: /checkout/
 Disallow: /cart/
-Sitemap: 
+Sitemap: https://aqua-kids-c98054224c90.herokuapp.com/sitemap.xml

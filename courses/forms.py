@@ -20,7 +20,7 @@ class CourseForm(forms.ModelForm):
         self.fields['end_date'].widget = forms.widgets.DateInput(
             attrs={
                 'type': 'text', 'placeholder': 'dd-mm-yyyy',
-                'class': 'form-control', 
+                'class': 'form-control',
                 'onfocus': "(this.type='date')",
                 }
             )

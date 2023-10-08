@@ -45,3 +45,20 @@ All HTML pages were run through the [W3C HTML Validator](https://validator.w3.or
 | 404              	| No errors       	|            	|
 
 Duplicate attribute class: As this attribute in within a for loop is multiplied with each student added on the table
+
+### CSS
+No errors were found when passing my CSS file through the official [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+### Javascript
+
+No errors were found when passing my javascript through [Jshint](https://jshint.com/)
+
+### Python
+
+All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no errors found. 
+
+Webhook
+ Map webhook events to relevant handler functions
+ 46: E501 line too long (86 > 79 characters)
+
+## Lighthouse

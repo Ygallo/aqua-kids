@@ -22,13 +22,13 @@ def profile(request):
     students = queryset.filter(guardian=profile.id)
 
     if request.method == 'POST':
-            form = UserProfileForm(request.POST, instance=profile)
-            
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'Profile updated successfully')
-            else:
-                messages.error(request, 'Error on update. Please check the form.')
+        form = UserProfileForm(request.POST, instance=profile)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully')
+        else:
+            messages.error(request, 'Error on update. Please check the form.')
     else:
         form = UserProfileForm(instance=profile)
         form = UserProfileForm()
@@ -61,7 +61,8 @@ def student(request):
             student_form.save()
             messages.success(request, 'Student updated successfully')
         else:
-            messages.error(request, 'Error on update. Make sure the form is valid.')
+            messages.error(request,
+                           'Error on update. Make sure the form is valid.')
     else:
         student_form = StudentForm(instance=profile)
 
@@ -88,7 +89,9 @@ def add_student(request):
             messages.success(request, 'Student added successfully!')
             return redirect(reverse('students'))
         else:
-            messages.error(request, 'Failed to add the student. Please make sure the form is valid.')
+            messages.error(request,
+                           'Failed to add the student.\
+                            Please make sure the form is valid.')
     else:
         form = StudentForm()
 
@@ -114,7 +117,9 @@ def edit_student(request, student_id):
             # return redirect(reverse('student', args=[student_id]))
             return redirect(reverse('students'))
         else:
-            messages.error(request, 'Failed to update the student. Please make sure the form is valid.')
+            messages.error(request,
+                           'Failed to update the student.\
+                            Please make sure the form is valid.')
     else:
         form = StudentForm(instance=student)
         messages.info(request, f'You are editing {student.name}')

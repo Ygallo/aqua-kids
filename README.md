@@ -1,8 +1,8 @@
 # Aqua Kids 
 
-The live link here - [Aqua Kids]
+The live link here - [https://aqua-kids-c98054224c90.herokuapp.com/]
 
-![AquaKids]
+![AquaKids]()
 
 ## Table of contents
 - [Aqua Kids](#aqua-kids)
@@ -138,7 +138,7 @@ The project began as a wireframe in Balsamiq, serving as the initial foundation 
 
 ## Agile Methodology 
 
-GitHub projects were used to manage the development process using an agile approach. Please see a link to the project board [here]()
+GitHub projects were used to manage the development process using an agile approach. Please see a link to the project board [here](https://github.com/users/Ygallo/projects/4/views/1)
 
 ## E-commerce Data Model
 
@@ -168,11 +168,11 @@ The **OrderLineItem** model represents items within a shopping cart associated w
 
 The diagram below details the database schema.
 
-![datamodel]()
+![datamodel](https://res.cloudinary.com/dne60wscn/image/upload/v1696752609/AquaKids/Aqua%20Kids%20README/DiagramDataBase_plxqg3.png)
 
 ## Testing
 
-Testing and results can be found [here]()
+Testing and results can be found [here](https://github.com/Ygallo/aqua-kids/blob/main/TESTING.md)
 
 ## Security Features and Defensive Design
 
@@ -232,6 +232,9 @@ At the project's outset, keyword research was conducted to identify crucial term
 ### Social Media Marketing
 
 A Facebook Page was created to establish an online presence for the small budget, family-oriented business. This is the initial step to gauge the platform's popularity.
+
+![Facebook](https://res.cloudinary.com/dne60wscn/image/upload/v1696753122/AquaKids/Aqua%20Kids%20README/Facebookpng_qcoxdc.png)
+![Facebook](https://res.cloudinary.com/dne60wscn/image/upload/v1696752609/AquaKids/Aqua%20Kids%20README/Facebook_post_zlgohq.png)
 
 ### Email Marketing
 
@@ -483,6 +486,7 @@ The site is now live and operational.
 - [Bootstrap 4.6](https://getbootstrap.com/)
 - [Tables Generator](https://www.tablesgenerator.com/markdown_tables): Used to convert excel testing tables to markdown
 - [jQuery- hidden value](https://stackoverflow.com/questions/2979772/set-value-of-hidden-field-in-a-form-using-jquerys-val-doesnt-work)
+- [Date Input Widget](https://www.letscodemore.com/blog/how-to-add-date-input-widget-in-django-forms/#:~:text=In%20this%20case%2C%20we%20are,is%20rendered%20in%20the%20template.)
 
 ## Credits
 
