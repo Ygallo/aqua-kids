@@ -22,8 +22,8 @@ class UserProfile(models.Model):
 
 
 class Student(models.Model):
-    name = models.CharField(max_length=50, default='blank')
-    surname = models.CharField(max_length=50, default='blank')
+    name = models.CharField(max_length=50, default='Please add student name')
+    surname = models.CharField(max_length=50, default='Add student surname')
     date_of_birth = models.DateField()
 
     MALE = 'MALE'
@@ -41,7 +41,7 @@ class Student(models.Model):
         choices=GENDER,
     )
     level = models.ForeignKey(Levels, on_delete=models.CASCADE)
-    special_requirements = models.TextField(max_length=200, default='blank')
+    special_requirements = models.TextField(max_length=200, default='')
     guardian = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                  null=True, blank=True,
                                  related_name='students')

@@ -26,11 +26,11 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = '__all__'
-        # exclude = ('guardian',)
         widgets = {'guardian': forms.HiddenInput()}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs['placeholder'] = 'Student Name'
         self.fields['date_of_birth'].widget = forms.widgets.DateInput(
             attrs={
                 'type': 'text', 'placeholder': 'dd-mm-yyyy',

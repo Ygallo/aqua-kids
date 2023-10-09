@@ -57,15 +57,6 @@ No errors were found when passing my javascript through [Jshint](https://jshint.
 
 All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no errors found. 
 
-Webhook
- Map webhook events to relevant handler functions
- 46: E501 line too long (86 > 79 characters)
-
-Webhook Handler
-97: E501 line too long (107 > 79 characters)
-132: E501 line too long (82 > 79 characters)
-136: E501 line too long (93 > 79 characters)
-Attemps to 
 
 ## Lighthouse
 

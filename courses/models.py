@@ -58,11 +58,11 @@ class Levels(models.Model):
 class Course(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     level = models.ForeignKey('Levels', on_delete=models.CASCADE)
-    name = models.CharField(max_length=250, default='blank')
-    description = models.TextField(default='blank')
-    duration = models.TextField(default='blank')
+    name = models.CharField(max_length=250, default='Course Name')
+    description = models.TextField(default='')
+    duration = models.TextField(default='Course duration')
     start_date = models.DateField(auto_now=False)
-    start_time = models.TextField(default='blank')
+    start_time = models.TextField(default='Enter start time')
     end_date = models.DateField(auto_now=False)
     MONDAY = 'Monday'
     TUESDAY = 'Tuesday'
