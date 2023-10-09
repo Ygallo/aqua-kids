@@ -153,13 +153,53 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 
 ### Course Detail Page
 
-| Element               	| Action 	| Expected Result                                                                               	| Pass/Fail 	|
-|-----------------------	|--------	|-----------------------------------------------------------------------------------------------	|-----------	|
-| Minus icon/down arrow 	| Click  	| Decrement course quantity                                                                     	| Pass      	|
-| Minus icon/down arrow 	| Click  	| Wont allow user to select less than 1                                                         	| Pass      	|
-| Plus icon/ up arrow   	| Click  	| Increment course quantity                                                                     	| Pass      	|
-| Plus icon/ up arrow   	| Click  	| Will not allow users to select greater quantity than number of places available for the course 	| Pass      	|
-| Quantity box          	| Click  	| Allows user to enter a number quantity                                                        	| Pass      	|
-| Quantity Box          	| Click  	| Will not allow users to select greater quantity than number of places available for the course  | Pass        |
-| Keep shopping         	| Click  	| Redirects user to courses page                                                                	| Pass      	|
-| Add to Cart           	| Click  	| Adds course/es to the cart                                                                    	| Pass      	|
+| Element               	          | Action 	| Expected Result                                                                               	| Pass/Fail 	|
+|-----------------------------------|--------	|-----------------------------------------------------------------------------------------------	|-----------	|
+| Minus icon/down arrow 	          | Click  	| Decrement course quantity                                                                     	| Pass      	|
+| Minus icon/down arrow 	          | Click  	| Wont allow user to select less than 1                                                         	| Pass      	|
+| Plus icon/ up arrow   	          | Click  	| Increment course quantity                                                                     	| Pass      	|
+| Plus icon/ up arrow   	          | Click  	| Will not allow users to select greater quantity than number of places available for the course 	| Pass      	|
+| Quantity box          	          | Click  	| Allows user to enter a number quantity                                                        	| Pass      	|
+| Quantity Box          	          | Click  	| Will not allow users to select greater quantity than number of places available for the course  | Pass        |
+| Keep shopping         	          | Click  	| Redirects user to courses page                                                                	| Pass      	|
+| Add to Cart           	          | Click  	| Adds course/es to the cart                                                                    	| Pass      	|
+| Admin logged in - Edit Link      	| Click  	| Redirect to edit page                                                                           | Pass      	|
+| Admin logged in - Delete link    	| Click  	| Delete course                                                                                  	| Pass      	|
+
+###  Add Course Page
+
+| Element                          	| Action 	| Expected Result                                 	| Pass/Fail 	|
+|----------------------------------	|--------	|-------------------------------------------------	|-----------	|
+| Category field                   	| Click  	| Display dropdown options and allow selection    	| Pass      	|
+| Level Field                      	| Click  	| Display dropdown options and allow selection    	| Pass      	|
+| Name Field                       	| Click  	| Allow user to input course name                 	| Pass      	|
+| Description field                	| Click  	| Allow user to enter course description          	| Pass      	|
+| Duration Field                   	| Click  	| Allow user to enter class duration              	| Pass      	|
+| Start Date Field                 	| Click  	| Display calendar for date selection             	| Pass      	|
+| Start Time field                 	| Click  	| Allow user to enter start time                  	| Pass      	|
+| End Date Field                   	| Click  	| Display calendar for date selection             	| Pass      	|
+| Day of the Week field            	| Click  	| Display dropdown and allow selection            	| Pass      	|
+| Image button                     	| Click  	| Allow selection on an image                     	| Pass      	|
+| Image button                     	| Click  	| Default image is used if no image is selectec   	| Pass      	|
+| Places Field                     	| Click  	| Enter number of places available for the course 	| Pass      	|
+| Cancel Button                    	| Click  	| Returns to courses page                         	| Pass      	|
+| Add a Course button (form valid) 	| Click  	| Form submit - create course                     	| Pass      	|
+
+###  Edit Course/Student Pages
+
+| Element       	| Action 	| Expected Result                 	| Pass/Fail 	|
+|---------------	|--------	|---------------------------------	|-----------	|
+| Update Button 	| Click  	| Course is updated               	| Pass      	|
+| Update Button 	| Click  	| Student is updated               	| Pass      	|
+| Cancel Button 	| Click  	| User redirected to courses page 	| Pass      	|
+| Cancel Button 	| Click  	| User redirected to Profile page 	| Pass      	|
+
+###  Delete Course/ Student Pages
+
+| Element       	| Action 	| Expected Result                 	| Pass/Fail 	|
+|---------------	|--------	|---------------------------------	|-----------	|
+| Delete Button 	| Click  	| Course is deleted               	| Pass      	|
+| Delete Button 	| Click  	| Student is deleted               	| Pass      	|
+| Cancel Button 	| Click  	| User redirected to courses page 	| Pass      	|
+| Cancel Button 	| Click  	| User redirected to Students page 	| Pass      	|
+
