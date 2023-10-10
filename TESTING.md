@@ -163,7 +163,7 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 | Quantity Box          	          | Click  	| Will not allow users to select greater quantity than number of places available for the course  | Pass        |
 | Keep shopping         	          | Click  	| Redirects user to courses page                                                                	| Pass      	|
 | Add to Cart           	          | Click  	| Adds course/es to the cart                                                                    	| Pass      	|
-| Admin logged in - Edit Link      	| Click  	| Redirect to edit page                                                                           | Pass      	|
+| Admin logged in - Edit Link      	| Click  	| Redirect to edit course page                                                                    | Pass      	|
 | Admin logged in - Delete link    	| Click  	| Delete course                                                                                  	| Pass      	|
 
 ###  Add Course Page
@@ -185,6 +185,26 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 | Cancel Button                    	| Click  	| Returns to courses page                         	| Pass      	|
 | Add a Course button (form valid) 	| Click  	| Form submit - create course                     	| Pass      	|
 
+### Profile Page
+
+| Element              	| Action 	| Expected Result                                                   	| Pass/Fail 	|
+|----------------------	|--------	|-------------------------------------------------------------------	|-----------	|
+| Email Field          	| Click  	| User can enter/save email to profile                              	| Pass      	|
+| Phone Field          	| Click  	| User can enter/save phone number to profile                       	| Pass      	|
+| Add a Sudent button  	| Click  	| Opens add student form                                            	| Pass      	|
+| View students button 	| Click  	| Redirects to students page                                        	| Pass      	|
+| Update information   	| Click  	| Updates email and phone fields                                    	| Pass      	|
+| Order number link    	| Click  	| Opens order details - checkout success page for that order number 	| Pass      	|
+
+### Students Page
+
+| Element                	| Action 	| Expected Result                 	| Pass/Fail 	|
+|------------------------	|--------	|---------------------------------	|-----------	|
+| Add Student Button     	| Click  	| Opens add student form page     	| Pass      	|
+| Back to Profile Button 	| Click  	| User redirected to Profile page 	| Pass      	|
+| Edit link              	| Click  	| Opens edit student form         	| Pass      	|
+| Delete link            	| Click  	| Student is deleted              	| Pass      	|
+
 ###  Edit Course/Student Pages
 
 | Element       	| Action 	| Expected Result                 	| Pass/Fail 	|
@@ -203,3 +223,7 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 | Cancel Button 	| Click  	| User redirected to courses page 	| Pass      	|
 | Cancel Button 	| Click  	| User redirected to Students page 	| Pass      	|
 
+
+### Cart
+
+### Checkout
