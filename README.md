@@ -2,7 +2,7 @@
 
 The live link here - [https://aqua-kids-c98054224c90.herokuapp.com/]
 
-![AquaKids]()
+![AquaKids](https://res.cloudinary.com/dne60wscn/image/upload/v1696964322/AquaKids/Aqua%20Kids%20README/responsive_e45xl1.png)
 
 ## Table of contents
 - [Aqua Kids](#aqua-kids)
@@ -254,7 +254,7 @@ When a user logs in, the Account dropdown menu displays the option Profile, Stud
 - The navigation bar is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
 - The active navbar tab changes colour from white to dark blue.
 
-![header]()
+![header](https://res.cloudinary.com/dne60wscn/image/upload/v1696963660/AquaKids/Aqua%20Kids%20README/navigation_brdxjg.png)
 
 
 ### Footer
@@ -264,7 +264,7 @@ When a user logs in, the Account dropdown menu displays the option Profile, Stud
 - Below the social accounts there is a link to the privacy policy.
 - On the opposite side you can find the newsletter signup form from Mail Chimp.
 
-![footer]()
+![footer](https://res.cloudinary.com/dne60wscn/image/upload/v1696963660/AquaKids/Aqua%20Kids%20README/footer_xqnrsv.png)
 
 ## Home Page
 
@@ -272,9 +272,13 @@ The homepage showcases a hero image with swim school information.
 There's a section with images and descriptions for the three course categories. 
 At the bottom of the page there is a carousel displaying customer pictures and testimonials. 
 
-##About Us
+![homepage](https://res.cloudinary.com/dne60wscn/image/upload/v1696963661/AquaKids/Aqua%20Kids%20README/homepage_zmis29.png)
+
+### About Us
 
 The 'About Us' section highlights why users should choose the swim school for their kids, including the coaching philosophy and coach information.
+
+![about us](https://res.cloudinary.com/dne60wscn/image/upload/v1696963638/AquaKids/Aqua%20Kids%20README/about_us_gcffct.png)
 
 ## Courses
 
@@ -289,12 +293,16 @@ When a category is selected, the page displays cards with available courses for 
 Each card includes an image for the course level, a description of the intended audience, skills taught, and duration. 
 The price and available places are displayed, along with a 'Read more' button that directs the user to the course detail page. 
 
+![courses](https://res.cloudinary.com/dne60wscn/image/upload/v1696963656/AquaKids/Aqua%20Kids%20README/Courses_egnnua.png)
+
 ## Course Detail
 
 - The course detail section displays all the information for each available course. It includes course name, description, start date, start time, day of the week, price, available places, and image. 
 -  Available places are represented by rounded pills: green (Bootstrap success) for more than 4 places, yellow (Bootstrap warning) for fewer than 4 places, and red (Bootstrap danger) with 'full' for no available places.
 - "There's an input field for quantity, accompanied by Font Awesome icons for increasing and decreasing the quantity. A logic function prevents users from purchasing more than the available amount and less than one."
 - The user can click on the Add to cart button or keep shopping button to browse more courses.
+
+![course detail](https://res.cloudinary.com/dne60wscn/image/upload/v1696963885/AquaKids/Aqua%20Kids%20README/coursedetail_zjyydm.png)
 
 ## Cart
 
@@ -304,6 +312,7 @@ The price and available places are displayed, along with a 'Read more' button th
 - The + and - icons, along with the quantity input, prevent the user from decreasing the quantity to 0 or exceeding the available places in the course.
 - At the bottom of the page, there are two buttons: one to 'Keep Shopping' and redirect to the courses page, and the other to complete the purchase by clicking 'SECURE CHECKOUT
 
+![cart](https://res.cloudinary.com/dne60wscn/image/upload/v1696963646/AquaKids/Aqua%20Kids%20README/cart_kiwywt.png)
  
 ## Checkout
 
@@ -313,6 +322,7 @@ The price and available places are displayed, along with a 'Read more' button th
 - Opposite the summary, there's a form to complete the purchase. The user fills in fields for name, contact details, and card details.
 After completing the order, the user can view the order confirmation.
 
+![checkout](https://res.cloudinary.com/dne60wscn/image/upload/v1696963646/AquaKids/Aqua%20Kids%20README/checkout_arb21t.png)
 
 ### Checkout success
 
@@ -324,6 +334,8 @@ The order confirmation page displays information, including the order number, da
 - The form will be displayed with the required fields for the category, level, name, start date, start time, end date, day of the week, price, available places, and an associated image. Failing to complete required fields will render an error message.
 - Category, level, and days of the week fields offer dropdown menus with various options.
 - The image field includes a default image for cases where the user doesn't upload one.
+
+![add course](https://res.cloudinary.com/dne60wscn/image/upload/v1696963637/AquaKids/Aqua%20Kids%20README/addcourse_ieerge.png)
 
 ## Edit a Course
 
@@ -344,13 +356,17 @@ The order confirmation page displays information, including the order number, da
 - Each table row displays the course image, level, category, availability, day of the week, startime. 
 - In the Action column, you'll find a Read More link to access the detailed page for each specific course.
 - A 'for' loop ensures that each newly created course is automatically added to the timetable.
-- In the availability row, an 'if' statement evaluates the availability of places. If many places are available, a rounded green pill (Bootstrap success) displays the available quantity. If there are fewer than 4 places, a yellow pill (Bootstrap warning) is shown. If no places are left, a red pill (Bootstrap danger) displays 'full'." 
+- In the availability row, an 'if' statement evaluates the availability of places. If many places are available, a rounded green pill (Bootstrap success) displays the available quantity. If there are fewer than 4 places, a yellow pill (Bootstrap warning) is shown. If no places are left, a red pill (Bootstrap danger) displays 'full'.
+
+![timetable](https://res.cloudinary.com/dne60wscn/image/upload/v1696964071/AquaKids/Aqua%20Kids%20README/timetable_dhxbyx.png)
 
 ## Contact Us
 
 - This page will allow the user to get in contact with Aqua Kids. The user will be asked to submit their full name and email address, subject and message.
 - To the right of the contact form, a grid column displays contact details using three Font Awesome icons for address, phone, and email, along with their corresponding information.
 - Below the contact form, there's a Google Map of Dublin.
+
+![contact us](https://res.cloudinary.com/dne60wscn/image/upload/v1696963651/AquaKids/Aqua%20Kids%20README/contactus_wz1ruw.png)
 
 ## User Account Pages
 
@@ -374,17 +390,23 @@ The order confirmation page displays information, including the order number, da
 - The profile page displays the user/guardian contact details and the order  history. 
 - There is a button to update the user’s email and phone number.
 Two buttons redirect users to 'Add a Student' or 'View Students' pages.
+
+![profile](https://res.cloudinary.com/dne60wscn/image/upload/v1696963666/AquaKids/Aqua%20Kids%20README/profile_fsyxgf.png)
  
 ## Students Page
 
 - A table displays associated students, if any, on the profile.
 - The rows displays student name, surname, date of Birth, Gender, level and an Action button. 
-- The actions links for Edit and Delete, redirect to the corresponding pages. 
+- The actions links for Edit and Delete, redirect to the corresponding pages.
+
+![students](https://res.cloudinary.com/dne60wscn/image/upload/v1696964088/AquaKids/Aqua%20Kids%20README/studentspng_cltabs.png)
 
 ## Add a Student
 - Displays a form that allows the user to add the students (dependents) that will be taking the courses. 
 - The form  includes basic details such as name, surname, date of birth, gender, the student's swim skill **level** and any special requirements. 
 - Upon completion of the form the user has the option to cancel or add the student to its profile. 
+
+![add student](https://res.cloudinary.com/dne60wscn/image/upload/v1696963637/AquaKids/Aqua%20Kids%20README/addstudent_h4rarc.png)
 
 ## Edit a Student
 
@@ -399,6 +421,8 @@ Two buttons redirect users to 'Add a Student' or 'View Students' pages.
 - The user is asked to confirm if they wish to delete the course or cancel.
 - A message informs the user "The course was deleted successfully". 
 - User is redirected to the students page. 
+
+![delete student](https://res.cloudinary.com/dne60wscn/image/upload/v1696963655/AquaKids/Aqua%20Kids%20README/deletestudent_rc9shl.png)
 
 
 ### Pending Features
@@ -487,6 +511,7 @@ The site is now live and operational.
 - [Tables Generator](https://www.tablesgenerator.com/markdown_tables): Used to convert excel testing tables to markdown
 - [jQuery- hidden value](https://stackoverflow.com/questions/2979772/set-value-of-hidden-field-in-a-form-using-jquerys-val-doesnt-work)
 - [Date Input Widget](https://www.letscodemore.com/blog/how-to-add-date-input-widget-in-django-forms/#:~:text=In%20this%20case%2C%20we%20are,is%20rendered%20in%20the%20template.)
+- [datetime-timedelta](https://www.geeksforgeeks.org/python-datetime-timedelta-function/)
 
 ## Credits
 

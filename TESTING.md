@@ -205,6 +205,20 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 | Edit link              	| Click  	| Opens edit student form         	| Pass      	|
 | Delete link            	| Click  	| Student is deleted              	| Pass      	|
 
+### Add a Student
+
+| Element                    	| Action 	| Expected Result                                                          	| Pass/Fail 	|
+|----------------------------	|--------	|--------------------------------------------------------------------------	|-----------	|
+| Name Field                 	| Click  	| Allow user to input student name                                         	| Pass      	|
+| Surname Field              	| Click  	| Allow user to input student surname                                      	| Pass      	|
+| Date of Birth Field        	| Click  	| Display calendar for birthdate selection                                 	| Pass      	|
+| Date of Birth Field        	| Click  	| Year displayed on calendar limited by Function: min 3 years old - max 14 	| Pass      	|
+| Gender Field               	| Click  	| Display dropdown options and allow selection                             	| Pass      	|
+| Level Field                	| Click  	| Display dropdown options and allow selection                             	| Pass      	|
+| Special requirements field 	| Click  	| Text field to enter special requirements if any.                         	| Pass      	|
+| Add Student to my profile  	| Click  	| Form Submit - Create student on profile                                  	| Pass      	|
+| Cancel                     	| Click  	| Returns user to profile page                                             	| Pass      	|
+
 ###  Edit Course/Student Pages
 
 | Element       	| Action 	| Expected Result                 	| Pass/Fail 	|
@@ -226,4 +240,36 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 
 ### Cart
 
+| Element               	| Action 	| Expected Result                                                 	| Pass/Fail 	|
+|-----------------------	|--------	|-----------------------------------------------------------------	|-----------	|
+| Minus icon/down arrow 	| Click  	| Decrement course quantity                                       	| Pass      	|
+| Minus icon/down arrow 	| Click  	| Wont allow user to select  quantity less than 1                 	| Pass      	|
+| Plus icon/up arrow    	| Click  	| Increment course quantity                                       	| Pass      	|
+| Plus icon/up arrow    	| Click  	| User cannot select quantity over the number of places available 	| Pass      	|
+| Quantity Box          	| Click  	| Allows user to enter quantity in numbers                        	| Pass      	|
+| Quanity Box           	| Click  	| User cannot select quantity over the number of places available 	| Pass      	|
+| Update Link           	| Click  	| Updates the quantity and total of cart                          	| Pass      	|
+| Remove Link           	| Click  	| Removes course from cart                                        	| Pass      	|
+| Keep Shopping Button  	| Click  	| Redirect user to Courses page                                   	| Pass      	|
+| Secure Checkout       	| Click  	| Redirect user to checkout page                                  	| Pass      	|
+
 ### Checkout
+
+| Element                                	| Action 	| Expected Result                                                                          	| Pass/Fail 	|
+|----------------------------------------	|--------	|------------------------------------------------------------------------------------------	|-----------	|
+|                                        	| Click  	|                                                                                          	| Pass      	|
+| Link- Create an Account                	| Click  	| Redirect to Login page                                                                   	| Pass      	|
+| Link - login                           	| Click  	| Redirect to Sign up form                                                                 	| Pass      	|
+| Student Select box                     	| Click  	| Display dropdown with students on the profile to allow student selection                 	| Pass      	|
+| Link to create Student - not logged in 	| Click  	| Redirect to login page                                                                   	| Pass      	|
+| Link to create student - logged in     	|        	| Redirect to student's page                                                               	| Pass         	|
+| Full name field                        	| Click  	| Allow user to input full name                                                            	| Pass      	|
+| Email field                            	| Click  	| Allow user to input Email                                                                	| Pass      	|
+| Email field                            	| Click  	| If email is saved on profile will be displayed on the form                               	| Pass      	|
+| Phone number field                     	| Click  	| Allow user to input phone number                                                         	| Pass      	|
+| Phone number field                     	| Click  	| If phone i saved on profile will be displayed on the form                                	| Pass      	|
+| Postal code field                      	| Click  	| Allow user to input eircode                                                              	| Pass      	|
+| Payment - Stripe                       	| Click  	| Allow user to input card details                                                         	| Pass      	|
+| Adjust cart button                     	| Click  	| Redirect user to cart page                                                               	| Pass      	|
+|  Complete order button - disable       	| Click  	| Button disable until user selects student                                                	| Pass      	|
+| Complete order button                  	| Click  	| Submit order and complete purchase - user redirected to order details (checkout success) 	| Pass      	|
