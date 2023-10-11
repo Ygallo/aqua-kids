@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+<!-- for active navigation-->
+{% block pagename %}courses{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <hr>
+                <p class="text-center mt-3">Thank you for your inquiry. We appreciate your interest in Aqua Kids Swim School.
+                    Our team will review your message and get back to you shortly. In the meantime, feel free to explore
+                    our website for more information about our programs and offerings."
+                </p>
+                <hr>
+                <a class="btn btn-outline mb-3" href="{%  url 'home' %}">Back to Home</a>
+            </div>
+        </div>		        
+    </div>
+
+{% endblock %}

@@ -34,3 +34,8 @@ def about_us(request):
 def contact_us(request):
     """View to return the timetable"""
     return render(request, 'contact_us.html')
+
+
+def contact_success(request):
+    """View to return succes on contact form """
+    return render(request, 'contact_success.html')
