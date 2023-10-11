@@ -248,9 +248,9 @@ We've implemented a newsletter signup form for its ease of setup and cost-effect
 - The Account navigation link is a drop down menu which includes the Sign up and Login links. 
 - The navigation bar has a royal blue background with white text. It contains links to About Us, Courses (with a dropdown menu), Timetable, and Contact Us.
 - The Account navigation link has a dropdown menu which includes the Sign up and Login links. 
-- When an Admin user logs in, the Account dropdown menu displays the option 
-'School Management.'
-When a user logs in, the Account dropdown menu displays the option Profile, Students and Logout.
+- When a user/admin logges in the iser name is displayed under the user icon.
+- When an Admin user logs in, the Account dropdown menu displays the School Management, Profile, Students and Logout optiont.
+- When a user logs in, the Account dropdown menu displays the option Profile, Students and Logout.
 - The navigation bar is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
 - The active navbar tab changes colour from white to dark blue.
 
@@ -512,6 +512,7 @@ The site is now live and operational.
 - [jQuery- hidden value](https://stackoverflow.com/questions/2979772/set-value-of-hidden-field-in-a-form-using-jquerys-val-doesnt-work)
 - [Date Input Widget](https://www.letscodemore.com/blog/how-to-add-date-input-widget-in-django-forms/#:~:text=In%20this%20case%2C%20we%20are,is%20rendered%20in%20the%20template.)
 - [datetime-timedelta](https://www.geeksforgeeks.org/python-datetime-timedelta-function/)
+- [Bootstrap cheetsheet](https://hackerthemes.com/bootstrap-cheatsheet/#media__top)
 
 ## Credits
 

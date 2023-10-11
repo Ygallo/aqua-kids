@@ -30,6 +30,7 @@ All HTML pages were run through the [W3C HTML Validator](https://validator.w3.or
 | Delete a Course  	| N/A        	| No errors  	|
 | Timetable        	| No errors  	| No errors  	|
 | Contact Us       	| No errors  	| No errors  	|
+| Contact Success   | No errors   | No errors   |
 | Cart             	| No error   	| No errors  	|
 | Checkout         	| No errors  	| No errors  	|
 | Checkout Success  | N/A       	| No errors  	|
@@ -273,3 +274,48 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 | Adjust cart button                     	| Click  	| Redirect user to cart page                                                               	| Pass      	|
 |  Complete order button - disable       	| Click  	| Button disable until user selects student                                                	| Pass      	|
 | Complete order button                  	| Click  	| Submit order and complete purchase - user redirected to order details (checkout success) 	| Pass      	|
+
+
+### Django All Auth Pages
+
+| Element            	          | Action                               	| Expected Result                                            	| Pass/Fail 	|
+|-------------------------------|--------------------------------------	|------------------------------------------------------------	|-----------	|
+| SIGN UP                     	|                                      	|                                                            	|           	|
+| Email field                 	| Leave empty                          	| Form won't submit                                          	| Pass      	|
+| Email field        	          | Insert incorrect format              	| Error message displays                                     	| Pass      	|
+| Email field        	          | Insert correct format                	| On submit: Form submit                                     	| Pass      	|
+| Email confirmation 	          | Insert incorrect format              	| Form won't submit                                          	| Pass      	|
+| Email confirmation 	          | Insert incorrect format              	| On Submit: Form submit                                     	| Pass        |
+| Email confirmation 	          | Insert duplicate mail                	| On submit: Form Submit                                     	| Pass      	|
+| User name Field    	          | Insert correct format                	| On Submit: Form Submit                                     	| Pass      	|
+| User name field    	          | Insert incorrect format              	| Error message displays                                     	| Pass        |
+| Password field     	          | Insert incorrect format              	| Form won't submit                                          	| Pass      	|
+| Password field     	          | Insert incorrect format              	| Error message displays                                     	| Pass      	|
+| Password field     	          | Password doesn't match               	| Form won't submit                                          	| Pass      	|
+| Password field     	          | Password doesnt match                	| Error message displays                                     	| Pass      	|
+| Password field     	          | Insert correct format and match      	| On submit: form submit                                     	| Pass      	|
+| Sign up ( form valid)   	    | Click                                	| Form Submit                                                	| Pass      	|
+| Sign up (form valid)          | Click                                	| Message to confirm sign up                                 	| Pass      	|
+| Sign up (form valid)          | Click                                	| Success message alerts user to check email for validation  	| Pass      	|
+| LOGIN
+| User name Field 	            | Leave empty             	            | Form won't submit                                          	| Pass      	|
+| User name Field 	            | Insert wrong username   	            | Form won't Submit                                          	| Pass      	|
+| User name field 	            | Insert wrong username   	            | Error message displays                                     	| Pass          	|
+| Password field  	            | Leave empty             	            | Form won't submit                                          	| Pass      	|
+| Password field  	            | Leave empty             	            | Error message displays                                     	| Pass      	|
+| Password field  	            | Insert wrong password   	            | Form won't submit                                          	| Pass      	|
+| Password field  	            | Insert wrong password   	            | Error message displays                                     	| Pass      	|
+| Login button (form valid)   	| Click                   	            | Form Submit                                                	| Pass      	|
+| Login button  (form valid)  	| Click                   	            | Redirect to home page                                      	| Pass      	|
+| Login button  (form valid)    | Click                   	            | Success message confirming login                           	| Pass      	|
+| LOG OUT                                                                                                                                           |
+| Logout button  	              | Click                 	              | Redirect to home page                                      	| Pass      	|
+| Logout button              	  | Click                      	          | Success message confirming logout appears                  	| Pass      	|
+
+## Trouble shooting
+
+- **Bug**: Once I added the fuction to select a student for the course on the checkout app, I realized that if the user was buying more than 1 of the same course, it could only select one student.  
+- **Fix**
+
+
+## Unfixed bugs
