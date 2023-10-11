@@ -209,8 +209,7 @@
     {% endif %}
         
     {% block postloadjs %}
-    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js">
-    </script>
+   
     <script type="text/javascript">
     //toast
     $('.toast').toast('show');
@@ -238,7 +237,11 @@
                 $("li[data-link-name='" + pageName + "']").addClass('active');
             }
         });
-    
+    </script>
+
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js">
+    </script>
+    <script type="text/javascript">
         // Mail chimp
         (function ($) {
             window.fnames = new Array();

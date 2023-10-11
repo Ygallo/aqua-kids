@@ -30,36 +30,75 @@
                 </div>
                 <div id="cart_item_list">
                     {% for item in cart_items %}
-                        <div class="row">
-                            <div class="col-4 mb-4">
-                                <a href="{% url 'course_detail' item.course.id %}">{{ item.course.name }}</a>
-                            </div>
-                            <div class="col-2">
-                                <p class="my-0"><strong>{{ item.course.category }}</strong></p>
-                                <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                            </div>
-                            <div class="col-4">
-                                    {% if not students  %}
-                                        <span class="text-danger"><a href="/profile/students/">Click here to create a student first!</a> </span>
-                                    {% else %}
-                                    <label for="students_select_{{item.course.id}}">Choose a student for this course:</label>
-                                    <div class="selectdiv">
-                                     <label>
-                                         <select name="students_select_{{item.course.id}}" id="{{item.course.id}}" >
-                                             <option value="none">Select...</option>
-                                            {% for student in students %}     
-                                             <option value="{{ student.id }}">{{ student.name }}</option>
-                                             {%endfor%}
-                                        </select>
-                                     </label>
-                                    </div>          
-                                    {% endif %}                    
-                            </div>
+                          
+                            {% if item.quantity > 1 %}
 
-                            <div class="col-2 text-right">
-                                <p class="my-0 small text-muted">€{{ item.course.price | calc_subtotal:item.quantity }}</p>
-                            </div>
-                        </div>
+                                {% for _ in ''|center:item.quantity %}
+                                <div class="row">
+                                    <div class="col-4 mb-4">
+                                        <a href="{% url 'course_detail' item.course.id %}">{{ item.course.name }}</a>
+                                    </div>
+                                    <div class="col-2">
+                                        <p class="my-0"><strong>{{ item.course.category }}</strong></p>
+                                        <p class="my-0 small text-muted">Qty: 1</p>
+                                    </div>
+                                    <div class="col-4">
+                                        {% if not students  %}
+                                            <span class="text-danger"><a href="/profile/students/">Click here to create a student first!</a> </span>
+                                        {% else %}
+                                        <label for="students_select_{{item.course.id}}">Choose a student for this course:</label>
+                                        <div class="selectdiv">
+                                         <label>
+                                             <select name="students_select_{{item.course.id}}" id="{{item.course.id}}" >
+                                                 <option value="none">Select...</option>
+                                                {% for student in students %}     
+                                                 <option value="{{ student.id }}">{{ student.name }}</option>
+                                                 {%endfor%}
+                                            </select>
+                                         </label>
+                                        </div>          
+                                        {% endif %}                    
+                                    </div>              
+                                    <div class="col-2 text-right">
+                                        <p class="my-0 small text-muted">€{{ item.course.price | calc_subtotal:item.quantity }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            {% else %}
+
+                                <div class="row">
+                                    <div class="col-4 mb-4">
+                                        <a href="{% url 'course_detail' item.course.id %}">{{ item.course.name }}</a>
+                                    </div>
+                                    <div class="col-2">
+                                        <p class="my-0"><strong>{{ item.course.category }}</strong></p>
+                                        <p class="my-0 small text-muted">Qty: 1</p>
+                                    </div>
+                                    <div class="col-4">
+                                        {% if not students  %}
+                                            <span class="text-danger"><a href="/profile/students/">Click here to create a student first!</a> </span>
+                                        {% else %}
+                                        <label for="students_select_{{item.course.id}}">Choose a student for this course:</label>
+                                        <div class="selectdiv">
+                                        <label>
+                                            <select name="students_select_{{item.course.id}}" id="{{item.course.id}}" >
+                                                <option value="none">Select...</option>
+                                                {% for student in students %}     
+                                                <option value="{{ student.id }}">{{ student.name }}</option>
+                                                {%endfor%}
+                                            </select>
+                                        </label>
+                                        </div>          
+                                        {% endif %}                    
+                                    </div>              
+                                    <div class="col-2 text-right">
+                                        <p class="my-0 small text-muted">€{{ item.course.price | calc_subtotal:item.quantity }}</p>
+                                    </div>
+                                </div>
+  
+                            {% endif %}                    
+                            
                     {% endfor %}
                 </div>    
                 <hr class="my-0 mt-4">
