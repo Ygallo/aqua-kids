@@ -154,7 +154,7 @@ def checkout_success(request, order_number):
             profile_data = {
                 'default_phone_number': order.phone_number,
                 'default_email': order.email,
-                'default_eircode': order.eircode,
+                'default_postcode': order.postcode,
             }
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():

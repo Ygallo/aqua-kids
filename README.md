@@ -163,7 +163,7 @@ The **Course** entity encompasses all swim school courses, each uniquely identif
 
 The **Student** entity represents minor participants in swimming classes. Each student is uniquely identified by an ID and includes basic details such as name, surname, date of birth, gender, and any special requirements. The student's swim skill **level** is stored as a Foreign Key, and the guardian's information is linked through the **User** model.
 
-The **Order** model will handle all orders in the swim school. It includes fields for order number, user details (full name, email, phone number, eircode), students, date, order total, and grand total. The user profile is linked to the order via a foreign key.
+The **Order** model will handle all orders in the swim school. It includes fields for order number, user details (full name, email, phone number, postcode), students, date, order total, and grand total. The user profile is linked to the order via a foreign key.
 
 The **OrderLineItem** model represents items within a shopping cart associated with a specific **order**. It references the **course**, quantity, student associate to that course and total cost for each line item. It also includes a foreign key to the order, course and student with a related name of 'line items'.
 

@@ -264,13 +264,13 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 | Link - login                           	| Click  	| Redirect to Sign up form                                                                 	| Pass      	|
 | Student Select box                     	| Click  	| Display dropdown with students on the profile to allow student selection                 	| Pass      	|
 | Link to create Student - not logged in 	| Click  	| Redirect to login page                                                                   	| Pass      	|
-| Link to create student - logged in     	|        	| Redirect to student's page                                                               	| Pass         	|
+| Link to create student - logged in     	|        	| Redirect to student's page                                                               	| Pass        |
 | Full name field                        	| Click  	| Allow user to input full name                                                            	| Pass      	|
 | Email field                            	| Click  	| Allow user to input Email                                                                	| Pass      	|
 | Email field                            	| Click  	| If email is saved on profile will be displayed on the form                               	| Pass      	|
 | Phone number field                     	| Click  	| Allow user to input phone number                                                         	| Pass      	|
 | Phone number field                     	| Click  	| If phone i saved on profile will be displayed on the form                                	| Pass      	|
-| Postal code field                      	| Click  	| Allow user to input eircode                                                              	| Pass      	|
+| Postal code field                      	| Click  	| Allow user to input postcode                                                              | Pass      	|
 | Payment - Stripe                       	| Click  	| Allow user to input card details                                                         	| Pass      	|
 | Adjust cart button                     	| Click  	| Redirect user to cart page                                                               	| Pass      	|
 | Complete order button - disable       	| Click  	| Button disable until user selects student                                                	| Pass      	|

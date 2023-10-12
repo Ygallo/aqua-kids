@@ -19,7 +19,7 @@ class StripeWH_Handler:
         self.request = request
 
     def _send_confirmation_email(self, order):
-        print("send conf email function fired")
+        
         """Send the user a confirmation email"""
         cust_email = order.email
         subject = render_to_string(
@@ -49,7 +49,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        print("Payment intent succeeded")
         intent = event.data.object
         pid = intent.id
         cart = intent.metadata.cart
@@ -70,7 +69,7 @@ class StripeWH_Handler:
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
                 profile.default_phone_number = billing_details.phone
-                profile.default_eircode = billing_details.eircode
+                profile.default_postcode = billing_details.postal_code
                 profile.save()
 
         order_exists = False
@@ -81,7 +80,7 @@ class StripeWH_Handler:
                     full_name__iexact=billing_details.name,
                     email__iexact=billing_details.email,
                     phone_number__iexact=billing_details.phone,
-                    eircode__iexact=billing_details.eircode,
+                    postcode__iexact=billing_details.postal_code,
                     grand_total=grand_total,
                     original_cart=cart,
                     stripe_pid=pid,
@@ -106,7 +105,7 @@ class StripeWH_Handler:
                     user_profile=profile,
                     email=billing_details.email,
                     phone_number=billing_details.phone,
-                    eircode=billing_details.eircode,
+                    postcode=billing_details.postal_code,
                     original_cart=cart,
                     stripe_pid=pid,
                 )
@@ -134,7 +133,9 @@ class StripeWH_Handler:
                         content=f'Webhook received: {event["type"]}'
                         '| ERROR: {e}',
                         status=500)
+                print('error')
         self._send_confirmation_email(order)
+        
         return HttpResponse(
             content=f'Webhook received: {event["type"]}'
             ' | SUCCESS: Created order in webhook',

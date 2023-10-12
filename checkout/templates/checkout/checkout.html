@@ -126,7 +126,7 @@
                         <legend class="fieldset-label small text-black px-2 w-auto">Contact Details</legend>
                         {{ order_form.email | as_crispy_field }}
                         {{ order_form.phone_number | as_crispy_field }}
-                        {{ order_form.eircode | as_crispy_field }}
+                        {{ order_form.postcode | as_crispy_field }}
 
                         {% for item in cart_items %}
                         <input type="hidden" value="" name="student_{{item.course.id}}" id="student_for_course_{{item.course.id}}">
