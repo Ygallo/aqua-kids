@@ -38,7 +38,6 @@ def all_courses(request):
     if 'category' in request.GET:
         categories = request.GET['category'].split(',')
         courses = courses.filter(category__course_type__in=categories)
-        # categories = Category.objects.filter(name__in=categories)
 
     if 'q' in request.GET:
         query = request.GET['q']

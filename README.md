@@ -57,7 +57,7 @@ The live link here - [https://aqua-kids-c98054224c90.herokuapp.com/]
 
 # Aqua Kids
 
-Aqua Kids is a swim school app designed exclusively for families seeking swimming classes for their children. With a dynamic platform caters to swimmers of all abilities, offering a comprehensive range of programs, including: Groups Classes, Individual Classes and Summer Camps. Aqua Kids lets users browse course descriptions and find suitable time slots for direct booking. The real-time course timetable shows the available spots.
+Aqua Kids is a swim school app designed exclusively for families seeking swimming classes for their children. With a dynamic platform caters to swimmers of all abilities, offering a comprehensive range of programs, including: Groups Classes, Individual Classes and Swim Camps. Aqua Kids lets users browse course descriptions and find suitable time slots for direct booking. The real-time course timetable shows the available spots.
 
 ## User Experience (UX)
 
@@ -78,20 +78,22 @@ A visitor to Aqua Kids is typically an enthusiastic parent or guardian, eager to
 - As a User I want to easily Log in and out of the account so that I can have access to my account when needed.
 - As a User I want to be able to recover my password in case of forgetting it so that I can access my account.
 - As a User I want to receive an email confirmation on account registration so that I can verify that my account registration was successful.
-- As a User I want to personalize my user profile so that I can **view my purchase history, and save my contact details, my dependant details and payment details **.
+- As a User I want to personalize my user profile so that I can view my purchase history, and save my contact details, my dependant details and payment details.
+- As a User I want to add/ edit and delete students to my profile so that I can have updated information on the dependants taking course at the time.
 
 
 #### Sorting and Searching
 
-- As a User I want to sort the list of available courses so that I can easily identify all the courses available by type and level.
+- As a User I want to sort the list of available courses so that I can easily identify all the courses available by their description.
 - As a User I want to Search for a course type so that I can select a specific type of course.
-- As a User I want to search for a course level so that I can select a specific level for the course.
+- As a User I want to search for a courses days so that I can select a specific day for the course.
 - As a User I want to easily see the course I was searching for and the number of results so that I can verify if the course I want is available.
 
 #### Purchasing and Checkout
 
 - As a User I want to easily select the course I want to purchase so that I can so I make sure I don't select the wrong course.
 - As a User I want to view the course to purchase in my cart so that I can verify the information on the course I have selected.
+- As a User I want to select a course for the student so that I can confirm the student details and who will be taking the course.
 - As a User I want to view my order confirmation so that I can verify all details are correct.
 - As a User I want to receive an email confirming the purchase so that I can keep a record of my purchased course.
 - As a User, I want to see the course availability so I can know if there are places left on the course I want to purchase.
@@ -142,9 +144,9 @@ GitHub projects were used to manage the development process using an agile appro
 
 ## E-commerce Data Model
 
-In the inclusion of an e-commerce business model for the Aqua kids project , the primary focus aligns with B2C (Business-to-Consumer), where the aim is  to directly engage with parents and guardians seeking swimming lessons for their children. To achieve this, the  marketing strategies revolve around building trust with the target audience.
+In the inclusion of an e-commerce business model for the Aqua kids project, the primary focus aligns with B2C (Business-to-Consumer), where the aim is  to directly engage with parents and guardians seeking swimming lessons for their children. To achieve this, the  marketing strategies revolve around building trust with the target audience.
 
-As an initial step to gauge the platform's viability, a Facebook page and a newsletter campaign was  incorporated into the project.While at this stage, the focus remains B2C, in the future an option to expand to B2B can be explored , such as partnerships with schools or community centres. 
+As an initial step to gauge the platform's viability, a Facebook page and a newsletter campaign was  incorporated into the project.While at this stage, the focus remains B2C, in the future an option to expand to B2B can be explored, such as partnerships with schools or community centres. 
 
 Throughout the project, I applied the principles of Object-Oriented Programming (OOP). 
 
@@ -153,7 +155,7 @@ Django AllAuth was used for the user authentication system.
 
 The **Category** entity categorises our classes into three distinct types: group classes, individual classes, and camps
 
-The **Level** entity defines swim skill levels and their target audience within the school. 
+The **Level** entity defines swim skill levels and their target audience within the swim school. 
 
 The **Course** entity encompasses all swim school courses, each uniquely identified by an ID. It includes start date, start time, end date, day of the week, price, available places, and an associated image. The **Level** and **Category** are linked to the course through Foreign Keys.
 
@@ -161,9 +163,9 @@ The **Course** entity encompasses all swim school courses, each uniquely identif
 
 The **Student** entity represents minor participants in swimming classes. Each student is uniquely identified by an ID and includes basic details such as name, surname, date of birth, gender, and any special requirements. The student's swim skill **level** is stored as a Foreign Key, and the guardian's information is linked through the **User** model.
 
-The **Order** model will handle all orders in the swim school. It includes fields for order number, user details (full name, email, phone number, eircode), date, order total, and grand total. The user profile is linked to the order via a foreign key.
+The **Order** model will handle all orders in the swim school. It includes fields for order number, user details (full name, email, phone number, eircode), students, date, order total, and grand total. The user profile is linked to the order via a foreign key.
 
-The **OrderLineItem** model represents items within a shopping cart associated with a specific **order**. It references the **course**, quantity, and total cost for each line item. It also includes a foreign key to the order with a related name of 'line items'.
+The **OrderLineItem** model represents items within a shopping cart associated with a specific **order**. It references the **course**, quantity, student associate to that course and total cost for each line item. It also includes a foreign key to the order, course and student with a related name of 'line items'.
 
 
 The diagram below details the database schema.
@@ -192,7 +194,7 @@ Cross-Site Request Forgery (CSRF) tokens were used on all forms throughout this 
 
 Custom error pages were meticulously designed and implemented to provide users with comprehensive information when encountering errors and to guide them seamlessly back to the site. 
 
-![error]()
+![error](https://res.cloudinary.com/dne60wscn/image/upload/v1697100557/AquaKids/Aqua%20Kids%20README/404_sawse9.png)
 
 - 400 Bad Request - We hit a little snag and are unable to handle this request.
 - 403 Access Denied - Oops! It looks like you don't have permission to access this page.
@@ -248,7 +250,7 @@ We've implemented a newsletter signup form for its ease of setup and cost-effect
 - The Account navigation link is a drop down menu which includes the Sign up and Login links. 
 - The navigation bar has a royal blue background with white text. It contains links to About Us, Courses (with a dropdown menu), Timetable, and Contact Us.
 - The Account navigation link has a dropdown menu which includes the Sign up and Login links. 
-- When a user/admin logges in the iser name is displayed under the user icon.
+- When a user/admin logges in the user name is displayed under the user icon.
 - When an Admin user logs in, the Account dropdown menu displays the School Management, Profile, Students and Logout optiont.
 - When a user logs in, the Account dropdown menu displays the option Profile, Students and Logout.
 - The navigation bar is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
@@ -268,9 +270,9 @@ We've implemented a newsletter signup form for its ease of setup and cost-effect
 
 ## Home Page
 
-The homepage showcases a hero image with swim school information.
-There's a section with images and descriptions for the three course categories. 
-At the bottom of the page there is a carousel displaying customer pictures and testimonials. 
+- The homepage showcases a hero image with swim school information.
+- There's a section with images and descriptions for the three course categories. 
+- At the bottom of the page there is a carousel displaying customer pictures and testimonials. 
 
 ![homepage](https://res.cloudinary.com/dne60wscn/image/upload/v1696963661/AquaKids/Aqua%20Kids%20README/homepage_zmis29.png)
 
@@ -288,10 +290,10 @@ At the bottom of the page there is a carousel displaying customer pictures and t
 
 ## Course Categories
 
-The courses dropdown on the navigation bar lets users select the course category: Group, Individual, or Camps.
-When a category is selected, the page displays cards with available courses for that category.
-Each card includes an image for the course level, a description of the intended audience, skills taught, and duration. 
-The price and available places are displayed, along with a 'Read more' button that directs the user to the course detail page. 
+- The courses dropdown on the navigation bar lets users select the course category: Group, Individual, or Camps.
+- When a category is selected, the page displays cards with available courses for that category.
+- Each card includes an image for the course level, a description of the intended audience, skills taught, and duration. 
+- The price and available places are displayed, along with a 'Read more' button that directs the user to the course detail page. 
 
 ![courses](https://res.cloudinary.com/dne60wscn/image/upload/v1696963656/AquaKids/Aqua%20Kids%20README/Courses_egnnua.png)
 
@@ -299,7 +301,7 @@ The price and available places are displayed, along with a 'Read more' button th
 
 - The course detail section displays all the information for each available course. It includes course name, description, start date, start time, day of the week, price, available places, and image. 
 -  Available places are represented by rounded pills: green (Bootstrap success) for more than 4 places, yellow (Bootstrap warning) for fewer than 4 places, and red (Bootstrap danger) with 'full' for no available places.
-- "There's an input field for quantity, accompanied by Font Awesome icons for increasing and decreasing the quantity. A logic function prevents users from purchasing more than the available amount and less than one."
+- There's an input field for quantity, accompanied by Font Awesome icons for increasing and decreasing the quantity. A logic function prevents users from purchasing more than the available amount and less than one.
 - The user can click on the Add to cart button or keep shopping button to browse more courses.
 
 ![course detail](https://res.cloudinary.com/dne60wscn/image/upload/v1696963885/AquaKids/Aqua%20Kids%20README/coursedetail_zjyydm.png)
@@ -328,8 +330,9 @@ After completing the order, the user can view the order confirmation.
 
 The order confirmation page displays information, including the order number, date, contact details, course details (including the students enrolled), and the grand total.  
 
-## Add a Course Form
+## School Management: Add a Course Form
 
+- Only logged in Admin's can access this page from the login Icon dropdown. Once logged in a "School Management" option will be displayed on the dropdown.
 - The "Add a Course" functionality on a swim school website allows authorised administrators or staff members to create and publish new swimming courses. It's a crucial feature that enables the swim school to manage and expand its course offerings efficiently.
 - The form will be displayed with the required fields for the category, level, name, start date, start time, end date, day of the week, price, available places, and an associated image. Failing to complete required fields will render an error message.
 - Category, level, and days of the week fields offer dropdown menus with various options.
@@ -348,7 +351,9 @@ The order confirmation page displays information, including the order number, da
 
 - Only logged-in Admin users can delete a course.The deletion is done by clicking the delete button on the course or course detail pages. 
 - The user is asked to confirm if they wish to delete the course or cancel.
-- A message informs the user "The course was deleted successfully. 
+- A message informs the user "The course was deleted successfully". 
+
+![delete course](https://res.cloudinary.com/dne60wscn/image/upload/v1697101032/AquaKids/Aqua%20Kids%20README/deletecourse_fz0dre.png)
 
 ## Timetable
 
@@ -371,15 +376,15 @@ The order confirmation page displays information, including the order number, da
 ## User Account Pages
 
 **Sign Up**
- ![signup]()
+ ![signup](https://res.cloudinary.com/dne60wscn/image/upload/v1697101228/AquaKids/Aqua%20Kids%20README/signup_b1oqn4.png)
 
 **Log In**
 
-![login]()
+![login](https://res.cloudinary.com/dne60wscn/image/upload/v1697101228/AquaKids/Aqua%20Kids%20README/signin_ecadmi.png)
 
 **Log Out**
 
-![signout]()
+![signout](https://res.cloudinary.com/dne60wscn/image/upload/v1697101228/AquaKids/Aqua%20Kids%20README/signout_igmjn3.png)
 
 - The Signup, Login, and Log out functionality was implemented using Django allauth. This authentication package was integrated into the project, enabling seamless user registration, login, and logout processes.
 
@@ -404,6 +409,7 @@ Two buttons redirect users to 'Add a Student' or 'View Students' pages.
 ## Add a Student
 - Displays a form that allows the user to add the students (dependents) that will be taking the courses. 
 - The form  includes basic details such as name, surname, date of birth, gender, the student's swim skill **level** and any special requirements. 
+- There is a function on the date of birth to limit the age, students must be at least 3 years old and no more tht 14 for the courses.
 - Upon completion of the form the user has the option to cancel or add the student to its profile. 
 
 ![add student](https://res.cloudinary.com/dne60wscn/image/upload/v1696963637/AquaKids/Aqua%20Kids%20README/addstudent_h4rarc.png)
@@ -417,7 +423,7 @@ Two buttons redirect users to 'Add a Student' or 'View Students' pages.
 
 ## Delete a Student
 
-- Only logged-in users can delete a student on. The deletion is done by clicking the delete button on . 
+- Only logged-in users can delete a student. The deletion is done by clicking the delete button. 
 - The user is asked to confirm if they wish to delete the course or cancel.
 - A message informs the user "The course was deleted successfully". 
 - User is redirected to the students page. 
@@ -426,6 +432,9 @@ Two buttons redirect users to 'Add a Student' or 'View Students' pages.
 
 
 ### Pending Features
+
+- A FAQ page with information on class procedures a other details for the parents and kids attending the venue.
+- Add more festures to the profile to display more information on the student progress on class and attendance.
 
 ## Deployment - Heroku
 
@@ -504,6 +513,7 @@ The site is now live and operational.
 - [Colormind](http://colormind.io/bootstrap/)
 - [Favicon](https://favicon.io/)
 - [Lucidchart](https://lucid.app/documents#/dashboard) - to create the database design
+- [Chat gtp](https://chat.openai.com/auth/login?next=%2Fc%2F295c54cf-fbfe-4a25-a197-ff354a059497) to generate the content for the course and school.
 - [Grammerly](https://app.grammarly.com/) - for proof reading the README.md
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) 
 - [Cloudinary](https://cloudinary.com/): for hosting the uploaded images.
@@ -532,3 +542,7 @@ The site is now live and operational.
 - [Products list page](https://bbbootstrap.com/snippets/bootstrap-ecommerce-category-product-list-page-93685579)
 
 ## Acknowledgments
+
+I would like to express my heartfelt gratitude to my mentor, Andre Aquilina, for their unwavering support and invaluable guidance throughout this project. As this marks the culmination of my journey, I feel incredibly fortunate to have had such a dedicated mentor by my side. Andre consistently provided me with constructive feedback, encouragement, and direction, which played a pivotal role in the success of this project. Their positivity and mentorship have been truly inspiring. Thank you, Andre, for being an exceptional mentor and for helping me navigate this project with excellence.
+
+I consider myself extremely fortunate to have had the unwavering support and invaluable feedback of my husband throughout not only this project but all the projects in this course. As I near the end of this educational journey, I find it hard to express just how thankful I am for his unwavering support over the past year. His willingness to take on additional household responsibilities so that I could concentrate on my studies has been instrumental to my success. This journey has been filled with challenges, and I couldn't have persevered without his continuous encouragement, support, and guidance. I am profoundly grateful for his presence in my life.

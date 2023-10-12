@@ -75,6 +75,7 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 | Delete a Course  	| 97          	| 96            	| 92             	| 100 	|
 | Timetable        	| 95          	| 98            	| 83             	| 90  	|
 | Contact Us       	| 97          	| 98            	| 92             	| 90  	|
+| Contact Success   | 97            | 98              | 100             | 100   |
 | Cart             	| 97          	| 83            	| 92             	| 90  	|
 | Checkout         	| 90          	| 96            	| 92             	| 100 	|
 | Checkout success 	| 97          	| 98            	| 83             	| 100 	|
@@ -272,7 +273,7 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 | Postal code field                      	| Click  	| Allow user to input eircode                                                              	| Pass      	|
 | Payment - Stripe                       	| Click  	| Allow user to input card details                                                         	| Pass      	|
 | Adjust cart button                     	| Click  	| Redirect user to cart page                                                               	| Pass      	|
-|  Complete order button - disable       	| Click  	| Button disable until user selects student                                                	| Pass      	|
+| Complete order button - disable       	| Click  	| Button disable until user selects student                                                	| Pass      	|
 | Complete order button                  	| Click  	| Submit order and complete purchase - user redirected to order details (checkout success) 	| Pass      	|
 
 
@@ -314,8 +315,20 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 
 ## Trouble shooting
 
-- **Bug**: Once I added the fuction to select a student for the course on the checkout app, I realized that if the user was buying more than 1 of the same course, it could only select one student.  
-- **Fix**
+- **Bug**: After implementing the ability to select a student for a course on the checkout app, I encountered an issue. When a user tried to purchase more than one of the same course, they could only select one student for all of those courses.  
+- **Fix**: To address this issue, I made modifications in the checkout.html template. I added an if statement inside the for loop responsible for checking items in the cart. Now, if the item quantity is greater than one, an additional for loop is introduced to separate the course quantities into individual lines. This allows the user to select a student for each course they intend to purchase.
+
+- **Bug**: When adding a student in the form, I noticed that it was possible to select a future date of birth, which should not be allow for the purpose of this app.
+- **Fix**: To address this issue, I implemented a function that restricts the range of selectable years on the calendar. The minimum age allowed is 3 years, and the maximum age is 14, ensuring that the selected date of birth falls within this range.
+
+- **Bug**: Initially, during the development of the checkout app, users could make purchases without being logged in. This posed a challenge in terms of tracking users and students.
+- **Fix**: To rectify this, I have now restricted the checkout process to only logged-in users. Furthermore, in order to complete the checkout, a user must both log in and have at least one student associated with their profile. This ensures that the selected course on the checkout is correctly assigned to a specific student, enhancing tracking and organization. 
+
+- **Bug**:   During the development of the purchasing app, it was functional, but there was no tracking of the quantity purchased for each course. Given that these courses have limited spots due to safety and student-teacher ratio guidelines, it was essential to find a way to limit the quantity and decrease availability with each purchase.
+- **Fix**: To address this, I incorporated a variable into the checkout function to monitor the remaining available spots after order confirmation and subsequently decrease the availability accordingly. This ensures that the course's availability is accurately managed as each user makes a purchase.
 
 
 ## Unfixed bugs
+
+- **Bug**: The course availability doesn't update until the order is completed, which may lead to overbooking.
+- **Fix**: To address this issue, one potential solution is to explore a queuing system that would allow for real-time updates of course availability. However, due to time constraints and the fact that this is beyond the scope of the current project, this issue remains unresolved for now.
