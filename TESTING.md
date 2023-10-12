@@ -332,3 +332,6 @@ All Python files were run through [Pep8](https://pep8ci.herokuapp.com/) with no 
 
 - **Bug**: The course availability doesn't update until the order is completed, which may lead to overbooking.
 - **Fix**: To address this issue, one potential solution is to explore a queuing system that would allow for real-time updates of course availability. However, due to time constraints and the fact that this is beyond the scope of the current project, this issue remains unresolved for now.
+
+- **Bug**: Presently, it's possible to select the same student for multiple courses in the checkout, which can lead to inaccuracies.
+- **Fix**: To address this, a function that ensures once a student has been assigned to a course, they cannot be selected again for another course during the same checkout process should be implemented. This would prevent any unintended duplication and maintain accurate student-course associations.  

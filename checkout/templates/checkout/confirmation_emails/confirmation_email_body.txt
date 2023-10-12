@@ -8,7 +8,7 @@ Order Date: {{ order.date }}
 Enrollment
 Student Name:	{{ student.name }}
 Student Surname:	{{ student.surname }}
-Date of Birth {{student.date_of_birth }}
+Date of Birth: {{student.date_of_birth }}
 
 Level:	{{student.level}}
 Start date:	{{ course.start_date }}

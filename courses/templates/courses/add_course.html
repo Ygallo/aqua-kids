@@ -17,9 +17,10 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'add_course' %}" class="form mb-2">
-                    {% csrf_token %}
+                <form method="POST" action="{% url 'add_course' %}" class="form mb-2" enctype="multipart/form-data">
+                    {{ form.media }}
                     {{ form | crispy }}
+                    {% csrf_token %}
                     <div>
                         <a class="btn btn-outline" href="{% url 'courses' %}">Cancel</a>
                         <button class="btn btn-blue" type="submit"> Add a Course</button>

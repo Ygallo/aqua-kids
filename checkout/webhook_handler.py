@@ -9,6 +9,7 @@ from profiles.models import UserProfile
 
 import json
 import time
+import stripe
 
 
 class StripeWH_Handler:
@@ -18,6 +19,7 @@ class StripeWH_Handler:
         self.request = request
 
     def _send_confirmation_email(self, order):
+        print("send conf email function fired")
         """Send the user a confirmation email"""
         cust_email = order.email
         subject = render_to_string(
@@ -26,19 +28,14 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-
+        
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
         )
-
-    def handle_event(self, event):
-        """Handle generic/unexpected webhook event"""
-        return HttpResponse(
-            content=f'Webhook received: {event["type"]}',
-            status=200)
+        print("send mail fired")  
 
     def handle_payment_intent_succeeded(self, event):
         """
@@ -56,11 +53,6 @@ class StripeWH_Handler:
 
         billing_details = stripe_charge.billing_details
         grand_total = round(stripe_charge.amount / 100, 2)
-
-        # Clean data in the shipping details
-        # for field, value in eircode.items():
-        #     if value == "":
-        #         eircode[field] = None
 
         # Update profile information if save_info was checked
         profile = None
@@ -94,18 +86,18 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} ' 
+                content=f'Webhook received: {event["type"]} '
                 '| SUCCESS: Verified order already in database',
                 status=200)
         else:
             order = None
             try:
                 order = Order.objects.create(
-                    full_name__iexact=billing_details.name,
+                    full_name=billing_details.name,
                     user_profile=profile,
-                    email__iexact=billing_details.email,
-                    phone_number__iexact=billing_details.phone,
-                    eircode__iexact=billing_details.eircode,
+                    email=billing_details.email,
+                    phone_number=billing_details.phone,
+                    eircode=billing_details.eircode,
                     original_cart=cart,
                     stripe_pid=pid,
                 )

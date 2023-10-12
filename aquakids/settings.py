@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = ['aqua-kids-c98054224c90.herokuapp.com', 'localhost',
-                 '8000-ygallo-aquakids-2xdydj324e6.ws-eu105.gitpod.io']
+                 '8000-ygallo-aquakids-2xdydj324e6.ws-us105.gitpod.io']
 
 
 # Application definition
@@ -203,4 +203,3 @@ else:
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

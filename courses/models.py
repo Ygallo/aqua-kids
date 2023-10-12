@@ -22,7 +22,7 @@ class Category(models.Model):
         choices=COURSE_TYPE,
     )
     description = models.TextField(default='blank')
-    image = models.ImageField(null=True, blank=True)
+    image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.course_type
