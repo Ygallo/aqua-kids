@@ -28,7 +28,7 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
         send_mail(
             subject,
             body,
@@ -120,7 +120,7 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for quantity in items():
+                        for quantity in item_data.items():
                             order_line_item = OrderLineItem(
                                     order=order,
                                     course=course,
