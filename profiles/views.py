@@ -50,7 +50,7 @@ def profile(request):
 
 @login_required
 def student(request):
-    """Display the user profile"""
+    """Display the student on userprofile"""
     profile = get_object_or_404(UserProfile, user=request.user)
     queryset = Student.objects.all()
     students = queryset.filter(guardian=profile.id)

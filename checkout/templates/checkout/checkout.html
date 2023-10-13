@@ -30,7 +30,7 @@
                 </div>
                 <div id="cart_item_list">
                     {% for item in cart_items %}
-                          
+                            <!-- separate courses quantity on different lines to allow student selection-->
                             {% if item.quantity > 1 %}
 
                                 {% for _ in ''|center:item.quantity %}
@@ -43,6 +43,7 @@
                                         <p class="my-0 small text-muted">Qty: 1</p>
                                     </div>
                                     <div class="col-4">
+                                        <!-- Select student for the course-->
                                         {% if not students  %}
                                             <span class="text-danger"><a href="/profile/students/">Click here to create a student first!</a> </span>
                                         {% else %}
@@ -113,6 +114,7 @@
                     </div>
                 </div>
             </div>
+            <!-- checkout form-->
             {% if user.is_authenticated %}
             <div class="col-12 col-lg-6">
                 <p>Please fill the form below to complete your order</p>

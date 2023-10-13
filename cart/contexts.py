@@ -2,6 +2,8 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from courses.models import Course
 
+# Largely based on the boutique ado project
+
 
 def cart_contents(request):
 

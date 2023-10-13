@@ -12,6 +12,7 @@ import time
 import stripe
 
 
+# Largely based on the boutique ado project
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -19,7 +20,7 @@ class StripeWH_Handler:
         self.request = request
 
     def _send_confirmation_email(self, order):
-        
+
         """Send the user a confirmation email"""
         cust_email = order.email
         subject = render_to_string(
@@ -126,6 +127,7 @@ class StripeWH_Handler:
                                     quantity=quantity,
                             )
                             order_line_item.save()
+
             except Exception as e:
                 if order:
                     order.delete()
@@ -135,7 +137,7 @@ class StripeWH_Handler:
                         status=500)
                 print('error')
         self._send_confirmation_email(order)
-        
+
         return HttpResponse(
             content=f'Webhook received: {event["type"]}'
             ' | SUCCESS: Created order in webhook',

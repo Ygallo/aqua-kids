@@ -7,6 +7,8 @@ from checkout.webhook_handler import StripeWH_Handler
 
 import stripe
 
+# Largely based on the boutique ado project
+
 
 @require_POST
 @csrf_exempt
