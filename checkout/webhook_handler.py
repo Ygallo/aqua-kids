@@ -2,8 +2,8 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
-
 from .models import Order, OrderLineItem
+
 from courses.models import Course
 from profiles.models import UserProfile
 
@@ -132,8 +132,7 @@ class StripeWH_Handler:
                 if order:
                     order.delete()
                 return HttpResponse(
-                        content=f'Webhook received: {event["type"]}'
-                        '| ERROR: {e}',
+                        content=f'Webhook received: {event["type"]} | ERROR: {e}',
                         status=500)
                 print('error')
         self._send_confirmation_email(order)
